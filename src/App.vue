@@ -4,7 +4,7 @@
     <Editor v-else-if="_isPC" />
     <Mobile v-else />
   </template>
-  <FullscreenSpin tip="数据初始化中，请稍等 ..." v-else  loading :mask="false" />
+  <FullscreenSpin tip="Data initialising, please wait a moment..." v-else  loading :mask="false" />
 </template>
 
 
@@ -40,7 +40,7 @@ if (import.meta.env.MODE !== 'development') {
 
 onMounted(async () => {
   if (location.hostname === 'localhost') {
-    message.error('本地开发请访问 http://127.0.0.1:5173，否则不保证数据可靠性', { duration: 0, closable: true })
+    message.error('For local development, please visit http://127.0.0.1:5173, otherwise data reliability is not guaranteed.', { duration: 0, closable: true })
     api.getMockData('slides').then((slides: Slide[]) => {
       slidesStore.setSlides(slides)
     })
@@ -55,7 +55,7 @@ onMounted(async () => {
   snapshotStore.initSnapshotDatabase()
 })
 
-// 应用注销时向 localStorage 中记录下本次 indexedDB 的数据库ID，用于之后清除数据库
+// When the application logs out, record the current indexedDB database ID in localStorage for subsequent database clearing.
 window.addEventListener('unload', () => {
   const discardedDB = localStorage.getItem(LOCALSTORAGE_KEY_DISCARDED_DB)
   const discardedDBList: string[] = discardedDB ? JSON.parse(discardedDB) : []
