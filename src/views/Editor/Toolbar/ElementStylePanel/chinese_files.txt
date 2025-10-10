@@ -1,0 +1,12 @@
+Files containing Chinese characters (paths relative to this directory):
+AudioStylePanel.vue
+ChartStylePanel/ChartDataEditor.vue
+ChartStylePanel/ThemeColorsSetting.vue
+ChartStylePanel/index.vue
+ImageStylePanel.vue
+LatexStylePanel.vue
+LineStylePanel.vue
+ShapeStylePanel.vue
+TableStylePanel.vue
+TextStylePanel.vue
+VideoStylePanel.vue

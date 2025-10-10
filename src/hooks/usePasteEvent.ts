@@ -11,13 +11,13 @@ export default () => {
   const { pasteTextClipboardData } = usePasteTextClipboardData()
   const { createImageElement } = useCreateElement()
 
-  // 粘贴图片到幻灯片元素
+  // Paste an image into the slide as an element
   const pasteImageFile = (imageFile: File) => {
     getImageDataURL(imageFile).then(dataURL => createImageElement(dataURL))
   }
 
   /**
-   * 粘贴事件监听
+   * Clipboard paste listener.
    * @param e ClipboardEvent
    */
   const pasteListener = (e: ClipboardEvent) => {
@@ -31,7 +31,7 @@ export default () => {
 
     if (!clipboardDataFirstItem) return
 
-    // 如果剪贴板内有图片，优先尝试读取图片
+    // Prefer reading images from the clipboard when available
     let isImage = false
     for (const item of clipboardDataItems) {
       if (item.kind === 'file' && item.type.indexOf('image') !== -1) {
@@ -43,7 +43,7 @@ export default () => {
 
     if (isImage) return
     
-    // 如果剪贴板内没有图片，但有文字内容，尝试解析文字内容
+    // If there is no image but plain text is present, parse the text content
     if (clipboardDataFirstItem.kind === 'string' && clipboardDataFirstItem.type === 'text/plain') {
       clipboardDataFirstItem.getAsString(text => pasteTextClipboardData(text))
     }

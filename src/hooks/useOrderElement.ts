@@ -11,9 +11,9 @@ export default () => {
   const { addHistorySnapshot } = useHistorySnapshot()
 
   /**
-   * 获取组合元素层级范围
-   * @param elementList 本页所有元素列表
-   * @param combineElementList 组合元素列表
+   * Get the level range for grouped elements.
+   * @param elementList All elements on the slide.
+   * @param combineElementList Elements within the group.
    */
   const getCombineElementLevelRange = (elementList: PPTElement[], combineElementList: PPTElement[]) => {
     return {
@@ -23,26 +23,27 @@ export default () => {
   }
 
   /**
-   * 上移一层
-   * @param elementList 本页所有元素列表
-   * @param element 当前操作的元素
+   * Move an element up one layer.
+   * @param elementList All elements on the slide.
+   * @param element The element being manipulated.
    */
   const moveUpElement = (elementList: PPTElement[], element: PPTElement) => {
     const copyOfElementList: PPTElement[] = JSON.parse(JSON.stringify(elementList))
 
-    // 如果被操作的元素是组合元素成员，需要将该组合全部成员一起进行移动
+    // If the element belongs to a group, move the entire group together
     if (element.groupId) {
 
-      // 获取到该组合全部成员，以及所有成员的层级范围
+      // Gather the grouped members and determine their level range
       const combineElementList = copyOfElementList.filter(_element => _element.groupId === element.groupId)
       const { minLevel, maxLevel } = getCombineElementLevelRange(elementList, combineElementList)
 
-      // 已经处在顶层，无法继续移动
+      // Already at the top; no further movement
       if (maxLevel === elementList.length - 1) return
 
-      // 通过组合成员范围的最大值，获取到该组合上一层的元素，然后将该组合元素从元素列表中移除（并缓存被移除的元素列表）
-      // 若上层元素处在另一个组合中，则将上述被移除的组合元素插入到该上层组合上方
-      // 若上层元素不处于任何分组中，则将上述被移除的组合元素插入到该上层元素上方
+      // Use the highest index in the group to find the element above it, remove
+      // the grouped elements from the list (caching them), then insert them
+      // above that element. If the neighboring element is part of another
+      // group, insert above that group instead.
       const nextElement = copyOfElementList[maxLevel + 1]
       const movedElementList = copyOfElementList.splice(minLevel, combineElementList.length)
 
@@ -53,22 +54,21 @@ export default () => {
       else copyOfElementList.splice(minLevel + 1, 0, ...movedElementList)
     }
 
-    // 如果被操作的元素不是组合元素成员
+    // If the element does not belong to a group
     else {
 
-      // 获取该元素在列表中的层级
+      // Determine the element's index in the list
       const level = elementList.findIndex(item => item.id === element.id)
 
-      // 已经处在顶层，无法继续移动
+      // Already at the top; no further movement
       if (level === elementList.length - 1) return
 
-      // 获取到该组合上一层的元素，然后将该组合元素从元素列表中移除（并缓存被移除的元素列表）
+      // Locate the element above and temporarily remove the current element
       const nextElement = copyOfElementList[level + 1]
       const movedElement = copyOfElementList.splice(level, 1)[0]
 
-      // 通过组合成员范围的最大值，获取到该组合上一层的元素，然后将该组合元素从元素列表中移除（并缓存被移除的元素列表）
-      // 若上层元素处在另一个组合中，则将上述被移除的组合元素插入到该上层组合上方
-      // 若上层元素不处于任何分组中，则将上述被移除的组合元素插入到该上层元素上方
+      // If the neighbor is part of a group, insert after that entire group;
+      // otherwise insert directly above the neighbor.
       if (nextElement.groupId) {
         const combineElementList = copyOfElementList.filter(_element => _element.groupId === nextElement.groupId)
         copyOfElementList.splice(level + combineElementList.length, 0, movedElement)
@@ -80,9 +80,9 @@ export default () => {
   }
 
   /**
-   * 下移一层，操作方式同上移
-   * @param elementList 本页所有元素列表
-   * @param element 当前操作的元素
+   * Move an element down one layer (mirrors move up).
+   * @param elementList All elements on the slide.
+   * @param element The element being manipulated.
    */
   const moveDownElement = (elementList: PPTElement[], element: PPTElement) => {
     const copyOfElementList: PPTElement[] = JSON.parse(JSON.stringify(elementList))
@@ -120,38 +120,38 @@ export default () => {
   }
 
   /**
-   * 置顶层
-   * @param elementList 本页所有元素列表
-   * @param element 当前操作的元素
+   * Bring an element to the top layer.
+   * @param elementList All elements on the slide.
+   * @param element The element being manipulated.
    */
   const moveTopElement = (elementList: PPTElement[], element: PPTElement) => {
     const copyOfElementList: PPTElement[] = JSON.parse(JSON.stringify(elementList))
 
-    // 如果被操作的元素是组合元素成员，需要将该组合全部成员一起进行移动
+    // If the element belongs to a group, move the entire group together
     if (element.groupId) {
 
-      // 获取到该组合全部成员，以及所有成员的层级范围
+      // Gather the grouped members and determine their level range
       const combineElementList = copyOfElementList.filter(_element => _element.groupId === element.groupId)
       const { minLevel, maxLevel } = getCombineElementLevelRange(elementList, combineElementList)
 
-      // 已经处在顶层，无法继续移动
+      // Already at the top; nothing to change
       if (maxLevel === elementList.length - 1) return null
 
-      // 将该组合元素从元素列表中移除，然后将被移除的元素添加到元素列表顶部
+      // Remove the grouped elements and append them to the end of the list
       const movedElementList = copyOfElementList.splice(minLevel, combineElementList.length)
       copyOfElementList.push(...movedElementList)
     }
 
-    // 如果被操作的元素不是组合元素成员
+    // If the element does not belong to a group
     else {
 
-      // 获取该元素在列表中的层级
+      // Determine the element's index in the list
       const level = elementList.findIndex(item => item.id === element.id)
 
-      // 已经处在顶层，无法继续移动
+      // Already at the top; nothing to change
       if (level === elementList.length - 1) return null
 
-      // 将该组合元素从元素列表中移除，然后将被移除的元素添加到元素列表底部
+      // Remove the element and append it to the end of the list
       copyOfElementList.splice(level, 1)
       copyOfElementList.push(element)
     }
@@ -160,9 +160,9 @@ export default () => {
   }
 
   /**
-   * 置底层，操作方式同置顶
-   * @param elementList 本页所有元素列表
-   * @param element 当前操作的元素
+   * Send an element to the bottom layer (mirrors bring to top).
+   * @param elementList All elements on the slide.
+   * @param element The element being manipulated.
    */
   const moveBottomElement = (elementList: PPTElement[], element: PPTElement) => {
     const copyOfElementList: PPTElement[] = JSON.parse(JSON.stringify(elementList))
@@ -188,9 +188,9 @@ export default () => {
   }
 
   /**
-   * 调整元素层级
-   * @param element 需要调整层级的元素
-   * @param command 调整命令：上移、下移、置顶、置底
+   * Adjust element z-order.
+   * @param element Element whose order should change.
+   * @param command Command to execute: move up, move down, bring to front, send to back.
    */
   const orderElement = (element: PPTElement, command: ElementOrderCommands) => {
     let newElementList

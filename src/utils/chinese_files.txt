@@ -1,0 +1,13 @@
+Files containing Chinese characters (paths relative to this directory):
+clipboard.ts
+common.ts
+crypto.ts
+database.ts
+element.ts
+fullscreen.ts
+htmlParser/index.ts
+image.ts
+selection.ts
+svg2Base64.ts
+svgPathParser.ts
+textParser.ts

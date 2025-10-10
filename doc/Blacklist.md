@@ -1,5 +1,5 @@
-# 🤮 黑名单/耻辱柱
+# 🤮 Blacklist / Hall of Shame
 
-👎蚂蚁PPT（[宁波灵达网络科技有限公司](https://aiqicha.baidu.com/company_detail_45305048629737)） - https://www.antppt.com/
+👎 Ant PPT ([Ningbo Lingda Network Technology Co., Ltd.](https://aiqicha.baidu.com/company_detail_45305048629737)) - https://www.antppt.com/
 
-> 未按AGPL-3协议开源相关代码，并删除了原始版权声明。违反协议数月后被作者找上，自知侵权行为却毫无歉意，坚持拒绝遵守AGPL-3协议，期间反倒试图让作者帮助其解决程序问题，甚至还要求作者提供手持身份证照片自证
+> Failed to open-source the relevant code under the AGPL-3 license and removed the original copyright notice. After months of violations, the author reached out, yet they showed no remorse despite acknowledging the infringement. They refused to comply with the AGPL-3 license, attempted to get the author to help fix their application, and even asked the author to provide a photo holding an ID card for verification.

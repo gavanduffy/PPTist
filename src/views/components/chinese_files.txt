@@ -1,0 +1,16 @@
+Files containing Chinese characters (paths relative to this directory):
+ThumbnailSlide/index.vue
+element/ChartElement/chartOption.ts
+element/ImageElement/ImageClipHandler.vue
+element/ProsemirrorEditor.vue
+element/TableElement/CustomTextarea.vue
+element/TableElement/EditableTable.vue
+element/TableElement/index.vue
+element/TableElement/useHideCells.ts
+element/TableElement/useSubThemeColor.ts
+element/TableElement/utils.ts
+element/TextElement/index.vue
+element/hooks/useElementFill.ts
+element/hooks/useElementFlip.ts
+element/hooks/useElementOutline.ts
+element/hooks/useElementShadow.ts

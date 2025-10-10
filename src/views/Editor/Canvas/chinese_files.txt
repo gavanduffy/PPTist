@@ -1,0 +1,20 @@
+Files containing Chinese characters (paths relative to this directory):
+AlignmentLine.vue
+EditableElement.vue
+ElementCreateSelection.vue
+GridLines.vue
+LinkDialog.vue
+Operate/LinkHandler.vue
+Operate/MultiSelectOperate.vue
+ShapeCreateCanvas.vue
+hooks/useCommonOperate.ts
+hooks/useDragElement.ts
+hooks/useDragLineElement.ts
+hooks/useDropImageOrText.ts
+hooks/useInsertFromCreateSelection.ts
+hooks/useMouseSelection.ts
+hooks/useRotateElement.ts
+hooks/useScaleElement.ts
+hooks/useSelectElement.ts
+hooks/useViewportSize.ts
+index.vue
