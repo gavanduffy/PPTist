@@ -1,61 +1,61 @@
-## AIPPT的基本原理
-1. 定义PPT结构（一套PPT中都有什么类型的页面，每种页面都有些什么内容）；
-2. 基于以上结构，定义数据格式，该数据将用于AI生成结构化的PPT数据，具体结构见：
-    - 示例数据：`public/mocks/AIPPT.json`
-    - 结构定义：`src/types/AIPPT.ts`
-3. 制作模板，模板中标记好结构类型；
-4. AI生成符合第1步定义的PPT结构的数据；
-5. 利用AI或其他方案，生成相关的配图（常见途径有：AI文生图、图库搜索匹配）；
-6. 将AI生成的数据、配图与模板进行匹配结合，生成最终的PPT。
+## Basic Principles of AIPPT
+1. Define the PPT structure (what types of pages exist in a deck and what content belongs on each page type).
+2. Based on that structure, design the data format that AI will use to generate structured PPT data. For the detailed structure, see:
+    - Sample data: `public/mocks/AIPPT.json`
+    - Type definitions: `src/types/AIPPT.ts`
+3. Build templates and tag the structure type within each template.
+4. Have the AI generate data that matches the PPT structure defined in step 1.
+5. Generate accompanying images with AI or other solutions (for example, text-to-image generation or stock image search).
+6. Merge the AI-generated data and images with the templates to produce the final PPT.
 
-> 注：虽然当前线上版本不提供配图演示效果，但是AIPPT的方法是支持此功能的，你只需要自己提供图片源，按照要求的格式将待选图片集合传入AIPPT方法即可。
+> Note: The current online demo does not include an image preview, but the AIPPT workflow fully supports it. Provide your own image source and pass the candidate image set into the AIPPT method in the required format.
 
-## AIPPT模板制作流程
-1. 打开PPTist；
-2. 制作模板页面；
-3. 打开左上角菜单[幻灯片类型标注]功能；
-4. 为制作好的页面标注页面类型和节点类型；
-5. 使用导出功能导出为JSON文件。
+## AIPPT Template Creation Workflow
+1. Open PPTist.
+2. Design the template pages.
+3. Enable the [Slide Type Annotation] feature in the top-left menu.
+4. Tag each page with the appropriate page type and node types.
+5. Export the template as a JSON file.
 
-> 注意：实际上并不存在专门提供给AIPPT的模板。所谓的AIPPT模板只是把在PPTist中制作的普通页面标注上类型标记而已。这些数据不仅仅用于AI生成PPT，也可以作为普通的页面模板使用。
+> Note: There is no special “AIPPT template.” An AIPPT template is simply a standard PPTist page with type annotations. The data can power AI-generated PPTs or serve as regular page templates.
 
-## 模板标记类型：页面标记和节点标记
-#### 封面页
-* 标题
-* 正文
-* 图片（背景图、页面插图）
-#### 目录页
-* 目录标题（标记类型为：列表项目）
-* 图片（背景图、页面插图）
-#### 过渡页（章节过渡）
-* 标题
-* 正文
-* 节编号
-* 图片（背景图、页面插图）
-#### 内容页
-* 标题
-* 2～4个内容项，包括：
-  * 内容项标题（标记类型为：列表项标题）
-  * 内容项正文（标记类型为：列表项目）
-  * 内容项编号（标记类型为：项目编号）
-* 图片（背景图、页面插图、项目插图）
-#### 结束页（致谢页）
-* 图片（背景图、页面插图）
+## Template Tags: Page Tags and Node Tags
+#### Cover Page
+* Title
+* Body text
+* Images (backgrounds or illustrations)
+#### Contents Page
+* Contents title (tagged as: list item)
+* Images (backgrounds or illustrations)
+#### Transition Page (section break)
+* Title
+* Body text
+* Section number
+* Images (backgrounds or illustrations)
+#### Content Page
+* Title
+* 2–4 content items, each including:
+  * Item title (tagged as: list item title)
+  * Item body text (tagged as: list item)
+  * Item number (tagged as: item number)
+* Images (backgrounds, page illustrations, or item illustrations)
+#### Closing Page (thank-you page)
+* Images (backgrounds or illustrations)
 
-> 节点标记分为两种 - 文本标记和图片标记：
-> - 文本标记可作用于文本节点和带文字的形状节点；
-> - 图片标记只作用于图片节点；
-> - 你可以自行添加更多类型的标记（如图表）。
+> There are two kinds of node tags—text tags and image tags:
+> - Text tags apply to text nodes or shape nodes that contain text.
+> - Image tags apply only to image nodes.
+> - You can add additional tag types as needed (for example, charts).
 
-## AIPPT模板制作原则
-一个用于AIPPT的模板至少包括以下页面（共12页）：
-* 1个封面页
-* 6个目录页（2～6个目录项各1个，10个目录项的1个）
-* 1个过渡页
-* 3个内容页（2～4个内容项各1个）
-* 1个结束页
+## AIPPT Template Guidelines
+An AIPPT template should contain at least the following pages (12 pages in total):
+* 1 cover page
+* 6 contents pages (one each with 2–6 items, plus one with 10 items)
+* 1 transition page
+* 3 content pages (one each with 2–4 content items)
+* 1 closing page
 
-> 注意：
-> 1. 以上页数仅满足当前替换逻辑的最基本要求，如果希望AI生成的PPT具有一定的随机性，需要适当增加每种页面的数量（举个例子，假设模板中存在3个封面页，生成时会从3个中随机选择1个使用）；
-> 2. 当前替换逻辑下，目录页可支持1～20个目录项，内容页可支持1～12个内容项，但不需要每种数量的模板都做一遍，因为程序会自动通过模板的拼接/裁减方式来实现特殊的项目数；
-> 3. 你可以自行调整替换逻辑，以支持更多情况。
+> Notes:
+> 1. The counts above satisfy only the minimum requirements of the current replacement logic. To introduce randomness into AI-generated PPTs, create multiple variations of each page type (for example, if there are 3 cover pages, one will be chosen at random).
+> 2. Under the current replacement logic, contents pages support 1–20 items and content pages support 1–12 items. You don’t need to create a template for every possible count because the program automatically stitches or trims templates for special cases.
+> 3. You can adjust the replacement logic yourself to support additional scenarios.

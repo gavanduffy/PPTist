@@ -1,15 +1,15 @@
 ---
-name: 功能请求
+name: Feature Request
 about: 'Feature request'
 title: "[Feature request]"
 labels: 'enhancement'
 assignees: ''
 ---
 
-**注意**
-1. 请在提问前先尝试搜索历史 Issue 记录，避免重复的问题。
-2. 请在提交前仔细阅读 README 中的后续规划部分，不要重复提交已经在规划中的请求。
-3. 请完整地描述你需要的功能及场景。
-4. 本项目是一个“在线幻灯片应用/在线演示工具”，请注意你的需求是否符合该项目的定位，如不符合将不予接受（例如你的需求针对的是：图片编辑器、低代码编辑器、在线设计软件等，请自行实现）。
+**Notice**
+1. Search existing issues before submitting to avoid duplicates.
+2. Review the roadmap section in the README; do not file requests for features that are already planned.
+3. Describe the feature you need and the related scenarios in detail.
+4. This project is an "online slide application / presentation tool." Requests that fall outside this scope—such as for an image editor, low-code builder, or online design suite—may be declined.
 
-**请不要轻易在此仓库提交导入PPTX的各种问题，具体见置顶 Issue**
+**Please avoid filing PPTX import issues here—see the pinned issue for details.**

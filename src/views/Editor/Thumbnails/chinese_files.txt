@@ -1,0 +1,3 @@
+Files containing Chinese characters (paths relative to this directory):
+Templates.vue
+index.vue

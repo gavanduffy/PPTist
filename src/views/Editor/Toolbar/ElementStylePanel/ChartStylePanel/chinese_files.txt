@@ -1,0 +1,4 @@
+Files containing Chinese characters (paths relative to this directory):
+ChartDataEditor.vue
+ThemeColorsSetting.vue
+index.vue

@@ -30,11 +30,7 @@
             class="config-content"
             style="width: 80px;"
             v-model:value="language"
-            :options="[
-              { label: 'Chinese', value: '中文' },
-              { label: 'English', value: 'English' },
-              { label: 'Japanese', value: '日本語' },
-            ]"
+            :options="languageOptions"
           />
         </div>
         <div class="config-item">
@@ -43,13 +39,7 @@
             class="config-content"
             style="width: 80px;"
             v-model:value="style"
-            :options="[
-              { label: 'General', value: '通用' },
-              { label: 'Academic', value: '学术风' },
-              { label: 'Professional', value: '职场风' },
-              { label: 'Education', value: '教育风' },
-              { label: 'Marketing', value: '营销风' },
-            ]"
+            :options="styleOptions"
           />
         </div>
         <div class="config-item">
@@ -134,8 +124,22 @@ const slideStore = useSlidesStore()
 const { templates } = storeToRefs(slideStore)
 const { AIPPT, presetImgPool, getMdContent } = useAIPPT()
 
+const languageOptions = [
+  { label: 'Chinese', value: 'Chinese' },
+  { label: 'English', value: 'English' },
+  { label: 'Japanese', value: 'Japanese' },
+]
+
+const styleOptions = [
+  { label: 'General', value: 'General' },
+  { label: 'Academic', value: 'Academic' },
+  { label: 'Professional', value: 'Professional' },
+  { label: 'Education', value: 'Education' },
+  { label: 'Marketing', value: 'Marketing' },
+]
+
 const language = ref('English')
-const style = ref('通用')
+const style = ref('General')
 const img = ref('')
 const keyword = ref('')
 const outline = ref('')

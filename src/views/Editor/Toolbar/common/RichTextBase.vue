@@ -5,7 +5,7 @@
         style="width: 60%;"
         :value="richTextAttrs.fontname"
         search
-        searchLabel="搜索字体"
+        searchLabel="Search fonts"
         @update:value="value => emitRichTextCommand('fontname', value as string)"
         :options="FONTS"
       >
@@ -17,7 +17,7 @@
         style="width: 40%;"
         :value="richTextAttrs.fontsize"
         search
-        searchLabel="搜索字号"
+        searchLabel="Search font size"
         @update:value="value => emitRichTextCommand('fontsize', value as string)"
         :options="fontSizeOptions.map(item => ({
           label: item, value: item
@@ -37,7 +37,7 @@
             @update:modelValue="value => emitRichTextCommand('color', value)"
           />
         </template>
-        <TextColorButton first v-tooltip="'文字颜色'" :color="richTextAttrs.color">
+        <TextColorButton first v-tooltip="'Text color'" :color="richTextAttrs.color">
           <IconText />
         </TextColorButton>
       </Popover>
@@ -48,21 +48,21 @@
             @update:modelValue="value => emitRichTextCommand('backcolor', value)"
           />
         </template>
-        <TextColorButton v-tooltip="'文字高亮'" :color="richTextAttrs.backcolor">
+        <TextColorButton v-tooltip="'Highlight color'" :color="richTextAttrs.backcolor">
           <IconHighLight />
         </TextColorButton>
       </Popover>
       <Button 
         class="font-size-btn"
         style="width: 20%;"
-        v-tooltip="'增大字号'"
+        v-tooltip="'Increase font size'"
         @click="emitRichTextCommand('fontsize-add')"
       ><IconFontSize />+</Button>
       <Button
         last
         class="font-size-btn"
         style="width: 20%;"
-        v-tooltip="'减小字号'"
+        v-tooltip="'Decrease font size'"
         @click="emitRichTextCommand('fontsize-reduce')"
       ><IconFontSize />-</Button>
     </ButtonGroup>
@@ -71,25 +71,25 @@
       <CheckboxButton 
         style="flex: 1;"
         :checked="richTextAttrs.bold"
-        v-tooltip="'加粗'"
+        v-tooltip="'Bold'"
         @click="emitRichTextCommand('bold')"
       ><IconTextBold /></CheckboxButton>
       <CheckboxButton 
         style="flex: 1;"
         :checked="richTextAttrs.em"
-        v-tooltip="'斜体'"
+        v-tooltip="'Italic'"
         @click="emitRichTextCommand('em')"
       ><IconTextItalic /></CheckboxButton>
       <CheckboxButton 
         style="flex: 1;"
         :checked="richTextAttrs.underline"
-        v-tooltip="'下划线'"
+        v-tooltip="'Underline'"
         @click="emitRichTextCommand('underline')"
       ><IconTextUnderline /></CheckboxButton>
       <CheckboxButton 
         style="flex: 1;"
         :checked="richTextAttrs.strikethrough"
-        v-tooltip="'删除线'"
+        v-tooltip="'Strikethrough'"
         @click="emitRichTextCommand('strikethrough')"
       ><IconStrikethrough /></CheckboxButton>
     </ButtonGroup>
@@ -98,25 +98,25 @@
       <CheckboxButton
         style="flex: 1;"
         :checked="richTextAttrs.superscript"
-        v-tooltip="'上标'"
+        v-tooltip="'Superscript'"
         @click="emitRichTextCommand('superscript')"
       >A²</CheckboxButton>
       <CheckboxButton
         style="flex: 1;"
         :checked="richTextAttrs.subscript"
-        v-tooltip="'下标'"
+        v-tooltip="'Subscript'"
         @click="emitRichTextCommand('subscript')"
       >A₂</CheckboxButton>
       <CheckboxButton
         style="flex: 1;"
         :checked="richTextAttrs.code"
-        v-tooltip="'行内代码'"
+        v-tooltip="'Inline code'"
         @click="emitRichTextCommand('code')"
       ><IconCode /></CheckboxButton>
       <CheckboxButton
         style="flex: 1;"
         :checked="richTextAttrs.blockquote"
-        v-tooltip="'引用'"
+        v-tooltip="'Block quote'"
         @click="emitRichTextCommand('blockquote')"
       ><IconQuote /></CheckboxButton>
     </ButtonGroup>
@@ -124,35 +124,35 @@
     <ButtonGroup class="row" passive>
       <Popover trigger="click" v-model:value="AIPopoverVisible" style="width: 25%;">
         <template #content>
-          <PopoverMenuItem center @click="execAI('美化改写')">美化</PopoverMenuItem>
-          <PopoverMenuItem center @click="execAI('扩写丰富')">扩写</PopoverMenuItem>
-          <PopoverMenuItem center @click="execAI('精简提炼')">精简</PopoverMenuItem>
+          <PopoverMenuItem center @click="execAI('polish')">Polish</PopoverMenuItem>
+          <PopoverMenuItem center @click="execAI('expand')">Expand</PopoverMenuItem>
+          <PopoverMenuItem center @click="execAI('condense')">Condense</PopoverMenuItem>
         </template>
         <CheckboxButton
           first
           style="width: 100%;"
-          v-tooltip="'AI辅助'"
+          v-tooltip="'AI assistant'"
         ><span :class="{ 'ai-loading': isAIWriting }">{{ isAIWriting ? '' : 'AI' }}</span></CheckboxButton>
       </Popover>
       <CheckboxButton
         style="flex: 1;"
-        v-tooltip="'清除格式'"
+        v-tooltip="'Clear formatting'"
         @click="emitRichTextCommand('clear')"
       ><IconFormat /></CheckboxButton>
       <CheckboxButton
         style="flex: 1;"
         :checked="!!textFormatPainter"
-        v-tooltip="'格式刷（双击连续使用）'"
+        v-tooltip="'Format painter (double-click to reuse)'"
         @click="toggleTextFormatPainter()"
         @dblclick="toggleTextFormatPainter(true)"
       ><IconFormatBrush /></CheckboxButton>
       <Popover placement="bottom-end" trigger="click" v-model:value="linkPopoverVisible" style="width: 25%;">
         <template #content>
           <div class="link-popover">
-            <Input v-model:value="link" placeholder="请输入超链接" />
+            <Input v-model:value="link" placeholder="Enter a hyperlink" />
             <div class="btns">
-              <Button size="small" :disabled="!richTextAttrs.link" @click="removeLink()" style="margin-right: 5px;">移除</Button>
-              <Button size="small" type="primary" @click="updateLink(link)">确认</Button>
+              <Button size="small" :disabled="!richTextAttrs.link" @click="removeLink()" style="margin-right: 5px;">Remove</Button>
+              <Button size="small" type="primary" @click="updateLink(link)">Apply</Button>
             </div>
           </div>
         </template>
@@ -160,7 +160,7 @@
           last
           style="width: 100%;"
           :checked="!!richTextAttrs.link"
-          v-tooltip="'超链接'"
+          v-tooltip="'Hyperlink'"
           @click="openLinkPopover()"
         ><IconLinkOne /></CheckboxButton>
       </Popover>
@@ -173,10 +173,10 @@
       :value="richTextAttrs.align"
       @update:value="value => emitRichTextCommand('align', value)"
     >
-      <RadioButton value="left" v-tooltip="'左对齐'" style="flex: 1;"><IconAlignTextLeft /></RadioButton>
-      <RadioButton value="center" v-tooltip="'居中'" style="flex: 1;"><IconAlignTextCenter /></RadioButton>
-      <RadioButton value="right" v-tooltip="'右对齐'" style="flex: 1;"><IconAlignTextRight /></RadioButton>
-      <RadioButton value="justify" v-tooltip="'两端对齐'" style="flex: 1;"><IconAlignTextBoth /></RadioButton>
+      <RadioButton value="left" v-tooltip="'Align left'" style="flex: 1;"><IconAlignTextLeft /></RadioButton>
+      <RadioButton value="center" v-tooltip="'Center'" style="flex: 1;"><IconAlignTextCenter /></RadioButton>
+      <RadioButton value="right" v-tooltip="'Align right'" style="flex: 1;"><IconAlignTextRight /></RadioButton>
+      <RadioButton value="justify" v-tooltip="'Justify'" style="flex: 1;"><IconAlignTextBoth /></RadioButton>
     </RadioGroup>
 
     <div class="row" passive>
@@ -185,7 +185,7 @@
           first
           :type="richTextAttrs.bulletList ? 'primary' : 'default'"
           style="flex: 1;"
-          v-tooltip="'项目符号'"
+          v-tooltip="'Bulleted list'"
           @click="emitRichTextCommand('bulletList')"
         ><IconList /></Button>
         <Popover trigger="click" v-model:value="bulletListPanelVisible">
@@ -210,7 +210,7 @@
           first
           :type="richTextAttrs.orderedList ? 'primary' : 'default'"
           style="flex: 1;"
-          v-tooltip="'编号'"
+          v-tooltip="'Numbered list'"
           @click="emitRichTextCommand('orderedList')"
         ><IconOrderedList /></Button>
         <Popover trigger="click" v-model:value="orderedListPanelVisible">
@@ -233,20 +233,20 @@
 
     <div class="row">
       <ButtonGroup style="flex: 1;" passive>
-        <Button first style="flex: 1;" v-tooltip="'减小段落缩进'" @click="emitRichTextCommand('indent', '-1')"><IconIndentLeft /></Button>
+        <Button first style="flex: 1;" v-tooltip="'Decrease paragraph indent'" @click="emitRichTextCommand('indent', '-1')"><IconIndentLeft /></Button>
         <Popover trigger="click" v-model:value="indentLeftPanelVisible">
           <template #content>
-            <PopoverMenuItem center @click="emitRichTextCommand('textIndent', '-1')">减小首行缩进</PopoverMenuItem>
+            <PopoverMenuItem center @click="emitRichTextCommand('textIndent', '-1')">Decrease first-line indent</PopoverMenuItem>
           </template>
           <Button last class="popover-btn"><IconDown /></Button>
         </Popover>
       </ButtonGroup>
       <div style="width: 10px;"></div>
       <ButtonGroup style="flex: 1;" passive>
-        <Button first style="flex: 1;" v-tooltip="'增大段落缩进'" @click="emitRichTextCommand('indent', '+1')"><IconIndentRight /></Button>
+        <Button first style="flex: 1;" v-tooltip="'Increase paragraph indent'" @click="emitRichTextCommand('indent', '+1')"><IconIndentRight /></Button>
         <Popover trigger="click" v-model:value="indentRightPanelVisible">
           <template #content>
-            <PopoverMenuItem center @click="emitRichTextCommand('textIndent', '+1')">增大首行缩进</PopoverMenuItem>
+            <PopoverMenuItem center @click="emitRichTextCommand('textIndent', '+1')">Increase first-line indent</PopoverMenuItem>
           </template>
           <Button last class="popover-btn"><IconDown /></Button>
         </Popover>
@@ -317,7 +317,7 @@ const openLinkPopover = () => {
 }
 const updateLink = (link?: string) => {
   const linkRegExp = /^(https?):\/\/[\w\-]+(\.[\w\-]+)+([\w\-.,@?^=%&:\/~+#]*[\w\-@?^=%&\/~+#])?$/
-  if (!link || !linkRegExp.test(link)) return message.error('不是正确的网页链接地址')
+  if (!link || !linkRegExp.test(link)) return message.error('Please enter a valid URL')
 
   emitRichTextCommand('link', link)
   linkPopoverVisible.value = false
@@ -341,7 +341,7 @@ const execAI = async (command: string) => {
     content = handleElement.value.text.content
   }
 
-  if (!content) return message.error('没有可以执行的文本内容')
+  if (!content) return message.error('No text content is available for this action')
 
   let resultText = ''
 

@@ -1,0 +1,5 @@
+Files containing Chinese characters (paths relative to this directory):
+useElementFill.ts
+useElementFlip.ts
+useElementOutline.ts
+useElementShadow.ts

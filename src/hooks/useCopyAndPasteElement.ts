@@ -13,7 +13,7 @@ export default () => {
   const { pasteTextClipboardData } = usePasteTextClipboardData()
   const { deleteElement } = useDeleteElement()
 
-  // 将选中元素数据加密后复制到剪贴板
+  // Encrypt the selected elements and copy them to the clipboard
   const copyElement = () => {
     if (!activeElementIdList.value.length) return
 
@@ -27,20 +27,20 @@ export default () => {
     })
   }
 
-  // 将选中元素复制后删除（剪切）
+  // Copy the selected elements and then delete them (cut)
   const cutElement = () => {
     copyElement()
     deleteElement()
   }
 
-  // 尝试将剪贴板元素数据解密后进行粘贴
+  // Attempt to decrypt and paste element data from the clipboard
   const pasteElement = () => {
     readClipboard().then(text => {
       pasteTextClipboardData(text)
     }).catch(err => message.warning(err))
   }
 
-  // 将选中元素复制后立刻粘贴
+  // Copy the selected elements and immediately paste them
   const quickCopyElement = () => {
     copyElement()
     pasteElement()

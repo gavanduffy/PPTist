@@ -41,7 +41,7 @@ export default () => {
 
   const exporting = ref(false)
 
-  // 导入JSON文件
+  // Import a JSON file
   const importJSON = (files: FileList, cover = false) => {
     const file = files[0]
 
@@ -61,13 +61,13 @@ export default () => {
         else addSlidesFromData(slides)
       }
       catch {
-        message.error('无法正确读取 / 解析该文件')
+        message.error('Unable to read or parse this file correctly')
       }
     })
     reader.readAsText(file)
   }
 
-  // 导入pptist文件
+  // Import a pptist file
   const importSpecificFile = (files: FileList, cover = false) => {
     const file = files[0]
 
@@ -87,7 +87,7 @@ export default () => {
         else addSlidesFromData(slides)
       }
       catch {
-        message.error('无法正确读取 / 解析该文件')
+        message.error('Unable to read or parse this file correctly')
       }
     })
     reader.readAsText(file)
@@ -146,19 +146,19 @@ export default () => {
     let start: [number, number] = [0, 0]
     let end: [number, number] = [0, 0]
 
-    if (!el.isFlipV && !el.isFlipH) { // 右下
+    if (!el.isFlipV && !el.isFlipH) { // bottom-right
       start = [0, 0]
       end = [el.width, el.height]
     }
-    else if (el.isFlipV && el.isFlipH) { // 左上
+    else if (el.isFlipV && el.isFlipH) { // top-left
       start = [el.width, el.height]
       end = [0, 0]
     }
-    else if (el.isFlipV && !el.isFlipH) { // 右上
+    else if (el.isFlipV && !el.isFlipH) { // top-right
       start = [0, el.height]
       end = [el.width, 0]
     }
-    else { // 左下
+    else { // bottom-left
       start = [el.width, 0]
       end = [0, el.height]
     }
@@ -245,7 +245,7 @@ export default () => {
     return { x: graphicX, y: graphicY }
   }
 
-  // 导入PPTX文件
+  // Import a PPTX file
   const importPPTXFile = (files: FileList, options?: { cover?: boolean; fixedViewport?: boolean }) => {
     const defaultOptions = {
       cover: false,
@@ -271,7 +271,7 @@ export default () => {
       }
       catch {
         exporting.value = false
-        message.error('无法正确读取 / 解析该文件')
+        message.error('Unable to read or parse this file correctly')
         return
       }
 
@@ -651,7 +651,7 @@ export default () => {
               let series: number[][]
   
               if (el.chartType === 'scatterChart' || el.chartType === 'bubbleChart') {
-                labels = el.data[0].map((item, index) => `坐标${index + 1}`)
+                labels = el.data[0].map((item, index) => `Coordinate ${index + 1}`)
                 legends = ['X', 'Y']
                 series = el.data
               }
