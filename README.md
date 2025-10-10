@@ -55,24 +55,23 @@ MCP_WIKIPEDIA_TOOL_URL=https://<your-mcp-http-endpoint>
 
 ### Docker
 
-Build and run the all-in-one container (frontend + backend):
+Use the helper script to build and run the all-in-one container (frontend + backend):
 
 ```
-docker build -t pptist .
-docker run -p 5000:5000 --env-file .env pptist
+scripts/deploy-docker.sh
 ```
 
-The app will be available at `http://localhost:5000`.
+The script builds the image, recreates the container if necessary, and starts it on port `5000`. You can override the defaults by setting `IMAGE_NAME`, `CONTAINER_NAME`, `PORT`, or `ENV_FILE` before executing the command. The app will be available at `http://localhost:5000`.
 
-### Vercel / Nextify (Docker based)
+### Vercel (static build)
 
-Vercel and Nextify both support Docker deployments. Commit the repository and run:
+Deploy the front-end bundle directly on Vercel:
 
 ```
 vercel --prod
 ```
 
-Vercel automatically detects `vercel.json`, builds the Docker image, and exposes port `5000`. Provide the same environment variables on the hosting platform.
+The provided `vercel.json` now runs `npm run build-only`, publishes the `dist` directory, and handles client-side routing without relying on the Docker builder. Configure `VITE_AI_SERVER_URL` in the Vercel project settings so the deployed front-end can reach your AI backend.
 
 ### Netlify / Nextify (static hosting)
 

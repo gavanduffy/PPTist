@@ -1,0 +1,7 @@
+Files containing Chinese characters (paths relative to this directory):
+ColorPicker/index.vue
+LaTeXEditor/index.vue
+OutlineEditor.vue
+Select.vue
+Slider.vue
+WritingBoard.vue

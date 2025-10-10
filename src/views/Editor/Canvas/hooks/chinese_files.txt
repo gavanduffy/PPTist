@@ -1,0 +1,11 @@
+Files containing Chinese characters (paths relative to this directory):
+useCommonOperate.ts
+useDragElement.ts
+useDragLineElement.ts
+useDropImageOrText.ts
+useInsertFromCreateSelection.ts
+useMouseSelection.ts
+useRotateElement.ts
+useScaleElement.ts
+useSelectElement.ts
+useViewportSize.ts
