@@ -159,8 +159,8 @@ const updateElement = (id: string, props: Partial<PPTElement>) => {
 }
 
 const tabs: TabItem[] = [
-  { key: 'style', label: '样式' },
-  { key: 'common', label: '布局' },
+  { key: 'style', label: 'Style' },
+  { key: 'common', label: 'Layout' },
 ]
 const activeTab = ref('common')
 

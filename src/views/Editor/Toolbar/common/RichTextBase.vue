@@ -37,7 +37,7 @@
             @update:modelValue="value => emitRichTextCommand('color', value)"
           />
         </template>
-        <TextColorButton first v-tooltip="'文字颜色'" :color="richTextAttrs.color">
+        <TextColorButton first v-tooltip="'Text Color'" :color="richTextAttrs.color">
           <IconText />
         </TextColorButton>
       </Popover>
@@ -48,21 +48,21 @@
             @update:modelValue="value => emitRichTextCommand('backcolor', value)"
           />
         </template>
-        <TextColorButton v-tooltip="'文字高亮'" :color="richTextAttrs.backcolor">
+        <TextColorButton v-tooltip="'Text Highlight'" :color="richTextAttrs.backcolor">
           <IconHighLight />
         </TextColorButton>
       </Popover>
       <Button 
         class="font-size-btn"
         style="width: 20%;"
-        v-tooltip="'增大字号'"
+        v-tooltip="'Increase Font Size'"
         @click="emitRichTextCommand('fontsize-add')"
       ><IconFontSize />+</Button>
       <Button
         last
         class="font-size-btn"
         style="width: 20%;"
-        v-tooltip="'减小字号'"
+        v-tooltip="'Decrease Font Size'"
         @click="emitRichTextCommand('fontsize-reduce')"
       ><IconFontSize />-</Button>
     </ButtonGroup>
@@ -71,25 +71,25 @@
       <CheckboxButton 
         style="flex: 1;"
         :checked="richTextAttrs.bold"
-        v-tooltip="'加粗'"
+        v-tooltip="'Bold'"
         @click="emitRichTextCommand('bold')"
       ><IconTextBold /></CheckboxButton>
       <CheckboxButton 
         style="flex: 1;"
         :checked="richTextAttrs.em"
-        v-tooltip="'斜体'"
+        v-tooltip="'Italic'"
         @click="emitRichTextCommand('em')"
       ><IconTextItalic /></CheckboxButton>
       <CheckboxButton 
         style="flex: 1;"
         :checked="richTextAttrs.underline"
-        v-tooltip="'下划线'"
+        v-tooltip="'Underline'"
         @click="emitRichTextCommand('underline')"
       ><IconTextUnderline /></CheckboxButton>
       <CheckboxButton 
         style="flex: 1;"
         :checked="richTextAttrs.strikethrough"
-        v-tooltip="'删除线'"
+        v-tooltip="'Strikethrough'"
         @click="emitRichTextCommand('strikethrough')"
       ><IconStrikethrough /></CheckboxButton>
     </ButtonGroup>
@@ -98,25 +98,25 @@
       <CheckboxButton
         style="flex: 1;"
         :checked="richTextAttrs.superscript"
-        v-tooltip="'上标'"
+        v-tooltip="'Superscript'"
         @click="emitRichTextCommand('superscript')"
       >A²</CheckboxButton>
       <CheckboxButton
         style="flex: 1;"
         :checked="richTextAttrs.subscript"
-        v-tooltip="'下标'"
+        v-tooltip="'Subscript'"
         @click="emitRichTextCommand('subscript')"
       >A₂</CheckboxButton>
       <CheckboxButton
         style="flex: 1;"
         :checked="richTextAttrs.code"
-        v-tooltip="'行内代码'"
+        v-tooltip="'Inline Code'"
         @click="emitRichTextCommand('code')"
       ><IconCode /></CheckboxButton>
       <CheckboxButton
         style="flex: 1;"
         :checked="richTextAttrs.blockquote"
-        v-tooltip="'引用'"
+        v-tooltip="'Quote'"
         @click="emitRichTextCommand('blockquote')"
       ><IconQuote /></CheckboxButton>
     </ButtonGroup>
@@ -131,18 +131,18 @@
         <CheckboxButton
           first
           style="width: 100%;"
-          v-tooltip="'AI辅助'"
+          v-tooltip="'AI Assist'"
         ><span :class="{ 'ai-loading': isAIWriting }">{{ isAIWriting ? '' : 'AI' }}</span></CheckboxButton>
       </Popover>
       <CheckboxButton
         style="flex: 1;"
-        v-tooltip="'清除格式'"
+        v-tooltip="'Clear Format'"
         @click="emitRichTextCommand('clear')"
       ><IconFormat /></CheckboxButton>
       <CheckboxButton
         style="flex: 1;"
         :checked="!!textFormatPainter"
-        v-tooltip="'格式刷（双击连续使用）'"
+        v-tooltip="'Format Painter (double-click for continuous use)'"
         @click="toggleTextFormatPainter()"
         @dblclick="toggleTextFormatPainter(true)"
       ><IconFormatBrush /></CheckboxButton>
@@ -173,10 +173,10 @@
       :value="richTextAttrs.align"
       @update:value="value => emitRichTextCommand('align', value)"
     >
-      <RadioButton value="left" v-tooltip="'左对齐'" style="flex: 1;"><IconAlignTextLeft /></RadioButton>
-      <RadioButton value="center" v-tooltip="'居中'" style="flex: 1;"><IconAlignTextCenter /></RadioButton>
-      <RadioButton value="right" v-tooltip="'右对齐'" style="flex: 1;"><IconAlignTextRight /></RadioButton>
-      <RadioButton value="justify" v-tooltip="'两端对齐'" style="flex: 1;"><IconAlignTextBoth /></RadioButton>
+      <RadioButton value="left" v-tooltip="'Align Left'" style="flex: 1;"><IconAlignTextLeft /></RadioButton>
+      <RadioButton value="center" v-tooltip="'Center'" style="flex: 1;"><IconAlignTextCenter /></RadioButton>
+      <RadioButton value="right" v-tooltip="'Align Right'" style="flex: 1;"><IconAlignTextRight /></RadioButton>
+      <RadioButton value="justify" v-tooltip="'Justify'" style="flex: 1;"><IconAlignTextBoth /></RadioButton>
     </RadioGroup>
 
     <div class="row" passive>
@@ -185,7 +185,7 @@
           first
           :type="richTextAttrs.bulletList ? 'primary' : 'default'"
           style="flex: 1;"
-          v-tooltip="'项目符号'"
+          v-tooltip="'Bullet Points'"
           @click="emitRichTextCommand('bulletList')"
         ><IconList /></Button>
         <Popover trigger="click" v-model:value="bulletListPanelVisible">
