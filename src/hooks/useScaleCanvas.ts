@@ -9,8 +9,8 @@ export default () => {
   const canvasScalePercentage = computed(() => Math.round(canvasScale.value * 100) + '%')
 
   /**
-   * 缩放画布百分比
-   * @param command 缩放命令：放大、缩小
+   * Adjust the canvas zoom percentage.
+   * @param command Zoom command: increase or decrease.
    */
   const scaleCanvas = (command: '+' | '-') => {
     let percentage = canvasPercentage.value
@@ -24,9 +24,10 @@ export default () => {
   }
 
   /**
-   * 设置画布缩放比例
-   * 但不是直接设置该值，而是通过设置画布可视区域百分比来动态计算
-   * @param value 目标画布缩放比例
+   * Set the canvas scale.
+   * Instead of applying the value directly, update the visible area percentage
+   * so the scale is recalculated dynamically.
+   * @param value Target canvas scale.
    */
   const setCanvasScalePercentage = (value: number) => {
     const percentage = Math.round(value / canvasScale.value * canvasPercentage.value) / 100
@@ -34,7 +35,7 @@ export default () => {
   }
 
   /**
-   * 重置画布尺寸和位置
+   * Reset canvas size and position.
    */
   const resetCanvas = () => {
     mainStore.setCanvasPercentage(90)

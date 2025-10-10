@@ -1,0 +1,10 @@
+Files containing Chinese characters (paths relative to this directory):
+BaseView.vue
+CountdownTimer.vue
+PresenterView.vue
+ScreenElement.vue
+WritingBoardTool.vue
+hooks/useExecPlay.ts
+hooks/useFullscreen.ts
+hooks/useSlideSize.ts
+index.vue

@@ -1,0 +1,6 @@
+Files containing Chinese characters (paths relative to this directory):
+keyboard.ts
+main.ts
+screen.ts
+slides.ts
+snapshot.ts

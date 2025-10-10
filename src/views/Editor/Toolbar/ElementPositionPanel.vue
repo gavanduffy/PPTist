@@ -1,27 +1,27 @@
 <template>
   <div class="element-positopn-panel">
-    <div class="title">层级：</div>
+    <div class="title">Order:</div>
     <ButtonGroup class="row">
-      <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.TOP)"><IconSendToBack /> 置顶</Button>
-      <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.BOTTOM)"><IconBringToFrontOne /> 置底</Button>
+      <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.TOP)"><IconSendToBack /> Bring to Front</Button>
+      <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.BOTTOM)"><IconBringToFrontOne /> Send to Back</Button>
     </ButtonGroup>
     <ButtonGroup class="row">
-      <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.UP)"><IconBringToFront /> 上移</Button>
-      <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.DOWN)"><IconSentToBack /> 下移</Button>
+      <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.UP)"><IconBringToFront /> Move Forward</Button>
+      <Button style="flex: 1;" @click="orderElement(handleElement!, ElementOrderCommands.DOWN)"><IconSentToBack /> Move Backward</Button>
     </ButtonGroup>
 
     <Divider />
     
-    <div class="title">对齐：</div>
+    <div class="title">Align:</div>
     <ButtonGroup class="row">
-      <Button style="flex: 1;" v-tooltip="'左对齐'" @click="alignElementToCanvas(ElementAlignCommands.LEFT)"><IconAlignLeft /></Button>
-      <Button style="flex: 1;" v-tooltip="'水平居中'" @click="alignElementToCanvas(ElementAlignCommands.HORIZONTAL)"><IconAlignVertically /></Button>
-      <Button style="flex: 1;" v-tooltip="'右对齐'" @click="alignElementToCanvas(ElementAlignCommands.RIGHT)"><IconAlignRight /></Button>
+      <Button style="flex: 1;" v-tooltip="'Align left'" @click="alignElementToCanvas(ElementAlignCommands.LEFT)"><IconAlignLeft /></Button>
+      <Button style="flex: 1;" v-tooltip="'Center horizontally'" @click="alignElementToCanvas(ElementAlignCommands.HORIZONTAL)"><IconAlignVertically /></Button>
+      <Button style="flex: 1;" v-tooltip="'Align right'" @click="alignElementToCanvas(ElementAlignCommands.RIGHT)"><IconAlignRight /></Button>
     </ButtonGroup>
     <ButtonGroup class="row">
-      <Button style="flex: 1;" v-tooltip="'上对齐'" @click="alignElementToCanvas(ElementAlignCommands.TOP)"><IconAlignTop /></Button>
-      <Button style="flex: 1;" v-tooltip="'垂直居中'" @click="alignElementToCanvas(ElementAlignCommands.VERTICAL)"><IconAlignHorizontally /></Button>
-      <Button style="flex: 1;" v-tooltip="'下对齐'" @click="alignElementToCanvas(ElementAlignCommands.BOTTOM)"><IconAlignBottom /></Button>
+      <Button style="flex: 1;" v-tooltip="'Align top'" @click="alignElementToCanvas(ElementAlignCommands.TOP)"><IconAlignTop /></Button>
+      <Button style="flex: 1;" v-tooltip="'Center vertically'" @click="alignElementToCanvas(ElementAlignCommands.VERTICAL)"><IconAlignHorizontally /></Button>
+      <Button style="flex: 1;" v-tooltip="'Align bottom'" @click="alignElementToCanvas(ElementAlignCommands.BOTTOM)"><IconAlignBottom /></Button>
     </ButtonGroup>
 
     <Divider />
@@ -35,7 +35,7 @@
         style="width: 45%;"
       >
         <template #prefix>
-          水平：
+          Horizontal:
         </template>
       </NumberInput>
       <div style="width: 10%;"></div>
@@ -47,7 +47,7 @@
         style="width: 45%;"
       >
         <template #prefix>
-          垂直：
+          Vertical:
         </template>
       </NumberInput>
     </div>
@@ -64,12 +64,12 @@
           style="width: 45%;"
         >
           <template #prefix>
-            宽度：
+            Width:
           </template>
         </NumberInput>
         <template v-if="['image', 'shape', 'audio'].includes(handleElement!.type)">
-          <IconLock style="width: 10%;" class="icon-btn active" v-tooltip="'解除宽高比锁定'" @click="updateFixedRatio(false)" v-if="fixedRatio" />
-          <IconUnlock style="width: 10%;" class="icon-btn" v-tooltip="'宽高比锁定'" @click="updateFixedRatio(true)" v-else />
+          <IconLock style="width: 10%;" class="icon-btn active" v-tooltip="'Unlock aspect ratio'" @click="updateFixedRatio(false)" v-if="fixedRatio" />
+          <IconUnlock style="width: 10%;" class="icon-btn" v-tooltip="'Lock aspect ratio'" @click="updateFixedRatio(true)" v-else />
         </template>
         <div style="width: 10%;" v-else></div>
         <NumberInput 
@@ -82,7 +82,7 @@
           style="width: 45%;"
         >
           <template #prefix>
-            高度：
+            Height:
           </template>
         </NumberInput>
       </div>
@@ -101,7 +101,7 @@
           style="width: 45%;" 
         >
           <template #prefix>
-            旋转：
+            Rotation:
           </template>
         </NumberInput>
         <div style="width: 7%;"></div>
@@ -171,7 +171,7 @@ const { alignElementToCanvas } = useAlignElementToCanvas()
 
 const { addHistorySnapshot } = useHistorySnapshot()
 
-// 设置元素位置
+// Update element position
 const updateLeft = (value: number) => {
   const props = { left: value }
   slidesStore.updateElement({ id: handleElementId.value, props })
@@ -183,8 +183,8 @@ const updateTop = (value: number) => {
   addHistorySnapshot()
 }
 
-// 设置元素宽度、高度、旋转角度
-// 对形状设置宽高时，需要检查是否需要更新形状路径
+// Update element width, height, and rotation
+// When resizing shapes, determine whether the path data must be recalculated
 const updateShapePathData = (width: number, height: number) => {
   if (handleElement.value && handleElement.value.type === 'shape' && 'pathFormula' in handleElement.value && handleElement.value.pathFormula) {
     const pathFormula = SHAPE_PATH_FORMULAS[handleElement.value.pathFormula]
@@ -257,14 +257,14 @@ const updateRotate = (value: number) => {
   addHistorySnapshot()
 }
 
-// 固定元素的宽高比
+// Toggle whether the element keeps a fixed aspect ratio
 const updateFixedRatio = (value: boolean) => {
   const props = { fixedRatio: value }
   slidesStore.updateElement({ id: handleElementId.value, props })
   addHistorySnapshot()
 }
 
-// 将元素旋转45度（顺时针或逆时针）
+// Rotate the element 45 degrees clockwise or counterclockwise
 const updateRotate45 = (command: '+' | '-') => {
   let _rotate = Math.floor(rotate.value / 45) * 45
   if (command === '+') _rotate = _rotate + 45

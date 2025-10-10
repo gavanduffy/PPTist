@@ -1,0 +1,6 @@
+Files containing Chinese characters (paths relative to this directory):
+MobileEditor/ElementToolbar.vue
+MobileEditor/Header.vue
+MobileEditor/SlideToolbar.vue
+MobilePlayer.vue
+MobileThumbnails.vue

@@ -1,0 +1,11 @@
+Files containing Chinese characters (paths relative to this directory):
+animation.ts
+chart.ts
+element.ts
+font.ts
+hotkey.ts
+imageClip.ts
+latex.ts
+lines.ts
+shapes.ts
+symbol.ts
