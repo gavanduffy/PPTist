@@ -44,11 +44,11 @@
             style="width: 80px;"
             v-model:value="style"
             :options="[
-              { label: 'General', value: '通用' },
-              { label: 'Academic', value: '学术风' },
-              { label: 'Professional', value: '职场风' },
-              { label: 'Education', value: '教育风' },
-              { label: 'Marketing', value: '营销风' },
+              { label: 'General', value: 'General' },
+              { label: 'Academic', value: 'Academic' },
+              { label: 'Professional', value: 'Professional' },
+              { label: 'Education', value: 'Education' },
+              { label: 'Marketing', value: 'Marketing' },
             ]"
           />
         </div>
@@ -135,7 +135,7 @@ const { templates } = storeToRefs(slideStore)
 const { AIPPT, presetImgPool, getMdContent } = useAIPPT()
 
 const language = ref('English')
-const style = ref('通用')
+const style = ref('General')
 const img = ref('')
 const keyword = ref('')
 const outline = ref('')

@@ -331,12 +331,12 @@ const contextmenus = (): ContextmenuItem[] => {
       ],
     },
     {
-      text: '重置当前页',
+      text: 'Reset Current Page',
       handler: deleteAllElements,
     },
     { divider: true },
     {
-      text: '幻灯片放映',
+      text: 'Slideshow',
       subText: 'F5',
       handler: enterScreeningFromStart,
     },

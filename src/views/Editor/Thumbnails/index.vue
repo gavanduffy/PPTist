@@ -6,7 +6,7 @@
     v-contextmenu="contextmenusThumbnails"
   >
     <div class="add-slide">
-      <div class="btn" @click="createSlide()"><IconPlus class="icon" />添加幻灯片</div>
+      <div class="btn" @click="createSlide()"><IconPlus class="icon" />Add Slide</div>
       <Popover trigger="click" placement="bottom-start" v-model:value="presetLayoutPopoverVisible" center>
         <template #content>
           <Templates 
@@ -41,13 +41,13 @@
               :id="`section-title-input-${element?.sectionTag?.id || 'default'}`" 
               type="text"
               :value="element?.sectionTag?.title || ''"
-              placeholder="输入节名称"
+              placeholder="Enter section name"
               @blur="$event => saveSection($event)"
               @keydown.enter.stop="$event => saveSection($event)"
               v-if="editingSectionId === element?.sectionTag?.id || (index === 0 && editingSectionId === 'default')"
             >
             <span class="text" v-else>
-              <div class="text-content">{{ element?.sectionTag ? (element?.sectionTag?.title || '无标题节') : '默认节' }}</div>
+              <div class="text-content">{{ element?.sectionTag ? (element?.sectionTag?.title || 'Untitled Section') : 'Default Section' }}</div>
             </span>
           </div>
           <div
@@ -69,7 +69,7 @@
       </template>
     </Draggable>
 
-    <div class="page-number">幻灯片 {{slideIndex + 1}} / {{slides.length}}</div>
+    <div class="page-number">Slide {{slideIndex + 1}} / {{slides.length}}</div>
   </div>
 </template>
 

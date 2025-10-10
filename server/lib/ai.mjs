@@ -72,11 +72,19 @@ export const createOutlinePrompt = ({ topic, language }) => {
   return [
     {
       role: 'system',
-      content: 'You are an expert presentation designer who writes precise, well structured outlines.',
+      content: 'You are an expert presentation designer and educator who creates precise, well-structured lesson outlines with clear learning objectives and pedagogical flow.',
     },
     {
       role: 'user',
-      content: `Create a slide-by-slide outline for a presentation about "${topic}".\n- Respond entirely in ${languageLabel}.\n- Use Markdown with numbered sections for slides.\n- Include bullet points for each slide.\n- Do not invent slides beyond what is requested.\n- Return only the outline with no commentary.`,
+      content: `Create a comprehensive slide-by-slide outline for an educational presentation or lesson about "${topic}".
+- Respond entirely in ${languageLabel}.
+- Structure the lesson with a clear beginning (introduction/objectives), middle (key concepts/content), and end (summary/conclusion).
+- Start with a cover slide, include a contents/agenda slide, use transition slides between major sections, and end with a conclusion slide.
+- Use Markdown with numbered sections for slides.
+- For each content slide, include bullet points that represent key learning points, examples, or discussion topics.
+- Ensure slides build on each other logically and create a coherent learning experience.
+- Include 8-12 slides total for a complete lesson structure.
+- Do not add commentary, just return the outline.`,
     },
   ]
 }
@@ -86,11 +94,26 @@ export const createSlidesPrompt = ({ outline, language }) => {
   return [
     {
       role: 'system',
-      content: 'You turn detailed slide outlines into structured JSON slide descriptions.',
+      content: 'You are an expert at converting educational presentation outlines into structured, pedagogically sound JSON slide descriptions that create effective learning experiences.',
     },
     {
       role: 'user',
-      content: `Convert the outline below into JSON describing each slide exactly as written.\n- Maintain the order and number of slides from the outline.\n- Never merge, drop, or add slides.\n- Use ${languageLabel} for any generated text.\n- Follow this schema: an array where each item has a "type" field (cover | contents | transition | content | end).\n  * cover: {"type":"cover","data":{"title":string,"text":string}}\n  * contents: {"type":"contents","data":{"items":string[]}}\n  * transition: {"type":"transition","data":{"title":string,"text":string}}\n  * content: {"type":"content","data":{"title":string,"items":[{"title":string,"text":string}]}}\n  * end: {"type":"end"}\n- Every content slide item must keep both title and text if present in the outline.\n- Use empty strings when information is missing.\n- Respond with JSON only.\n\nOutline:\n${outline}`,
+      content: `Convert the outline below into JSON describing each slide exactly as written.
+- Maintain the order and number of slides from the outline.
+- Never merge, drop, or add slides.
+- Use ${languageLabel} for any generated text.
+- Follow this schema: an array where each item has a "type" field (cover | contents | transition | content | end).
+  * cover: {"type":"cover","data":{"title":string,"text":string}} - The opening slide with presentation title and optional subtitle
+  * contents: {"type":"contents","data":{"items":string[]}} - Table of contents listing major sections
+  * transition: {"type":"transition","data":{"title":string,"text":string}} - Section divider with section name and brief description
+  * content: {"type":"content","data":{"title":string,"items":[{"title":string,"text":string}]}} - Content slide with main topic and key points (each point has a title and explanation)
+  * end: {"type":"end"} - Closing slide
+- For content slides, ensure each item has both a concise title (key concept) and explanatory text (details, examples, or context).
+- Use empty strings when information is missing.
+- Respond with JSON only.
+
+Outline:
+${outline}`,
     },
   ]
 }
