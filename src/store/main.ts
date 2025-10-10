@@ -45,36 +45,36 @@ export const databaseId = nanoid(10)
 
 export const useMainStore = defineStore('main', {
   state: (): MainState => ({
-    activeElementIdList: [], // 被选中的元素ID集合，包含 handleElementId
-    handleElementId: '', // 正在操作的元素ID
-    activeGroupElementId: '', // 组合元素成员中，被选中可独立操作的元素ID
-    hiddenElementIdList: [], // 被隐藏的元素ID集合
-    canvasPercentage: 90, // 画布可视区域百分比
-    canvasScale: 1, // 画布缩放比例（基于宽度{{slidesStore.viewportSize}}像素）
-    canvasDragged: false, // 画布被拖拽移动
-    thumbnailsFocus: false, // 左侧导航缩略图区域聚焦
-    editorAreaFocus: false, //  编辑区域聚焦
-    disableHotkeys: false, // 禁用快捷键
-    gridLineSize: 0, // 网格线尺寸（0表示不显示网格线）
-    showRuler: false, // 显示标尺
-    creatingElement: null, // 正在插入的元素信息，需要通过绘制插入的元素（文字、形状、线条）
-    creatingCustomShape: false, // 正在绘制任意多边形
-    toolbarState: ToolbarStates.SLIDE_DESIGN, // 右侧工具栏状态
-    clipingImageElementId: '', // 当前正在裁剪的图片ID  
-    richTextAttrs: defaultRichTextAttrs, // 富文本状态
-    selectedTableCells: [], // 选中的表格单元格
-    isScaling: false, // 正在进行元素缩放
-    selectedSlidesIndex: [], // 当前被选中的页面索引集合
-    dialogForExport: '', // 导出面板
-    databaseId, // 标识当前应用的indexedDB数据库ID
-    textFormatPainter: null, // 文字格式刷
-    shapeFormatPainter: null, // 形状格式刷
-    showSelectPanel: false, // 打开选择面板
-    showSearchPanel: false, // 打开查找替换面板
-    showNotesPanel: false, // 打开批注面板
-    showSymbolPanel: false, // 打开符号面板
-    showMarkupPanel: false, // 打开类型标注面板
-    showAIPPTDialog: false, // 打开AIPPT创建窗口
+    activeElementIdList: [], // IDs of selected elements, including handleElementId
+    handleElementId: '', // ID of the element currently being manipulated
+    activeGroupElementId: '', // ID of the selected element within a group that can be independently manipulated
+    hiddenElementIdList: [], // IDs of hidden elements
+    canvasPercentage: 90, // Visible canvas percentage
+    canvasScale: 1, // Canvas scale (based on a width of {{slidesStore.viewportSize}} pixels)
+    canvasDragged: false, // Whether the canvas has been dragged
+    thumbnailsFocus: false, // Focus state of the left thumbnail navigator
+    editorAreaFocus: false, // Editing area focus
+    disableHotkeys: false, // Disable hotkeys
+    gridLineSize: 0, // Grid size (0 means hide grid)
+    showRuler: false, // Show ruler
+    creatingElement: null, // Information about the element being inserted via drawing (text, shapes, lines)
+    creatingCustomShape: false, // Currently drawing a custom polygon
+    toolbarState: ToolbarStates.SLIDE_DESIGN, // Right toolbar state
+    clipingImageElementId: '', // ID of the image currently being cropped  
+    richTextAttrs: defaultRichTextAttrs, // Rich text state
+    selectedTableCells: [], // Selected table cells
+    isScaling: false, // Whether an element is being scaled
+    selectedSlidesIndex: [], // Indices of the currently selected slides
+    dialogForExport: '', // Export dialog
+    databaseId, // Identifier of the app's indexedDB database
+    textFormatPainter: null, // Text format painter
+    shapeFormatPainter: null, // Shape format painter
+    showSelectPanel: false, // Whether the selection panel is open
+    showSearchPanel: false, // Whether the search-and-replace panel is open
+    showNotesPanel: false, // Whether the remarks panel is open
+    showSymbolPanel: false, // Whether the symbol panel is open
+    showMarkupPanel: false, // Whether the markup panel is open
+    showAIPPTDialog: false, // Whether the AI PPT creation dialog is open
   }),
 
   getters: {

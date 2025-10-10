@@ -30,7 +30,7 @@ export interface SlidesState {
 
 export const useSlidesStore = defineStore('slides', {
   state: (): SlidesState => ({
-    title: '未命名演示文稿', // 幻灯片标题
+    title: 'Untitled Presentation', // Slide title
     theme: {
       themeColors: ['#5b9bd5', '#ed7d31', '#a5a5a5', '#ffc000', '#4472c4', '#70ad47'],
       fontColor: '#333',
@@ -47,17 +47,17 @@ export const useSlidesStore = defineStore('slides', {
         color: '#525252',
         style: 'solid',
       },
-    }, // 主题样式
-    slides: [], // 幻灯片页面数据
-    slideIndex: 0, // 当前页面索引
-    viewportSize: 1000, // 可视区域宽度基数
-    viewportRatio: 0.5625, // 可视区域比例，默认16:9
+    }, // Theme styles
+    slides: [], // Slide data
+    slideIndex: 0, // Current slide index
+    viewportSize: 1000, // Viewport base width
+    viewportRatio: 0.5625, // Viewport aspect ratio, default 16:9
     templates: [
-      { name: '红色通用', id: 'template_1', cover: './imgs/template_1.jpg' },
-      { name: '蓝色通用', id: 'template_2', cover: './imgs/template_2.jpg' },
-      { name: '紫色通用', id: 'template_3', cover: './imgs/template_3.jpg' },
-      { name: '莫兰迪配色', id: 'template_4', cover: './imgs/template_4.jpg' },
-    ], // 模板
+      { name: 'Red Classic', id: 'template_1', cover: './imgs/template_1.jpg' },
+      { name: 'Blue Classic', id: 'template_2', cover: './imgs/template_2.jpg' },
+      { name: 'Purple Classic', id: 'template_3', cover: './imgs/template_3.jpg' },
+      { name: 'Morandi Palette', id: 'template_4', cover: './imgs/template_4.jpg' },
+    ], // Templates
   }),
 
   getters: {
@@ -74,9 +74,9 @@ export const useSlidesStore = defineStore('slides', {
       return currentSlide.animations.filter(animation => elIds.includes(animation.elId))
     },
 
-    // 格式化的当前页动画
-    // 将触发条件为“与上一动画同时”的项目向上合并到序列中的同一位置
-    // 为触发条件为“上一动画之后”项目的上一项添加自动向下执行标记
+    // Formatted animations for the current slide
+    // Merge animations triggered "with previous" into the same position in the sequence
+    // Add an auto-advance flag to the previous item when the trigger is "after previous"
     formatedAnimations(state) {
       const currentSlide = state.slides[state.slideIndex]
       if (!currentSlide?.animations) return []
@@ -109,7 +109,7 @@ export const useSlidesStore = defineStore('slides', {
 
   actions: {
     setTitle(title: string) {
-      if (!title) this.title = '未命名演示文稿'
+      if (!title) this.title = 'Untitled Presentation'
       else this.title = title
     },
 
