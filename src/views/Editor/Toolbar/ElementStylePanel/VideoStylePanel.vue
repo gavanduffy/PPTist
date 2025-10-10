@@ -11,7 +11,7 @@
       </FileInput>
     </div>
     <div class="row" v-if="handleVideoElement.poster">
-      <Button style="flex: 1;" @click="updateVideo({ poster: '' })"><IconUndo /> 重置封面</Button>
+      <Button style="flex: 1;" @click="updateVideo({ poster: '' })"><IconUndo /> Reset Cover</Button>
     </div>
 
     <Divider />

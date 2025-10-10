@@ -1,7 +1,7 @@
 <template>
   <div class="link-handler" :style="{ top: height * canvasScale + 10 + 'px' }">
     <a class="link" v-if="link.type === 'web'" :href="link.target" target="_blank">{{link.target}}</a>
-    <a class="link" v-else @click="turnTarget(link.target)">幻灯片页面 {{link.target}}</a>
+    <a class="link" v-else @click="turnTarget(link.target)">Slide Page {{link.target}}</a>
     <div class="btns">
       <div class="btn" @click="openLinkDialog()">更换</div>
       <Divider type="vertical" />

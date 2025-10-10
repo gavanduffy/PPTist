@@ -1,7 +1,7 @@
 <template>
   <div class="chart-style-panel">
     <Button class="full-width-btn" @click="chartDataEditorVisible = true">
-      <IconEdit /> 编辑图表
+      <IconEdit /> Edit Chart
     </Button>
 
     <Divider />
@@ -62,11 +62,11 @@
     </div>
 
     <div class="row">
-      <div style="width: 40%;">主题配色：</div>
+      <div style="width: 40%;">Theme Color Scheme:</div>
       <Popover trigger="click" v-model:value="themesVisible" style="width: 60%;">
         <template #content>
           <div class="themes">
-            <div class="label">预置图表主题：</div>
+            <div class="label">Preset Chart Themes:</div>
             <div class="preset-themes">
               <div class="preset-theme" v-for="(item, index) in CHART_PRESET_THEMES" :key="index" @click="setThemeColors(item)">
                 <div 
@@ -77,7 +77,7 @@
                 ></div>
               </div>
             </div>
-            <div class="label">幻灯片主题：</div>
+            <div class="label">Slide Theme:</div>
             <div class="preset-themes" :style="{ marginBottom: '-10px' }">
               <div class="preset-theme" @click="setThemeColors(theme.themeColors)">
                 <div 
@@ -89,7 +89,7 @@
               </div>
             </div>
             <Divider :margin="10" />
-            <Button class="full-width-btn" @click="themesVisible = false; themeColorsSettingVisible = true">自定义配色</Button>
+            <Button class="full-width-btn" @click="themesVisible = false; themeColorsSettingVisible = true">Custom Color Scheme</Button>
           </div>
         </template>
         <ColorListButton :colors="themeColors" />

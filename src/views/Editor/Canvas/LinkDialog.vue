@@ -11,7 +11,7 @@
       ref="inputRef"
       v-if="type === 'web'" 
       v-model:value="address" 
-      placeholder="请输入网页链接地址"
+      placeholder="Enter web link address"
       @enter="save()"
     />
 
@@ -68,7 +68,7 @@ const inputRef = useTemplateRef<InstanceType<typeof Input>>('inputRef')
 
 const slideOptions = computed(() => {
   return slides.value.map((item, index) => ({
-    label: `幻灯片 ${index + 1}`,
+    label: `Slide ${index + 1}`,
     value: item.id,
     disabled: currentSlide.value.id === item.id,
   }))
@@ -83,8 +83,8 @@ const selectedSlide = computed(() => {
 })
 
 const tabs: TabItem[] = [
-  { key: 'web', label: '网页链接' },
-  { key: 'slide', label: '幻灯片页面' },
+  { key: 'web', label: 'Web Link' },
+  { key: 'slide', label: 'Slide Page' },
 ]
 
 const { setLink } = useLink()

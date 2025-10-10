@@ -1,10 +1,10 @@
 <template>
   <div class="theme-colors-setting">
-    <div class="title">图表主题配色</div>
+    <div class="title">Chart Theme Colors</div>
 
     <div class="list">
       <div class="row" v-for="(item, index) in themeColors" :key="index">
-        <div class="label" style="width: 40%;">主题配色{{ index + 1 }}：</div>
+        <div class="label" style="width: 40%;">Theme Color {{ index + 1 }}:</div>
         <Popover trigger="click" style="width: 60%;">
           <template #content>
             <ColorPicker
@@ -23,7 +23,7 @@
         :disabled="themeColors.length >= 10"
         @click="addThemeColor()"
       >
-        <IconPlus /> 添加主题色
+        <IconPlus /> Add Theme Color
       </Button>
     </div>
 

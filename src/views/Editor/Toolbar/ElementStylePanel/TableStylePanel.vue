@@ -119,7 +119,7 @@
     <Divider />
 
     <div class="row theme-switch">
-      <div style="width: 40%;">启用主题表格：</div>
+      <div style="width: 40%;">Enable Theme Table:</div>
       <div class="switch-wrapper" style="width: 60%;">
         <Switch 
           :value="hasTheme" 
@@ -154,7 +154,7 @@
         >最后一列</Checkbox>
       </div>
       <div class="row">
-        <div style="width: 40%;">主题颜色：</div>
+        <div style="width: 40%;">Theme Color:</div>
         <Popover trigger="click" style="width: 60%;">
           <template #content>
             <ColorPicker

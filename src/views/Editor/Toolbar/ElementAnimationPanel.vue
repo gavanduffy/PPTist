@@ -43,12 +43,12 @@
           </template>
         </template>
         <Button class="element-animation-btn" @click="handleAnimationId = ''">
-          <IconEffects /> 添加动画
+          <IconEffects /> Add Animation
         </Button>
       </Popover>
     </div>
 
-    <div class="tip" v-else><IconClick style="margin-right: 5px;" /> 选中画布中的元素添加动画</div>
+    <div class="tip" v-else><IconClick style="margin-right: 5px;" /> Select an element on the canvas to add animation</div>
     
     <Divider />
 

@@ -149,10 +149,10 @@
       <Popover placement="bottom-end" trigger="click" v-model:value="linkPopoverVisible" style="width: 25%;">
         <template #content>
           <div class="link-popover">
-            <Input v-model:value="link" placeholder="请输入超链接" />
+            <Input v-model:value="link" placeholder="Enter hyperlink" />
             <div class="btns">
-              <Button size="small" :disabled="!richTextAttrs.link" @click="removeLink()" style="margin-right: 5px;">移除</Button>
-              <Button size="small" type="primary" @click="updateLink(link)">确认</Button>
+              <Button size="small" :disabled="!richTextAttrs.link" @click="removeLink()" style="margin-right: 5px;">Remove</Button>
+              <Button size="small" type="primary" @click="updateLink(link)">Confirm</Button>
             </div>
           </div>
         </template>
@@ -160,7 +160,7 @@
           last
           style="width: 100%;"
           :checked="!!richTextAttrs.link"
-          v-tooltip="'超链接'"
+          v-tooltip="'Hyperlink'"
           @click="openLinkPopover()"
         ><IconLinkOne /></CheckboxButton>
       </Popover>
@@ -317,7 +317,7 @@ const openLinkPopover = () => {
 }
 const updateLink = (link?: string) => {
   const linkRegExp = /^(https?):\/\/[\w\-]+(\.[\w\-]+)+([\w\-.,@?^=%&:\/~+#]*[\w\-@?^=%&\/~+#])?$/
-  if (!link || !linkRegExp.test(link)) return message.error('不是正确的网页链接地址')
+  if (!link || !linkRegExp.test(link)) return message.error('Invalid web link address')
 
   emitRichTextCommand('link', link)
   linkPopoverVisible.value = false

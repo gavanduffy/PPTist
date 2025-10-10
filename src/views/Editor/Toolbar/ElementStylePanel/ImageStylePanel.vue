@@ -63,7 +63,7 @@
     <FileInput @change="files => replaceImage(files)">
       <Button class="full-width-btn"><IconTransform /> 替换图片</Button>
     </FileInput>
-    <Button class="full-width-btn" @click="resetImage()"><IconUndo /> 重置样式</Button>
+    <Button class="full-width-btn" @click="resetImage()"><IconUndo /> Reset Style</Button>
     <Button class="full-width-btn" @click="setBackgroundImage()"><IconTheme /> 设为背景</Button>
   </div>
 </template>

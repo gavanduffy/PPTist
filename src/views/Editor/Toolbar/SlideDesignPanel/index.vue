@@ -120,26 +120,26 @@
     <Divider />
 
     <div class="title">
-      <span>全局主题</span>
+      <span>Global Theme</span>
       <span class="more" @click="moreThemeConfigsVisible = !moreThemeConfigsVisible">
-        <span class="text">更多</span>
+        <span class="text">More</span>
         <IconDown v-if="moreThemeConfigsVisible" />
         <IconRight v-else />
       </span>
     </div>
     <div class="row">
-      <div style="width: 40%;">字体：</div>
+      <div style="width: 40%;">Font:</div>
       <Select
         style="width: 60%;"
         :value="theme.fontName"
         search
-        searchLabel="搜索字体"
+        searchLabel="Search font"
         @update:value="value => updateTheme({ fontName: value as string })"
         :options="FONTS"
       />
     </div>
     <div class="row">
-      <div style="width: 40%;">字体颜色：</div>
+      <div style="width: 40%;">Font Color:</div>
       <Popover trigger="click" style="width: 60%;">
         <template #content>
           <ColorPicker
@@ -151,7 +151,7 @@
       </Popover>
     </div>
     <div class="row">
-      <div style="width: 40%;">背景颜色：</div>
+      <div style="width: 40%;">Background Color:</div>
       <Popover trigger="click" style="width: 60%;">
         <template #content>
           <ColorPicker
@@ -163,7 +163,7 @@
       </Popover>
     </div>
     <div class="row">
-      <div style="width: 40%;">主题色：</div>
+      <div style="width: 40%;">Theme Colors:</div>
       <ColorListButton style="width: 60%;" :colors="theme.themeColors" @click="themeColorsSettingVisible = true" />
     </div>
     
@@ -249,16 +249,16 @@
     </template>
 
     <div class="row">
-      <Button style="flex: 1;" @click="applyThemeToAllSlides(moreThemeConfigsVisible)"><IconCheck /> 应用主题到全部</Button>
+      <Button style="flex: 1;" @click="applyThemeToAllSlides(moreThemeConfigsVisible)"><IconCheck /> Apply Theme to All</Button>
     </div>
 
     <div class="row">
-      <Button style="flex: 1;" @click="themeStylesExtractVisible = true"><IconPlatte /> 从幻灯片提取主题</Button>
+      <Button style="flex: 1;" @click="themeStylesExtractVisible = true"><IconPlatte /> Extract Theme from Slides</Button>
     </div>
 
     <Divider />
 
-    <div class="title">预置主题</div>
+    <div class="title">Preset Themes</div>
     <div class="theme-list">
       <div 
         class="theme-item" 
