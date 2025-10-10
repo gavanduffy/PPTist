@@ -34,9 +34,49 @@
 ```
 npm install
 
+# start the AI backend and Vite dev server together
+npm run dev:full
+
+# or run them separately
+npm run server
 npm run dev
 ```
 Browser access: http://127.0.0.1:5173/
+
+The AI endpoints require an [OpenRouter](https://openrouter.ai) API key. Copy `.env.example` to `.env` and update the following values:
+
+```
+OPENROUTER_API_KEY=sk-...
+OPENROUTER_DEFAULT_MODEL=gpt-4o-mini
+MCP_WIKIPEDIA_TOOL_URL=https://<your-mcp-http-endpoint>
+```
+
+`MCP_WIKIPEDIA_TOOL_URL` should point to an HTTP endpoint compatible with your MCP tool that returns an object with an `images` array (each item must include an `id` or `url`).
+
+### Docker
+
+Build and run the all-in-one container (frontend + backend):
+
+```
+docker build -t pptist .
+docker run -p 5000:5000 --env-file .env pptist
+```
+
+The app will be available at `http://localhost:5000`.
+
+### Vercel / Nextify (Docker based)
+
+Vercel and Nextify both support Docker deployments. Commit the repository and run:
+
+```
+vercel --prod
+```
+
+Vercel automatically detects `vercel.json`, builds the Docker image, and exposes port `5000`. Provide the same environment variables on the hosting platform.
+
+### Netlify / Nextify (static hosting)
+
+To host the static build with Netlify/Nextify and keep using the HTTP AI backend, deploy the Docker image or run the backend on a separate service and update `VITE_AI_SERVER_URL` accordingly. The included `netlify.toml` configures local development and proxies `/api` calls to the backend during `netlify dev`.
 
 
 # 📚 Features

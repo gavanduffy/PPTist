@@ -1,7 +1,7 @@
 import axios from './config'
 
-// export const SERVER_URL = 'http://localhost:5000'
-export const SERVER_URL = (import.meta.env.MODE === 'development') ? '/api' : 'https://server.pptist.cn'
+const DEFAULT_SERVER_URL = '/api'
+export const SERVER_URL = import.meta.env.VITE_AI_SERVER_URL || DEFAULT_SERVER_URL
 
 interface AIPPTOutlinePayload {
   content: string
@@ -19,6 +19,12 @@ interface AIPPTPayload {
 interface AIWritingPayload {
   content: string
   command: string
+}
+
+interface MCPImagePayload {
+  topic: string
+  outline?: string
+  count?: number
 }
 
 export default {
@@ -80,6 +86,27 @@ export default {
         command,
         stream: true,
       }),
+    })
+  },
+
+  MCP_SearchImages({
+    topic,
+    outline,
+    count,
+  }: MCPImagePayload): Promise<any> {
+    return fetch(`${SERVER_URL}/tools/mcp/images`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        topic,
+        outline,
+        count,
+      }),
+    }).then(response => {
+      if (!response.ok) throw new Error('Failed to query MCP tool')
+      return response
     })
   },
 }

@@ -2,9 +2,9 @@
   <div class="aippt-dialog">
     <div class="header">
       <span class="title">AIPPT</span>
-      <span class="subtite" v-if="step === 'template'">从下方挑选合适的模板生成PPT，或<span class="local" v-tooltip="'上传.pptist格式模板文件'" @click="uploadLocalTemplate()">使用本地模板生成</span></span>
-      <span class="subtite" v-else-if="step === 'outline'">确认下方内容大纲（点击编辑内容，右键添加/删除大纲项），开始选择模板</span>
-      <span class="subtite" v-else>在下方输入您的PPT主题，并适当补充信息，如行业、岗位、学科、用途等</span>
+      <span class="subtite" v-if="step === 'template'">Select a template below or <span class="local" v-tooltip="'Upload a .pptist template file'" @click="uploadLocalTemplate()">upload a local template</span> to generate slides.</span>
+      <span class="subtite" v-else-if="step === 'outline'">Review the outline below (click to edit items, right-click to add or remove) before choosing a template.</span>
+      <span class="subtite" v-else>Enter your presentation topic and include helpful context such as industry, role, subject, or goal.</span>
     </div>
     
     <template v-if="step === 'setup'">
@@ -12,12 +12,12 @@
         ref="inputRef"
         v-model:value="keyword" 
         :maxlength="50" 
-        placeholder="请输入PPT主题，如：大学生职业生涯规划" 
+        placeholder="Enter your presentation topic, e.g. Career Planning for College Students"
         @enter="createOutline()"
       >
         <template #suffix>
           <span class="count">{{ keyword.length }} / 50</span>
-          <div class="submit" type="primary" @click="createOutline()"><IconSend class="icon" /> AI 生成</div>
+          <div class="submit" type="primary" @click="createOutline()"><IconSend class="icon" /> Generate</div>
         </template>
       </Input>
       <div class="recommends">
@@ -25,36 +25,36 @@
       </div>
       <div class="configs">
         <div class="config-item">
-          <div class="label">语言：</div>
-          <Select 
+          <div class="label">Language:</div>
+          <Select
             class="config-content"
             style="width: 80px;"
             v-model:value="language"
             :options="[
-              { label: '中文', value: '中文' },
-              { label: '英文', value: 'English' },
-              { label: '日文', value: '日本語' },
+              { label: 'Chinese', value: '中文' },
+              { label: 'English', value: 'English' },
+              { label: 'Japanese', value: '日本語' },
             ]"
           />
         </div>
         <div class="config-item">
-          <div class="label">风格：</div>
-          <Select 
+          <div class="label">Style:</div>
+          <Select
             class="config-content"
             style="width: 80px;"
             v-model:value="style"
             :options="[
-              { label: '通用', value: '通用' },
-              { label: '学术风', value: '学术风' },
-              { label: '职场风', value: '职场风' },
-              { label: '教育风', value: '教育风' },
-              { label: '营销风', value: '营销风' },
+              { label: 'General', value: '通用' },
+              { label: 'Academic', value: '学术风' },
+              { label: 'Professional', value: '职场风' },
+              { label: 'Education', value: '教育风' },
+              { label: 'Marketing', value: '营销风' },
             ]"
           />
         </div>
         <div class="config-item">
-          <div class="label">模型：</div>
-          <Select 
+          <div class="label">Model:</div>
+          <Select
             class="config-content"
             style="width: 190px;"
             v-model:value="model"
@@ -67,16 +67,16 @@
           />
         </div>
         <div class="config-item">
-          <div class="label">配图：</div>
-          <Select 
+          <div class="label">Images:</div>
+          <Select
             class="config-content"
-            style="width: 100px;"
+            style="width: 140px;"
             v-model:value="img"
             :options="[
-              { label: '无', value: '' },
-              { label: '模拟测试', value: 'test' },
-              { label: 'AI搜图', value: 'ai-search', disabled: true },
-              { label: 'AI生图', value: 'ai-create', disabled: true },
+              { label: 'None', value: '' },
+              { label: 'Sample Data', value: 'test' },
+              { label: 'Wikipedia via MCP', value: 'ai-search' },
+              { label: 'AI Generated (coming soon)', value: 'ai-create', disabled: true },
             ]"
           />
         </div>
@@ -84,12 +84,12 @@
     </template>
     <div class="preview" v-if="step === 'outline'">
       <pre ref="outlineRef" v-if="outlineCreating">{{ outline }}</pre>
-       <div class="outline-view" v-else>
-         <OutlineEditor v-model:value="outline" />
-       </div>
+      <div class="outline-view" v-else>
+        <OutlineEditor v-model:value="outline" />
+      </div>
       <div class="btns" v-if="!outlineCreating">
-        <Button class="btn" type="primary" @click="step = 'template'">选择模板</Button>
-        <Button class="btn" @click="outline = ''; step = 'setup'">返回重新生成</Button>
+        <Button class="btn" type="primary" @click="step = 'template'">Choose Template</Button>
+        <Button class="btn" @click="outline = ''; step = 'setup'">Regenerate Outline</Button>
       </div>
     </div>
     <div class="select-template" v-if="step === 'template'">
@@ -104,12 +104,12 @@
         </div>
       </div>
       <div class="btns">
-        <Button class="btn" type="primary" @click="createPPT()">生成</Button>
-        <Button class="btn" @click="step = 'outline'">返回大纲</Button>
+        <Button class="btn" type="primary" @click="createPPT()">Create Slides</Button>
+        <Button class="btn" @click="step = 'outline'">Back to Outline</Button>
       </div>
     </div>
 
-    <FullscreenSpin :loading="loading" tip="AI生成中，请耐心等待 ..." />
+    <FullscreenSpin :loading="loading" tip="Generating slides, please wait ..." />
   </div>
 </template>
 
@@ -134,7 +134,7 @@ const slideStore = useSlidesStore()
 const { templates } = storeToRefs(slideStore)
 const { AIPPT, presetImgPool, getMdContent } = useAIPPT()
 
-const language = ref('中文')
+const language = ref('English')
 const style = ref('通用')
 const img = ref('')
 const keyword = ref('')
@@ -148,17 +148,17 @@ const outlineRef = useTemplateRef<HTMLElement>('outlineRef')
 const inputRef = useTemplateRef<InstanceType<typeof Input>>('inputRef')
 
 const recommends = ref([
-  '2025科技前沿动态',
-  '大数据如何改变世界',
-  '餐饮市场调查与研究',
-  'AIGC在教育领域的应用',
-  '社交媒体与品牌营销',
-  '5G技术如何改变我们的生活',
-  '年度工作总结与展望',
-  '区块链技术及其应用',
-  '大学生职业生涯规划',
-  '公司年会策划方案',
-]) 
+  'Emerging Technology Trends 2025',
+  'How Big Data Reshapes Industries',
+  'Restaurant Market Insights',
+  'AIGC in Education',
+  'Social Media and Brand Marketing',
+  '5G Innovations for Everyday Life',
+  'Annual Business Review and Plan',
+  'Blockchain Applications Overview',
+  'Career Planning for College Students',
+  'Corporate Annual Meeting Strategy',
+])
 
 onMounted(() => {
   setTimeout(() => {
@@ -172,7 +172,7 @@ const setKeyword = (value: string) => {
 }
 
 const createOutline = async () => {
-  if (!keyword.value) return message.error('请先输入PPT主题')
+  if (!keyword.value) return message.error('Please enter a presentation topic first')
 
   loading.value = true
   outlineCreating.value = true
@@ -225,6 +225,26 @@ const createPPT = async (template?: { slides: Slide[], theme: SlideTheme }) => {
     const imgs = await api.getMockData('imgs')
     presetImgPool(imgs)
   }
+  else if (img.value === 'ai-search') {
+    try {
+      const response = await api.MCP_SearchImages({
+        topic: keyword.value || outline.value,
+        outline: outline.value,
+        count: 12,
+      })
+      const data = await response.json()
+      if (Array.isArray(data.images) && data.images.length) {
+        presetImgPool(data.images)
+      }
+      else {
+        message.warning('No images returned by the MCP tool')
+      }
+    }
+    catch (error) {
+      console.error(error)
+      message.error('Unable to load images from the MCP tool')
+    }
+  }
 
   let templateData = template
   if (!templateData) templateData = await api.getMockData(selectedTemplate.value)
@@ -247,7 +267,7 @@ const createPPT = async (template?: { slides: Slide[], theme: SlideTheme }) => {
       try {
         const text = chunk.replace('```json', '').replace('```', '').trim()
         if (text) {
-          const slide: AIPPTSlide = JSON.parse(chunk)
+          const slide: AIPPTSlide = JSON.parse(text)
           AIPPT(templateSlides, [slide])
         }
       }
@@ -277,7 +297,7 @@ const uploadLocalTemplate = () => {
           createPPT({ slides, theme })
         }
         catch {
-          message.error('上传的模板文件数据异常，请重新上传或使用预置模板')
+          message.error('The uploaded template file is invalid. Please try another file or use a built-in template.')
         }
       })
       reader.readAsText(file)
