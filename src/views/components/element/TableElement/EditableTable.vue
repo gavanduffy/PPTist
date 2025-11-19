@@ -114,11 +114,11 @@ const tableCells = computed<TableCell[][]>({
   },
 })
 
-// 主题辅助色
+// Theme secondary color
 const theme = computed(() => props.theme)
 const { subThemeColor } = useSubThemeColor(theme)
 
-// 计算表格每一列的列宽和总宽度
+// Calculate the column width and total width of each column of the table
 const colSizeList = ref<number[]>([])
 const totalWidth = computed(() => colSizeList.value.reduce((a, b) => a + b))
 watch([
@@ -128,8 +128,8 @@ watch([
   colSizeList.value = props.colWidths.map(item => item * props.width)
 }, { immediate: true })
 
-// 清除全部单元格的选中状态
-// 表格处于不可编辑状态时也需要清除
+// Clear the selection of all cells
+// The table also needs to be cleared when it is in an uneditable state.
 const removeSelectedCells = () => {
   startCell.value = []
   endCell.value = []
@@ -139,7 +139,7 @@ watch(() => props.editable, () => {
   if (!props.editable) removeSelectedCells()
 })
 
-// 用于拖拽列宽的操作节点位置
+// Operation node position for dragging column width
 const dragLinePosition = computed(() => {
   const dragLinePosition: number[] = []
   for (let i = 1; i < colSizeList.value.length + 1; i++) {
@@ -149,11 +149,11 @@ const dragLinePosition = computed(() => {
   return dragLinePosition
 })
 
-// 无效的单元格位置（被合并的单元格位置）集合
+// Invalid cell position（Merged cell position）gather
 const cells = computed(() => props.data)
 const { hideCells } = useHideCells(cells)
 
-// 当前选中的单元格集合
+// The currently selected set of cells
 const selectedCells = computed(() => {
   if (!startCell.value.length) return []
   const [startX, startY] = startCell.value
@@ -184,13 +184,13 @@ watch(selectedCells, (value, oldValue) => {
   emit('changeSelectedCells', selectedCells.value)
 })
 
-// 当前激活的单元格：当且仅当只有一个选中单元格时，该单元格为激活的单元格
+// currently active cell：if and only if there is only one selected cell，This cell is the active cell
 const activedCell = computed(() => {
   if (selectedCells.value.length > 1) return null
   return selectedCells.value[0]
 })
 
-// 设置选中单元格状态（鼠标点击或拖选）
+// Set selected cell status（Mouse click or drag to select）
 const handleMouseup = () => isStartSelect.value = false
 
 const handleCellMousedown = (e: MouseEvent, rowIndex: number, colIndex: number) => {
@@ -213,24 +213,24 @@ onUnmounted(() => {
   document.removeEventListener('mouseup', handleMouseup)
 })
 
-// 判断某位置是否为无效单元格（被合并掉的位置）
+// Determine whether a certain position is an invalid cell（The merged position）
 const isHideCell = (rowIndex: number, colIndex: number) => hideCells.value.includes(`${rowIndex}_${colIndex}`)
 
-// 选中指定的列
+// Select specified column
 const selectCol = (index: number) => {
   const maxRow = tableCells.value.length - 1
   startCell.value = [0, index]
   endCell.value = [maxRow, index]
 }
 
-// 选中指定的行
+// Select the specified row
 const selectRow = (index: number) => {
   const maxCol = tableCells.value[index].length - 1
   startCell.value = [index, 0]
   endCell.value = [index, maxCol]
 }
 
-// 选中全部单元格
+// Select all cells
 const selectAll = () => {
   const maxRow = tableCells.value.length - 1
   const maxCol = tableCells.value[maxRow].length - 1
@@ -238,7 +238,7 @@ const selectAll = () => {
   endCell.value = [maxRow, maxCol]
 }
 
-// 删除一行
+// Delete a row
 const deleteRow = (rowIndex: number) => {
   const _tableCells: TableCell[][] = JSON.parse(JSON.stringify(tableCells.value))
 
@@ -261,7 +261,7 @@ const deleteRow = (rowIndex: number) => {
   tableCells.value = _tableCells
 }
 
-// 删除一列
+// Delete a column
 const deleteCol = (colIndex: number) => {
   const _tableCells: TableCell[][] = JSON.parse(JSON.stringify(tableCells.value))
 
@@ -287,7 +287,7 @@ const deleteCol = (colIndex: number) => {
   emit('changeColWidths', colSizeList.value)
 }
 
-// 插入一行
+// insert a row
 const insertRow = (rowIndex: number) => {
   const _tableCells: TableCell[][] = JSON.parse(JSON.stringify(tableCells.value))
 
@@ -305,7 +305,7 @@ const insertRow = (rowIndex: number) => {
   tableCells.value = _tableCells
 }
 
-// 插入一列
+// insert a column
 const insertCol = (colIndex: number) => {
   tableCells.value = tableCells.value.map(item => {
     const cell = {
@@ -321,7 +321,7 @@ const insertCol = (colIndex: number) => {
   emit('changeColWidths', colSizeList.value)
 }
 
-// 填充指定的行/列数
+// Fill specified rows/Number of columns
 const fillTable = (rowCount: number, colCount: number) => {
   let _tableCells: TableCell[][] = JSON.parse(JSON.stringify(tableCells.value))
   const defaultCell = { colspan: 1, rowspan: 1, text: '' }
@@ -359,7 +359,7 @@ const fillTable = (rowCount: number, colCount: number) => {
   tableCells.value = _tableCells
 }
 
-// 合并单元格
+// Merge cells
 const mergeCells = () => {
   const [startX, startY] = startCell.value
   const [endX, endY] = endCell.value
@@ -378,7 +378,7 @@ const mergeCells = () => {
   removeSelectedCells()
 }
 
-// 拆分单元格
+// Split cells
 const splitCells = (rowIndex: number, colIndex: number) => {
   const _tableCells: TableCell[][] = JSON.parse(JSON.stringify(tableCells.value))
   _tableCells[rowIndex][colIndex].rowspan = 1
@@ -388,7 +388,7 @@ const splitCells = (rowIndex: number, colIndex: number) => {
   removeSelectedCells()
 }
 
-// 鼠标拖拽调整列宽
+// Drag the mouse to adjust column width
 const handleMousedownColHandler = (e: MouseEvent, colIndex: number) => {
   removeSelectedCells()
   let isMouseDown = true
@@ -415,7 +415,7 @@ const handleMousedownColHandler = (e: MouseEvent, colIndex: number) => {
   }
 }
 
-// 清空选中单元格内的文字
+// Clear text in selected cells
 const clearSelectedCellText = () => {
   const _tableCells: TableCell[][] = JSON.parse(JSON.stringify(tableCells.value))
 
@@ -436,10 +436,10 @@ const focusActiveCell = () => {
   })
 }
 
-// 将焦点移动到下一个单元格
-// 当前行右边有单元格时，焦点右移
-// 当前行右边无单元格（已处在行末），且存在下一行时，焦点移动至下一行行首
-// 当前行右边无单元格（已处在行末），且不存在下一行（已处在最后一行）时，新建一行并将焦点移动至下一行行首
+// Move focus to next cell
+// When there is a cell on the right side of the current row，focus right
+// There are no cells to the right of the current row（Already at the end of the journey），and there is a next line，Focus moves to the beginning of the next line
+// There are no cells to the right of the current row（Already at the end of the journey），and there is no next line（Already on the last line）hour，Create a new line and move focus to the beginning of the next line
 const tabActiveCell = () => {
   const getNextCell = (i: number, j: number): [number, number] | null => {
     if (!tableCells.value[i]) return null
@@ -460,11 +460,11 @@ const tabActiveCell = () => {
   }
   else startCell.value = nextCell
 
-  // 移动焦点后自动聚焦文本
+  // Automatically focus text after moving focus
   focusActiveCell()
 }
 
-// 移动焦点（上下左右）
+// Move focus（up, down, left, right）
 const moveActiveCell = (dir: 'UP' | 'DOWN' | 'LEFT' | 'RIGHT') => {
   const rowIndex = +selectedCells.value[0].split('_')[0]
   const colIndex = +selectedCells.value[0].split('_')[1]
@@ -522,7 +522,7 @@ const moveActiveCell = (dir: 'UP' | 'DOWN' | 'LEFT' | 'RIGHT') => {
   focusActiveCell()
 }
 
-// 获取光标位置
+// Get cursor position
 const getCaretPosition = (element: HTMLDivElement) => {
   const selection = window.getSelection()
   if (selection && selection.rangeCount > 0) {
@@ -543,7 +543,7 @@ const getCaretPosition = (element: HTMLDivElement) => {
   return null
 }
 
-// 表格快捷键监听
+// Table shortcut key monitoring
 const keydownListener = (e: KeyboardEvent) => {
   if (!props.editable || !selectedCells.value.length) return
 
@@ -610,13 +610,13 @@ onUnmounted(() => {
   document.removeEventListener('keydown', keydownListener)
 })
 
-// 单元格文字输入时更新表格数据
+// Update table data when cell text is entered
 const handleInput = debounce(function(value, rowIndex, colIndex) {
   tableCells.value[rowIndex][colIndex].text = value
   emit('change', tableCells.value)
 }, 300, { trailing: true })
 
-// 插入来自Excel的数据，表格的行/列数不够时自动补足
+// Insert fromExceldata，table rows/Automatically fill in when the number of columns is insufficient
 const insertExcelData = (data: string[][], rowIndex: number, colIndex: number) => {
   const maxRow = data.length
   const maxCol = data[0].length
@@ -639,7 +639,7 @@ const insertExcelData = (data: string[][], rowIndex: number, colIndex: number) =
   })
 }
 
-// 获取有效的单元格（排除掉被合并的单元格）
+// Get valid cells（Exclude merged cells）
 const getEffectiveTableCells = () => {
   const effectiveTableCells = []
 
@@ -655,7 +655,7 @@ const getEffectiveTableCells = () => {
   return effectiveTableCells
 }
 
-// 检查是否可以删除行和列：有效的行/列数大于1
+// Check if rows and columns can be deleted：valid rows/The number of columns is greater than1
 const checkCanDeleteRowOrCol = () => {
   const effectiveTableCells = getEffectiveTableCells()
   const canDeleteRow = effectiveTableCells.length > 1
@@ -664,9 +664,9 @@ const checkCanDeleteRowOrCol = () => {
   return { canDeleteRow, canDeleteCol }
 }
 
-// 检查是否可以合并或拆分
-// 必须多选才可以合并
-// 必须单选且所选单元格为合并单元格才可以拆分
+// Check if it can be merged or split
+// Multiple selections are required to merge
+// It must be single-selected and the selected cells must be merged cells before they can be split.
 const checkCanMergeOrSplit = (rowIndex: number, colIndex: number) => {
   const isMultiSelected = selectedCells.value.length > 1
   const targetCell = tableCells.value[rowIndex][colIndex]
@@ -692,51 +692,51 @@ const contextmenus = (el: HTMLElement): ContextmenuItem[] => {
 
   return [
     {
-      text: '插入列',
+      text: 'insert column',
       children: [
-        { text: '到左侧', handler: () => insertCol(colIndex) },
-        { text: '到右侧', handler: () => insertCol(colIndex + 1) },
+        { text: 'to the left', handler: () => insertCol(colIndex) },
+        { text: 'to the right', handler: () => insertCol(colIndex + 1) },
       ],
     },
     {
-      text: '插入行',
+      text: 'Insert row',
       children: [
-        { text: '到上方', handler: () => insertRow(rowIndex) },
-        { text: '到下方', handler: () => insertRow(rowIndex + 1) },
+        { text: 'to the top', handler: () => insertRow(rowIndex) },
+        { text: 'to below', handler: () => insertRow(rowIndex + 1) },
       ],
     },
     {
-      text: '删除列',
+      text: 'Delete column',
       disable: !canDeleteCol,
       handler: () => deleteCol(colIndex),
     },
     {
-      text: '删除行',
+      text: 'Delete row',
       disable: !canDeleteRow,
       handler: () => deleteRow(rowIndex),
     },
     { divider: true },
     {
-      text: '合并单元格',
+      text: 'Merge cells',
       disable: !canMerge,
       handler: mergeCells,
     },
     {
-      text: '取消合并单元格',
+      text: 'Unmerge cells',
       disable: !canSplit,
       handler: () => splitCells(rowIndex, colIndex),
     },
     { divider: true },
     {
-      text: '选中当前列',
+      text: 'Select current column',
       handler: () => selectCol(colIndex),
     },
     {
-      text: '选中当前行',
+      text: 'Select current row',
       handler: () => selectRow(rowIndex),
     },
     {
-      text: '选中全部单元格',
+      text: 'Select all cells',
       handler: selectAll,
     },
   ]

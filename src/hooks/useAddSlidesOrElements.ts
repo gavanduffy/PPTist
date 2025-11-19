@@ -13,8 +13,8 @@ export default () => {
   const { addHistorySnapshot } = useHistorySnapshot()
 
   /**
-   * 添加指定的元素数据（一组）
-   * @param elements 元素列表数据
+   * Add specified element data（a group）
+   * @param elements element list data
    */
   const addElementsFromData = (elements: PPTElement[]) => {
     const { groupIdMap, elIdMap } = createElementIdMap(elements)
@@ -60,8 +60,8 @@ export default () => {
   }
 
   /**
-   * 添加指定的页面数据
-   * @param slide 页面数据
+   * Add specified page data
+   * @param slide Page data
    */
   const addSlidesFromData = (slides: Slide[]) => {
     const slideIdMap = createSlideIdMap(slides)
@@ -72,18 +72,18 @@ export default () => {
         element.id = elIdMap[element.id]
         if (element.groupId) element.groupId = groupIdMap[element.groupId]
 		
-        // 若元素绑定了页面跳转链接
+        // If the element is bound to a page jump link
         if (element.link && element.link.type === 'slide') {
 
-          // 待添加页面中包含该页面，则替换相关绑定关系
+          // This page is included in the pages to be added，Then replace the relevant binding relationship
           if (slideIdMap[element.link.target]) {
             element.link.target = slideIdMap[element.link.target]
           }
-          // 待添加页面中不包含该页面，则删除该元素绑定的页面跳转
+          // This page is not included in the pages to be added，Then delete the page jump bound to the element.
           else delete element.link
         }
       }
-      // 动画id替换
+      // animationidreplace
       if (slide.animations) {
         for (const animation of slide.animations) {
           animation.id = nanoid(10)

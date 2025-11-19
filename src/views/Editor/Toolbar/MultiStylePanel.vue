@@ -1,7 +1,7 @@
 <template>
   <div class="multi-style-panel">
     <div class="row">
-      <div style="width: 40%;">填充颜色：</div>
+      <div style="width: 40%;">fill color：</div>
       <Popover trigger="click" style="width: 60%;">
         <template #content>
           <ColorPicker
@@ -16,7 +16,7 @@
     <Divider />
 
     <div class="row">
-      <div style="width: 40%;">边框样式：</div>
+      <div style="width: 40%;">border style：</div>
       <SelectCustom style="width: 60%;">
         <template #options>
           <div class="option" v-for="item in lineStyleOptions" :key="item" @click="updateOutline({ style: item })">
@@ -29,7 +29,7 @@
       </SelectCustom>
     </div>
     <div class="row">
-      <div style="width: 40%;">边框颜色：</div>
+      <div style="width: 40%;">border color：</div>
       <Popover trigger="click" style="width: 60%;">
         <template #content>
           <ColorPicker
@@ -41,7 +41,7 @@
       </Popover>
     </div>
     <div class="row">
-      <div style="width: 40%;">边框粗细：</div>
+      <div style="width: 40%;">Border thickness：</div>
       <NumberInput 
         :value="outline.width || 0"
         @update:value="value => updateOutline({ width: value })" 
@@ -56,7 +56,7 @@
         style="width: 60%;;"
         :value="richTextAttrs.fontname"
         search
-        searchLabel="搜索字体"
+        searchLabel="Search font"
         autofocus
         @update:value="value => updateFontStyle('fontname', value as string)"
         :options="FONTS"
@@ -69,7 +69,7 @@
         style="width: 40%;"
         :value="richTextAttrs.fontsize"
         search
-        searchLabel="搜索字号"
+        searchLabel="Search font size"
         autofocus
         @update:value="value => updateFontStyle('fontsize', value as string)"
         :options="fontSizeOptions.map(item => ({
@@ -89,7 +89,7 @@
             @update:modelValue="value => updateFontStyle('color', value)"
           />
         </template>
-        <TextColorButton first :color="richTextAttrs.color" v-tooltip="'文字颜色'">
+        <TextColorButton first :color="richTextAttrs.color" v-tooltip="'text color'">
           <IconText />
         </TextColorButton>
       </Popover>
@@ -100,21 +100,21 @@
             @update:modelValue="value => updateFontStyle('backcolor', value)"
           />
         </template>
-        <TextColorButton :color="richTextAttrs.backcolor" v-tooltip="'文字高亮'">
+        <TextColorButton :color="richTextAttrs.backcolor" v-tooltip="'text highlight'">
           <IconHighLight />
         </TextColorButton>
       </Popover>
       <Button 
         class="font-size-btn"
         style="width: 20%;"
-        v-tooltip="'增大字号'"
+        v-tooltip="'Increase font size'"
         @click="updateFontStyle('fontsize-add', '2')"
       ><IconFontSize />+</Button>
       <Button
         last
         class="font-size-btn"
         style="width: 20%;"
-        v-tooltip="'减小字号'"
+        v-tooltip="'Reduce font size'"
         @click="updateFontStyle('fontsize-reduce', '2')"
       ><IconFontSize />-</Button>
     </ButtonGroup>
@@ -124,10 +124,10 @@
       :value="richTextAttrs.align"
       @update:value="value => updateFontStyle('align', value)"
     >
-      <RadioButton value="left" style="flex: 1;" v-tooltip="'左对齐'"><IconAlignTextLeft /></RadioButton>
-      <RadioButton value="center" style="flex: 1;" v-tooltip="'居中'"><IconAlignTextCenter /></RadioButton>
-      <RadioButton value="right" style="flex: 1;" v-tooltip="'右对齐'"><IconAlignTextRight /></RadioButton>
-      <RadioButton value="justify" style="flex: 1;" v-tooltip="'两端对齐'"><IconAlignTextBoth /></RadioButton>
+      <RadioButton value="left" style="flex: 1;" v-tooltip="'left aligned'"><IconAlignTextLeft /></RadioButton>
+      <RadioButton value="center" style="flex: 1;" v-tooltip="'center'"><IconAlignTextCenter /></RadioButton>
+      <RadioButton value="right" style="flex: 1;" v-tooltip="'Align right'"><IconAlignTextRight /></RadioButton>
+      <RadioButton value="justify" style="flex: 1;" v-tooltip="'Justify'"><IconAlignTextBoth /></RadioButton>
     </RadioGroup>
   </div>
 </template>
@@ -180,7 +180,7 @@ const outline = ref<PPTElementOutline>({
   style: 'solid',
 })
 
-// 批量修改填充色（表格元素为单元格填充、音频元素为图标颜色）
+// Modify fill colors in batches（Table elements are filled for cells、Audio elements are icon colors）
 const updateFill = (value: string) => {
   for (const el of activeElementList.value) {
     if (
@@ -205,7 +205,7 @@ const updateFill = (value: string) => {
   fill.value = value
 }
 
-// 修改边框/线条样式
+// Modify border/line style
 const updateOutline = (outlineProps: Partial<PPTElementOutline>) => {
 
   for (const el of activeElementList.value) {
@@ -226,7 +226,7 @@ const updateOutline = (outlineProps: Partial<PPTElementOutline>) => {
   outline.value = { ...outline.value, ...outlineProps }
 }
 
-// 修改文字样式
+// Modify text style
 const updateFontStyle = (command: string, value: string) => {
   for (const el of activeElementList.value) {
     if (el.type === 'text' || (el.type === 'shape' && el.text?.content)) {

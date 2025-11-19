@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 
-// 非专业设计人士可以用该应用绘制基本形状：https://github.com/pipipi-pikachu/svgPathCreator
+// Unprofessional designers can use the application to draw basic shapes：https://github.com/pipipi-pikachu/svgPathCreator
 
 import { ShapePathFormulasKeys } from '@/types/slides'
 
@@ -247,7 +247,7 @@ export const SHAPE_PATH_FORMULAS: {
 
 export const SHAPE_LIST: ShapeListItem[] = [
   {
-    type: '矩形',
+    type: 'Rectangle',
     children: [
       {
         viewBox: [200, 200],
@@ -306,7 +306,7 @@ export const SHAPE_LIST: ShapeListItem[] = [
   },
 
   {
-    type: '常用形状',
+    type: 'Common Shape',
     children: [
       {
         viewBox: [200, 200],
@@ -637,7 +637,7 @@ export const SHAPE_LIST: ShapeListItem[] = [
   },
   
   {
-    type: '箭头',
+    type: 'Arrow',
     children: [
       {
         viewBox: [200, 200],
@@ -755,7 +755,7 @@ export const SHAPE_LIST: ShapeListItem[] = [
   },
 
   {
-    type: '其他形状',
+    type: 'Other shapes',
     children: [
       {
         viewBox: [1024, 1024],
@@ -941,7 +941,7 @@ export const SHAPE_LIST: ShapeListItem[] = [
   },
 
   {
-    type: '线性',
+    type: 'Linear',
     children: [
       {
         viewBox: [1024, 1024],

@@ -8,13 +8,13 @@
               <div class="icon"><IconClick theme="two-tone" :fill="['#ffc158', '#fff']" /></div>
               <div class="aippt-content">
                 <div class="aippt"><span>AIPPT</span></div>
-                <div class="aippt-subtitle">输入一句话，智能生成演示文稿</div>
+                <div class="aippt-subtitle">Enter a sentence，Intelligently generate presentations</div>
               </div>
             </div>
           </div>
           <Divider :margin="10" />
           <div class="import-section">
-            <div class="import-label">导入文件</div>
+            <div class="import-label">Import file</div>
             <div class="import-grid">
               <FileInput class="import-block" accept="application/vnd.openxmlformats-officedocument.presentationml.presentation" @change="files => {
                 importPPTXFile(files)
@@ -22,7 +22,7 @@
               }">
                 <span class="icon"><IconFilePdf theme="multi-color" :fill="['#333', '#d14424', '#fff']" /></span>
                 <span class="label">PPTX</span>
-                <span class="sub-label">（仅供测试）</span>
+                <span class="sub-label">（For testing only）</span>
               </FileInput>
               <FileInput class="import-block" accept=".json" @change="files => {
                 importJSON(files)
@@ -30,7 +30,7 @@
               }">
                 <span class="icon"><IconFileJpg theme="multi-color" :fill="['#333', '#d14424', '#fff']" /></span>
                 <span class="label">JSON</span>
-                <span class="sub-label">（仅供测试）</span>
+                <span class="sub-label">（For testing only）</span>
               </FileInput>
               <FileInput class="import-block" accept=".pptist" @change="files => {
                 importSpecificFile(files)
@@ -38,20 +38,20 @@
               }">
                 <span class="icon"><IconNotes theme="multi-color" :fill="['#333', '#d14424', '#fff']" /></span>
                 <span class="label">PPTIST</span>
-                <span class="sub-label">（专属格式）</span>
+                <span class="sub-label">（Exclusive format）</span>
               </FileInput>
             </div>
           </div>
           <Divider :margin="10" />
-          <PopoverMenuItem class="popover-menu-item" @click="setDialogForExport('pptx')"><IconDownload class="icon" /> 导出文件</PopoverMenuItem>
+          <PopoverMenuItem class="popover-menu-item" @click="setDialogForExport('pptx')"><IconDownload class="icon" /> Export file</PopoverMenuItem>
           <Divider :margin="10" />
-          <PopoverMenuItem class="popover-menu-item" @click="resetSlides(); mainMenuVisible = false"><IconRefresh class="icon" /> 重置幻灯片</PopoverMenuItem>
-          <PopoverMenuItem class="popover-menu-item" @click="openMarkupPanel(); mainMenuVisible = false"><IconMark class="icon" /> 幻灯片类型标注</PopoverMenuItem>
-          <PopoverMenuItem class="popover-menu-item" @click="mainMenuVisible = false; hotkeyDrawerVisible = true"><IconCommand class="icon" /> 快捷操作</PopoverMenuItem>
-          <PopoverMenuItem class="popover-menu-item" @click="goLink('https://github.com/pipipi-pikachu/PPTist/issues')"><IconComment class="icon" /> 意见反馈</PopoverMenuItem>
-          <PopoverMenuItem class="popover-menu-item" @click="goLink('https://github.com/pipipi-pikachu/PPTist/blob/master/doc/Q&A.md')"><IconHelpcenter class="icon" /> 常见问题</PopoverMenuItem>
+          <PopoverMenuItem class="popover-menu-item" @click="resetSlides(); mainMenuVisible = false"><IconRefresh class="icon" /> Reset slideshow</PopoverMenuItem>
+          <PopoverMenuItem class="popover-menu-item" @click="openMarkupPanel(); mainMenuVisible = false"><IconMark class="icon" /> Slide type annotation</PopoverMenuItem>
+          <PopoverMenuItem class="popover-menu-item" @click="mainMenuVisible = false; hotkeyDrawerVisible = true"><IconCommand class="icon" /> Quick operation</PopoverMenuItem>
+          <PopoverMenuItem class="popover-menu-item" @click="goLink('https://github.com/pipipi-pikachu/PPTist/issues')"><IconComment class="icon" /> Feedback</PopoverMenuItem>
+          <PopoverMenuItem class="popover-menu-item" @click="goLink('https://github.com/pipipi-pikachu/PPTist/blob/master/doc/Q&A.md')"><IconHelpcenter class="icon" /> FAQ</PopoverMenuItem>
           <Divider :margin="10" />
-          <div class="statement">注：本站仅作测试/演示，不提供任何形式的服务</div>
+          <div class="statement">Note：This site is for testing only/Demo，No services of any kind are provided</div>
         </template>
         <div class="menu-item"><IconHamburgerButton class="icon" /></div>
       </Popover>
@@ -75,21 +75,21 @@
 
     <div class="right">
       <div class="group-menu-item">
-        <div class="menu-item" v-tooltip="'幻灯片放映（F5）'" @click="enterScreening()">
+        <div class="menu-item" v-tooltip="'slide show（F5）'" @click="enterScreening()">
           <IconPpt class="icon" />
         </div>
         <Popover trigger="click" center>
           <template #content>
-            <PopoverMenuItem class="popover-menu-item" @click="enterScreeningFromStart()"><IconSlideTwo class="icon" /> 从头开始</PopoverMenuItem>
-            <PopoverMenuItem class="popover-menu-item" @click="enterScreening()"><IconPpt class="icon" /> 从当前页开始</PopoverMenuItem>
+            <PopoverMenuItem class="popover-menu-item" @click="enterScreeningFromStart()"><IconSlideTwo class="icon" /> Start from scratch</PopoverMenuItem>
+            <PopoverMenuItem class="popover-menu-item" @click="enterScreening()"><IconPpt class="icon" /> Start from current page</PopoverMenuItem>
           </template>
           <div class="arrow-btn"><IconDown class="arrow" /></div>
         </Popover>
       </div>
-      <div class="menu-item" v-tooltip="'AI生成PPT'" @click="openAIPPTDialog(); mainMenuVisible = false">
+      <div class="menu-item" v-tooltip="'AIgeneratePPT'" @click="openAIPPTDialog(); mainMenuVisible = false">
         <span class="text ai">AI</span>
       </div>
-      <div class="menu-item" v-tooltip="'导出'" @click="setDialogForExport('pptx')">
+      <div class="menu-item" v-tooltip="'Export'" @click="setDialogForExport('pptx')">
         <IconDownload class="icon" />
       </div>
       <a class="github-link" v-tooltip="'Copyright © 2020-PRESENT pipipi-pikachu'" href="https://github.com/pipipi-pikachu/PPTist" target="_blank">
@@ -103,10 +103,10 @@
       placement="right"
     >
       <HotkeyDoc />
-      <template v-slot:title>快捷操作</template>
+      <template v-slot:title>Quick operation</template>
     </Drawer>
 
-    <FullscreenSpin :loading="exporting" tip="正在导入..." />
+    <FullscreenSpin :loading="exporting" tip="Importing..." />
   </div>
 </template>
 

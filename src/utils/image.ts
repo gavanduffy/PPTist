@@ -4,8 +4,8 @@ interface ImageSize {
 }
 
 /**
- * 获取图片的原始宽高
- * @param src 图片地址
+ * Get the original width and height of the image
+ * @param src Image address
  */
 export const getImageSize = (src: string): Promise<ImageSize> => {
   return new Promise(resolve => {
@@ -34,8 +34,8 @@ export const getImageSize = (src: string): Promise<ImageSize> => {
 }
 
 /**
- * 读取图片文件的dataURL
- * @param file 图片文件
+ * Reading image filesdataURL
+ * @param file Image files
  */
 export const getImageDataURL = (file: File): Promise<string> => {
   return new Promise(resolve => {
@@ -48,8 +48,8 @@ export const getImageDataURL = (file: File): Promise<string> => {
 }
 
 /**
- * 判断是否为SVG代码字符串
- * @param text 待验证文本
+ * Determine whether it isSVGcode string
+ * @param text Text to be verified
  */
 export const isSVGString = (text: string): boolean => {
   const svgRegex = /<svg[\s\S]*?>[\s\S]*?<\/svg>/i
@@ -66,8 +66,8 @@ export const isSVGString = (text: string): boolean => {
 }
 
 /**
- * SVG代码转文件
- * @param svg SVG代码
+ * SVGCode to file
+ * @param svg SVGcode
  */
 export const svg2File = (svg: string): File => {
   const blob = new Blob([svg], { type: 'image/svg+xml' })

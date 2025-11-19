@@ -12,14 +12,14 @@ export default (
   const { activeElementIdList, activeGroupElementId, handleElementId, editorAreaFocus } = storeToRefs(mainStore)
   const { ctrlOrShiftKeyActive } = storeToRefs(useKeyboardStore())
 
-  // 选中元素
-  // startMove 表示是否需要再选中操作后进入到开始移动的状态
+  // Selected element
+  // startMove Indicates whether it is necessary to enter the state of starting movement after selecting the operation again.
   const selectElement = (e: MouseEvent | TouchEvent, element: PPTElement, startMove = true) => {
     if (!editorAreaFocus.value) mainStore.setEditorareaFocus(true)
 
-    // 如果目标元素当前未被选中，则将他设为选中状态
-    // 此时如果按下Ctrl键或Shift键，则进入多选状态，将当前已选中的元素和目标元素一起设置为选中状态，否则仅将目标元素设置为选中状态
-    // 如果目标元素是分组成员，需要将该组合的其他元素一起设置为选中状态
+    // If the target element is not currently selected，then set it to selected state
+    // At this time if you pressCtrlkey orShiftkey，then enter the multi-select state，Sets the currently selected element and the target element to the selected state together，Otherwise only set the target element to the selected state
+    // If the target element is a group member，Other elements of the combination need to be set to the selected state together
     if (!activeElementIdList.value.includes(element.id)) {
       let newActiveIdList: string[] = []
 
@@ -40,9 +40,9 @@ export default (
       mainStore.setHandleElementId(element.id)
     }
 
-    // 如果目标元素已被选中，且按下了Ctrl键或Shift键，则取消其被选中状态
-    // 除非目标元素是最后的一个被选中元素，或者目标元素所在的组合是最后一组选中组合
-    // 如果目标元素是分组成员，需要将该组合的其他元素一起取消选中状态
+    // If the target element is already selected，and pressedCtrlkey orShiftkey，then cancel its selected status
+    // Unless the target element is the last selected element，Or the combination of the target element is the last selected combination
+    // If the target element is a group member，The other elements of the combination need to be unchecked together
     else if (ctrlOrShiftKeyActive.value) {
       let newActiveIdList: string[] = []
 
@@ -62,12 +62,12 @@ export default (
       }
     }
 
-    // 如果目标元素已被选中，同时目标元素不是当前操作元素，则将其设置为当前操作元素
+    // If the target element is already selected，At the same time, the target element is not the current operating element.，then set it as the current operating element
     else if (handleElementId.value !== element.id) {
       mainStore.setHandleElementId(element.id)
     }
 
-    // 如果目标元素已被选中，同时也是当前操作元素，那么当目标元素在该状态下再次被点击时，将被设置为多选元素中的激活成员
+    // If the target element is already selected，It is also the current operating element，Then when the target element is clicked again in this state，will be set as the active member in the multi-select element
     else if (activeGroupElementId.value !== element.id) {
       const startPageX = e instanceof MouseEvent ? e.pageX : e.changedTouches[0].pageX
       const startPageY = e instanceof MouseEvent ? e.pageY : e.changedTouches[0].pageY

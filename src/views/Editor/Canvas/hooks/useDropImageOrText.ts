@@ -10,14 +10,14 @@ export default (elementRef: ShallowRef<HTMLElement | null>) => {
 
   const { createImageElement, createTextElement } = useCreateElement()
 
-  // 拖拽元素到画布中
+  // Drag elements into the canvas
   const handleDrop = (e: DragEvent) => {
     if (!e.dataTransfer || e.dataTransfer.items.length === 0) return
 
     const dataItems = e.dataTransfer.items
     const dataTransferFirstItem = dataItems[0]
 
-    // 检查事件对象中是否存在图片，存在则插入图片，否则继续检查是否存在文字，存在则插入文字
+    // Check if the image exists in the event object，Insert picture if exists，Otherwise continue to check whether the text exists，If exists, insert text
     let isImage = false
     for (const item of dataItems) {
       if (item.kind === 'file' && item.type.indexOf('image') !== -1) {

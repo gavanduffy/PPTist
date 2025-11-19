@@ -1,69 +1,69 @@
-# 5G技术如何改变我们的生活
-## 5G技术概述
-### 5G的定义
-- 第五代移动通信技术
-- 基于4G技术的重大升级
-### 5G的关键特性
-- 高速率
-- 低时延
-- 大容量
-### 5G的发展历程
-- 早期研究阶段
-- 标准制定阶段
-- 商用推广阶段
+# 5GHow technology changes our lives.
+## 5GTechnical overview
+### 5GDefinitions
+- The fifth generation of mobile communication technologies
+- Based on4GMajor technological upgrades
+### 5GKey features
+- High rate
+- Low time delay
+- Large capacity
+### 5GThe way things go.
+- Early research phase
+- Standard-setting phase
+- Commercial rollout phase
 
-## 5G对通信领域的变革
-### 个人通信体验提升
-- 高清视频通话无卡顿
-- 快速下载大文件
-- 多人在线游戏低延迟
-### 通信网络架构优化
-- 网络切片技术实现差异化服务
-- 边缘计算减少数据传输距离
-### 通信安全保障增强
-- 新的加密算法保障数据安全
-- 实时监测防范网络攻击
+## 5GChanges in the field of communications
+### Increased personal communication experience
+- Quality video calls without Carton.
+- Quick Download Large Files
+- Multiplayer Online Game Low Delay
+### Communication network architecture optimized
+- Diffusion service for web-slice technology
+- Marginal calculation reduces data transmission distance
+### Improved communications safety and security
+- New encryption algorithm to secure data
+- Real-time surveillance against cyberattacks
 
-## 5G与智能家居的融合
-### 智能家电控制
-- 远程控制家电开关和运行模式
-- 家电之间智能联动
-### 家庭安防升级
-- 高清实时监控家庭情况
-- 异常情况及时报警
-### 家居环境智能调节
-- 自动调节室内温度、湿度
-- 智能灯光控制营造氛围
+## 5GCombining with intelligent homes
+### Smart Head Power Control
+- Remote control of home switches and running mode
+- Smart connection between home and electricity.
+### Family security upgrade
+- Quality monitoring of families in real time
+- Call the police if anything goes wrong.
+### Intelligent home environment regulation
+- Automation of indoor temperature、Humidity
+- Smart light control creates an atmosphere.
 
-## 5G推动智能交通发展
-### 自动驾驶汽车
-- 车辆间实时通信避免碰撞
-- 高精度地图实时更新
-### 智能交通管理
-- 实时监控交通流量并优化信号灯
-- 快速处理交通事故
-### 公共交通智能化
-- 实时公交信息查询
-- 车内高速网络服务
+## 5GPromoting intelligent transport
+### Auto-driving
+- Real-time communications between vehicles to avoid collisions
+- High-precision maps updated in real time
+### Smart traffic management
+- Real-time traffic monitoring and optimization of lights
+- Fast-track traffic accidents
+### Intelligibility of public transport
+- Real-time bus information query
+- In-car high-speed network services
 
-## 5G在医疗领域的应用
-### 远程医疗服务
-- 专家远程诊断病情
-- 远程手术指导
-### 医疗设备互联
-- 可穿戴设备实时传输健康数据
-- 医院内部设备信息共享
-### 智能医疗管理
-- 电子病历快速调取
-- 医疗资源智能分配
+## 5GApplication in the medical field
+### Tele-health services
+- Specialist remote diagnosis of illness
+- Remote surgical instruction
+### Medical equipment interconnection
+- Wearable equipment to transmit health data in real time
+- Information-sharing on equipment within hospitals
+### Smart medical management
+- Quick electronic access to medical records
+- Smart distribution of medical resources
 
-## 5G助力工业互联网升级
-### 智能制造
-- 生产设备实时监控和远程维护
-- 柔性生产线智能调度
-### 工业物流优化
-- 货物实时定位和跟踪
-- 智能仓储管理
-### 工业安全保障
-- 危险区域实时监测
-- 事故预警和应急处理 
+## 5GInternet upgrade of the support industry
+### Smart manufacturing
+- Real-time monitoring and remote maintenance of production equipment
+- Soft Production Line Smart Scheduler
+### Optimizing industrial logistics
+- Real-time positioning and tracking of goods
+- Smart warehouse management
+### Industrial safety and security
+- Real-time monitoring of hazardous areas
+- Accident early warning and emergency response 

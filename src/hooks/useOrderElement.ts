@@ -11,9 +11,9 @@ export default () => {
   const { addHistorySnapshot } = useHistorySnapshot()
 
   /**
-   * 获取组合元素层级范围
-   * @param elementList 本页所有元素列表
-   * @param combineElementList 组合元素列表
+   * Get the hierarchical range of the combined element
+   * @param elementList List of all elements on this page
+   * @param combineElementList List of combined elements
    */
   const getCombineElementLevelRange = (elementList: PPTElement[], combineElementList: PPTElement[]) => {
     return {
@@ -23,26 +23,26 @@ export default () => {
   }
 
   /**
-   * 上移一层
-   * @param elementList 本页所有元素列表
-   * @param element 当前操作的元素
+   * Move one level up
+   * @param elementList List of all elements on this page
+   * @param element The element currently being operated on
    */
   const moveUpElement = (elementList: PPTElement[], element: PPTElement) => {
     const copyOfElementList: PPTElement[] = JSON.parse(JSON.stringify(elementList))
 
-    // 如果被操作的元素是组合元素成员，需要将该组合全部成员一起进行移动
+    // If the element being operated on is a composite element member，All members of the group need to be moved together
     if (element.groupId) {
 
-      // 获取到该组合全部成员，以及所有成员的层级范围
+      // Get all members of the group，and the hierarchical scope of all members
       const combineElementList = copyOfElementList.filter(_element => _element.groupId === element.groupId)
       const { minLevel, maxLevel } = getCombineElementLevelRange(elementList, combineElementList)
 
-      // 已经处在顶层，无法继续移动
+      // Already at the top，Unable to move further
       if (maxLevel === elementList.length - 1) return
 
-      // 通过组合成员范围的最大值，获取到该组合上一层的元素，然后将该组合元素从元素列表中移除（并缓存被移除的元素列表）
-      // 若上层元素处在另一个组合中，则将上述被移除的组合元素插入到该上层组合上方
-      // 若上层元素不处于任何分组中，则将上述被移除的组合元素插入到该上层元素上方
+      // Maximum value by combining member ranges，Get the elements of the previous layer of the combination，Then remove the combined element from the element list（and cache the list of removed elements）
+      // If the upper element is in another combination，Then insert the above removed combination element above the upper combination
+      // If the upper element is not in any group，Then insert the above removed combined element above the upper element
       const nextElement = copyOfElementList[maxLevel + 1]
       const movedElementList = copyOfElementList.splice(minLevel, combineElementList.length)
 
@@ -53,22 +53,22 @@ export default () => {
       else copyOfElementList.splice(minLevel + 1, 0, ...movedElementList)
     }
 
-    // 如果被操作的元素不是组合元素成员
+    // If the element being operated on is not a member of the composite element
     else {
 
-      // 获取该元素在列表中的层级
+      // Get the level of the element in the list
       const level = elementList.findIndex(item => item.id === element.id)
 
-      // 已经处在顶层，无法继续移动
+      // Already at the top，Unable to move further
       if (level === elementList.length - 1) return
 
-      // 获取到该组合上一层的元素，然后将该组合元素从元素列表中移除（并缓存被移除的元素列表）
+      // Get the elements of the previous layer of the combination，Then remove the combined element from the element list（and cache the list of removed elements）
       const nextElement = copyOfElementList[level + 1]
       const movedElement = copyOfElementList.splice(level, 1)[0]
 
-      // 通过组合成员范围的最大值，获取到该组合上一层的元素，然后将该组合元素从元素列表中移除（并缓存被移除的元素列表）
-      // 若上层元素处在另一个组合中，则将上述被移除的组合元素插入到该上层组合上方
-      // 若上层元素不处于任何分组中，则将上述被移除的组合元素插入到该上层元素上方
+      // Maximum value by combining member ranges，Get the elements of the previous layer of the combination，Then remove the combined element from the element list（and cache the list of removed elements）
+      // If the upper element is in another combination，Then insert the above removed combination element above the upper combination
+      // If the upper element is not in any group，Then insert the above removed combined element above the upper element
       if (nextElement.groupId) {
         const combineElementList = copyOfElementList.filter(_element => _element.groupId === nextElement.groupId)
         copyOfElementList.splice(level + combineElementList.length, 0, movedElement)
@@ -80,9 +80,9 @@ export default () => {
   }
 
   /**
-   * 下移一层，操作方式同上移
-   * @param elementList 本页所有元素列表
-   * @param element 当前操作的元素
+   * Move down one level，The operation method is the same as moving up
+   * @param elementList List of all elements on this page
+   * @param element The element currently being operated on
    */
   const moveDownElement = (elementList: PPTElement[], element: PPTElement) => {
     const copyOfElementList: PPTElement[] = JSON.parse(JSON.stringify(elementList))
@@ -120,38 +120,38 @@ export default () => {
   }
 
   /**
-   * 置顶层
-   * @param elementList 本页所有元素列表
-   * @param element 当前操作的元素
+   * Put on top
+   * @param elementList List of all elements on this page
+   * @param element The element currently being operated on
    */
   const moveTopElement = (elementList: PPTElement[], element: PPTElement) => {
     const copyOfElementList: PPTElement[] = JSON.parse(JSON.stringify(elementList))
 
-    // 如果被操作的元素是组合元素成员，需要将该组合全部成员一起进行移动
+    // If the element being operated on is a composite element member，All members of the group need to be moved together
     if (element.groupId) {
 
-      // 获取到该组合全部成员，以及所有成员的层级范围
+      // Get all members of the group，and the hierarchical scope of all members
       const combineElementList = copyOfElementList.filter(_element => _element.groupId === element.groupId)
       const { minLevel, maxLevel } = getCombineElementLevelRange(elementList, combineElementList)
 
-      // 已经处在顶层，无法继续移动
+      // Already at the top，Unable to move further
       if (maxLevel === elementList.length - 1) return null
 
-      // 将该组合元素从元素列表中移除，然后将被移除的元素添加到元素列表顶部
+      // Remove the combined element from the element list，Then add the removed element to the top of the element list
       const movedElementList = copyOfElementList.splice(minLevel, combineElementList.length)
       copyOfElementList.push(...movedElementList)
     }
 
-    // 如果被操作的元素不是组合元素成员
+    // If the element being operated on is not a member of the composite element
     else {
 
-      // 获取该元素在列表中的层级
+      // Get the level of the element in the list
       const level = elementList.findIndex(item => item.id === element.id)
 
-      // 已经处在顶层，无法继续移动
+      // Already at the top，Unable to move further
       if (level === elementList.length - 1) return null
 
-      // 将该组合元素从元素列表中移除，然后将被移除的元素添加到元素列表底部
+      // Remove the combined element from the element list，Then add the removed element to the bottom of the element list
       copyOfElementList.splice(level, 1)
       copyOfElementList.push(element)
     }
@@ -160,9 +160,9 @@ export default () => {
   }
 
   /**
-   * 置底层，操作方式同置顶
-   * @param elementList 本页所有元素列表
-   * @param element 当前操作的元素
+   * Place on the ground floor，The operation method is the same as pinned
+   * @param elementList List of all elements on this page
+   * @param element The element currently being operated on
    */
   const moveBottomElement = (elementList: PPTElement[], element: PPTElement) => {
     const copyOfElementList: PPTElement[] = JSON.parse(JSON.stringify(elementList))
@@ -188,9 +188,9 @@ export default () => {
   }
 
   /**
-   * 调整元素层级
-   * @param element 需要调整层级的元素
-   * @param command 调整命令：上移、下移、置顶、置底
+   * Adjust element level
+   * @param element Elements that need to be adjusted
+   * @param command adjust command：move up、move down、pin to top、bottom
    */
   const orderElement = (element: PPTElement, command: ElementOrderCommands) => {
     let newElementList

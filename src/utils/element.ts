@@ -15,8 +15,8 @@ interface IdMap {
 }
 
 /**
- * 计算元素在画布中的矩形范围旋转后的新位置范围
- * @param element 元素的位置大小和旋转角度信息
+ * Calculate the new position range of the element after rotating the rectangular range in the canvas
+ * @param element The position, size and rotation angle information of the element
  */
 export const getRectRotatedRange = (element: RotatedElementData) => {
   const { left, top, width, height, rotate = 0 } = element
@@ -50,8 +50,8 @@ export const getRectRotatedRange = (element: RotatedElementData) => {
 }
 
 /**
- * 计算元素在画布中的矩形范围旋转后的新位置与旋转之前位置的偏离距离
- * @param element 元素的位置大小和旋转角度信息
+ * Calculate the deviation distance between the new position of the element after rotation and the position before rotation within the rectangular range of the canvas.
+ * @param element The position, size and rotation angle information of the element
  */
 export const getRectRotatedOffset = (element: RotatedElementData) => {
   const { xRange: originXRange, yRange: originYRange } = getRectRotatedRange({
@@ -75,8 +75,8 @@ export const getRectRotatedOffset = (element: RotatedElementData) => {
 }
 
 /**
- * 计算元素在画布中的位置范围
- * @param element 元素信息
+ * Calculate the position range of an element in the canvas
+ * @param element element information
  */
 export const getElementRange = (element: PPTElement) => {
   let minX, maxX, minY, maxY
@@ -105,8 +105,8 @@ export const getElementRange = (element: PPTElement) => {
 }
 
 /**
- * 计算一组元素在画布中的位置范围
- * @param elementList 一组元素信息
+ * Calculate the position range of a set of elements in the canvas
+ * @param elementList a set of element information
  */
 export const getElementListRange = (elementList: PPTElement[]) => {
   const leftValues: number[] = []
@@ -131,8 +131,8 @@ export const getElementListRange = (elementList: PPTElement[]) => {
 }
 
 /**
- * 计算线条元素的长度
- * @param element 线条元素
+ * Calculate the length of line elements
+ * @param element line elements
  */
 export const getLineElementLength = (element: PPTLineElement) => {
   const deltaX = element.end[0] - element.start[0]
@@ -147,8 +147,8 @@ export interface AlignLine {
 }
 
 /**
- * 将一组对齐吸附线进行去重：同位置的的多条对齐吸附线仅留下一条，取该位置所有对齐吸附线的最大值和最小值为新的范围
- * @param lines 一组对齐吸附线信息
+ * Deduplicate a set of aligned adsorption lines：Multiple alignment adsorption lines at the same position leave only one，Take the maximum and minimum values ​​of all aligned adsorption lines at this position as the new range
+ * @param lines A set of aligned snap line information
  */
 export const uniqAlignLines = (lines: AlignLine[]) => {
   const uniqLines: AlignLine[] = []
@@ -168,9 +168,9 @@ export const uniqAlignLines = (lines: AlignLine[]) => {
 }
 
 /**
- * 以页面列表为基础，为每一个页面生成新的ID，并关联到旧ID形成一个字典
- * 主要用于页面元素时，维持数据中各处页面ID原有的关系
- * @param slides 页面列表
+ * Based on page list，Generate new ones for each pageID，and associated to the oldIDform a dictionary
+ * Mainly used when using page elements，Maintain pages everywhere in the dataIDoriginal relationship
+ * @param slides Page list
  */
 export const createSlideIdMap = (slides: Slide[]) => {
   const slideIdMap: IdMap = {}
@@ -181,10 +181,10 @@ export const createSlideIdMap = (slides: Slide[]) => {
 }
 
 /**
-   * 以元素列表为基础，为每一个元素生成新的ID，并关联到旧ID形成一个字典
-   * 主要用于复制元素时，维持数据中各处元素ID原有的关系
-   * 例如：原本两个组合的元素拥有相同的groupId，复制后依然会拥有另一个相同的groupId
-   * @param elements 元素列表数据
+   * Based on a list of elements，Generate new ones for each elementID，and associated to the oldIDform a dictionary
+   * Mainly used when copying elements，Maintain elements everywhere in the dataIDoriginal relationship
+   * For example：Originally the elements of the two combinations had the samegroupId，After copying, you will still have another identicalgroupId
+   * @param elements element list data
    */
 export const createElementIdMap = (elements: PPTElement[]) => {
   const groupIdMap: IdMap = {}
@@ -203,8 +203,8 @@ export const createElementIdMap = (elements: PPTElement[]) => {
 }
 
 /**
- * 根据表格的主题色，获取对应用于配色的子颜色
- * @param themeColor 主题色
+ * According to the theme color of the table，Get the subcolor corresponding to the color matching
+ * @param themeColor theme color
  */
 export const getTableSubThemeColor = (themeColor: string) => {
   const rgba = tinycolor(themeColor)
@@ -215,8 +215,8 @@ export const getTableSubThemeColor = (themeColor: string) => {
 }
 
 /**
- * 获取线条元素路径字符串
- * @param element 线条元素
+ * Get line element path string
+ * @param element line elements
  */
 export const getLineElementPath = (element: PPTLineElement) => {
   const start = element.start.join(',')
@@ -244,9 +244,9 @@ export const getLineElementPath = (element: PPTLineElement) => {
 }
 
 /**
- * 判断一个元素是否在可视范围内
- * @param element 元素
- * @param parent 父元素
+ * Determine whether an element is within the visible range
+ * @param element element
+ * @param parent parent element
  */
 export const isElementInViewport = (element: HTMLElement, parent: HTMLElement): boolean => {
   const elementRect = element.getBoundingClientRect()

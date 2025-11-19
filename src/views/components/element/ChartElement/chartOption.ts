@@ -252,7 +252,7 @@ export const getChartOption = ({
     }
   }
   if (type === 'radar') {
-    // indicator 中不设置max时显示异常，设置max后控制台警告，无解，等EChart官方修复此bug
+    // indicator Not set inmaxDisplay exception when，set upmaxrear console warning，No solution，waitEChartOfficially fix thisbug
     // const values: number[] = []
     // for (const item of data.series) {
     //   values.push(...item)

@@ -43,12 +43,12 @@
           </template>
         </template>
         <Button class="element-animation-btn" @click="handleAnimationId = ''">
-          <IconEffects /> 添加动画
+          <IconEffects /> Add animation
         </Button>
       </Popover>
     </div>
 
-    <div class="tip" v-else><IconClick style="margin-right: 5px;" /> 选中画布中的元素添加动画</div>
+    <div class="tip" v-else><IconClick style="margin-right: 5px;" /> Add animation to selected elements in canvas</div>
     
     <Divider />
 
@@ -68,8 +68,8 @@
             <div class="index">{{element.index}}</div>
             <div class="text">【{{element.elType}}】{{element.animationEffect}}</div>
             <div class="handler">
-              <IconPlayOne class="handler-btn" v-tooltip="'预览'" @click="runAnimation(element.elId, element.effect, element.duration)" />
-              <IconCloseSmall class="handler-btn" v-tooltip="'删除'" @click="deleteAnimation(element.id)" />
+              <IconPlayOne class="handler-btn" v-tooltip="'Preview'" @click="runAnimation(element.elId, element.effect, element.duration)" />
+              <IconCloseSmall class="handler-btn" v-tooltip="'delete'" @click="deleteAnimation(element.id)" />
             </div>
           </div>
 
@@ -77,7 +77,7 @@
             <Divider :margin="16" />
 
             <div class="config-item">
-              <div style="width: 35%;">持续时长：</div>
+              <div style="width: 35%;">Duration：</div>
               <NumberInput 
                 :min="500"
                 :max="3000"
@@ -88,20 +88,20 @@
               />
             </div>
             <div class="config-item">
-              <div style="width: 35%;">触发方式：</div>
+              <div style="width: 35%;">Trigger mode：</div>
               <Select
                 :value="element.trigger"
                 @update:value="value => updateElementAnimationTrigger(element.id, value as AnimationTrigger)"
                 style="width: 65%;"
                 :options="[
-                  { label: '主动触发', value: 'click' },
-                  { label: '与上一动画同时', value: 'meantime' },
-                  { label: '上一动画之后', value: 'auto' },
+                  { label: 'Active trigger', value: 'click' },
+                  { label: 'At the same time as the previous animation', value: 'meantime' },
+                  { label: 'After the previous animation', value: 'auto' },
                 ]"
               />
             </div>
             <div class="config-item">
-              <Button style="width: 100%;" @click="openAnimationPool(element.id)"><IconSwitch /> 更换动画</Button>
+              <Button style="width: 100%;" @click="openAnimationPool(element.id)"><IconSwitch /> Change animation</Button>
             </div>
           </div>
         </div>
@@ -111,7 +111,7 @@
     <template v-if="animationSequence.length >= 2">
       <Divider />
       <Button @click="runAllAnimation()">
-        {{ animateIn ? '停止预览' : '预览全部'}}
+        {{ animateIn ? 'Stop preview' : 'Preview all'}}
       </Button>
     </template>
   </div>
@@ -172,9 +172,9 @@ const { handleElement, handleElementId } = storeToRefs(useMainStore())
 const { currentSlide, formatedAnimations, currentSlideAnimations } = storeToRefs(slidesStore)
 
 const tabs: TabItem[] = [
-  { key: 'in', label: '入场', color: '#68a490' },
-  { key: 'out', label: '退场', color: '#d86344' },
-  { key: 'attention', label: '强调', color: '#e8b76a' },
+  { key: 'in', label: 'Admission', color: '#68a490' },
+  { key: 'out', label: 'Exit', color: '#d86344' },
+  { key: 'attention', label: 'emphasize', color: '#e8b76a' },
 ]
 const activeTab = ref('in')
 const animateIn = ref(false)
@@ -187,7 +187,7 @@ const animationPoolVisible = ref(false)
 
 const { addHistorySnapshot } = useHistorySnapshot()
 
-// 当前页面的动画列表
+// Animation list of current page
 const animationSequence = computed(() => {
   const animationSequence = []
   for (let i = 0; i < formatedAnimations.value.length; i++) {
@@ -210,21 +210,21 @@ const animationSequence = computed(() => {
   return animationSequence
 })
 
-// 当前选中元素的入场动画信息
+// Entrance animation information of the currently selected element
 const handleElementAnimation = computed(() => {
   const animations = currentSlideAnimations.value
   const animation = animations.filter(item => item.elId === handleElementId.value)
   return animation || []
 })
 
-// 删除元素动画
+// Remove element animation
 const deleteAnimation = (id: string) => {
   const animations = currentSlideAnimations.value.filter(item => item.id !== id)
   slidesStore.updateSlide({ animations })
   addHistorySnapshot()
 }
 
-// 拖拽修改动画顺序后同步数据
+// Synchronize data after dragging to modify animation order
 const handleDragEnd = (eventData: { newIndex: number; oldIndex: number }) => {
   const { newIndex, oldIndex } = eventData
   if (newIndex === undefined || oldIndex === undefined || newIndex === oldIndex) return
@@ -238,7 +238,7 @@ const handleDragEnd = (eventData: { newIndex: number; oldIndex: number }) => {
   addHistorySnapshot()
 }
 
-// 执行动画预览
+// Perform animation preview
 const runAnimation = (elId: string, effect: string, duration: number) => {
   const elRef = document.querySelector(`#editable-element-${elId} [class^=editable-element-]`)
   if (elRef) {
@@ -254,7 +254,7 @@ const runAnimation = (elId: string, effect: string, duration: number) => {
   }
 }
 
-// 执行所有动画预览
+// Perform all animation previews
 const runAllAnimation = async () => {
   animateIn.value = !animateIn.value
   for (let i = 0; i < animationSequence.value.length; i++) {
@@ -266,7 +266,7 @@ const runAllAnimation = async () => {
   }
 }
 
-// 修改元素动画持续时间
+// Modify element animation duration
 const updateElementAnimationDuration = (id: string, duration: number) => {
   if (duration < 100 || duration > 5000) return
 
@@ -278,7 +278,7 @@ const updateElementAnimationDuration = (id: string, duration: number) => {
   addHistorySnapshot()
 }
 
-// 修改触发方式
+// Modify trigger method
 const updateElementAnimationTrigger = (id: string, trigger: AnimationTrigger) => {
   const animations = currentSlideAnimations.value.map(item => {
     if (item.id === id) return { ...item, trigger }
@@ -288,7 +288,7 @@ const updateElementAnimationTrigger = (id: string, trigger: AnimationTrigger) =>
   addHistorySnapshot()
 }
 
-// 修改元素动画，并执行一次预览
+// Modify element animation，and perform a preview
 const updateElementAnimation = (type: AnimationType, effect: string) => {
   const animations = currentSlideAnimations.value.map(item => {
     if (item.id === handleAnimationId.value) return { ...item, type, effect }
@@ -307,7 +307,7 @@ const updateElementAnimation = (type: AnimationType, effect: string) => {
 }
 
 const handleAnimationId = ref('')
-// 添加元素动画，并执行一次预览
+// Add element animation，and perform a preview
 const addAnimation = (type: AnimationType, effect: string) => {
   if (handleAnimationId.value) {
     updateElementAnimation(type, effect)
@@ -332,7 +332,7 @@ const addAnimation = (type: AnimationType, effect: string) => {
   }, 0)
 }
 
-// 动画选择面板打开600ms后再移除遮罩层，否则打开面板后迅速滑入鼠标预览会导致抖动
+// The animation selection panel opens600msThen remove the mask layer，Otherwise, quickly sliding the mouse into the preview after opening the panel will cause jitter.
 const popoverMaskHide = ref(false)
 const handlePopoverVisibleChange = (visible: boolean) => {
   if (visible) {

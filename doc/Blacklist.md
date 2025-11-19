@@ -1,5 +1,5 @@
-# 🤮 黑名单/耻辱柱
+# 🤮 Blacklist/Shame pillar.
 
-👎蚂蚁PPT（[宁波灵达网络科技有限公司](https://aiqicha.baidu.com/company_detail_45305048629737)） - https://www.antppt.com/
+👎Ants.PPT（[Nimbalinda Network Technology Ltd.](https://aiqicha.baidu.com/company_detail_45305048629737)） - https://www.antppt.com/
 
-> 未按AGPL-3协议开源相关代码，并删除了原始版权声明。违反协议数月后被作者找上，自知侵权行为却毫无歉意，坚持拒绝遵守AGPL-3协议，期间反倒试图让作者帮助其解决程序问题，甚至还要求作者提供手持身份证照片自证
+> Not pressedAGPL-3Protocol Open Source Relevant Code，And delete the original copyright statement.。After months of breach of the agreement, the author approached him.，You know what you're doing, but you're not sorry.，He insists on refusing to comply.AGPL-3Agreement，In the meantime, he tried to get the author to help him solve the problem.，He even asked the author to provide a self-incrimination with an ID.
