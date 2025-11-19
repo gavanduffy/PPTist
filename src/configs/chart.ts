@@ -1,54 +1,54 @@
 import type { ChartData } from '@/types/slides'
 
 export const CHART_TYPE_MAP: { [key: string]: string } = {
-  'bar': '柱状图',
-  'column': '条形图',
-  'line': '折线图',
-  'area': '面积图',
-  'scatter': '散点图',
-  'pie': '饼图',
-  'ring': '环形图',
-  'radar': '雷达图',
+  'bar': 'bar chart',
+  'column': 'Bar chart',
+  'line': 'Line chart',
+  'area': 'area chart',
+  'scatter': 'Scatter plot',
+  'pie': 'pie chart',
+  'ring': 'donut chart',
+  'radar': 'radar chart',
 }
 
 export const CHART_DEFAULT_DATA: { [key: string]: ChartData } = {
   'bar': {
-    labels: ['类别1', '类别2', '类别3', '类别4', '类别5'],
-    legends: ['系列1', '系列2'],
+    labels: ['category1', 'category2', 'category3', 'category4', 'category5'],
+    legends: ['series1', 'series2'],
     series: [[12, 19, 5, 2, 18], [7, 11, 13, 21, 9]],
   },
   'column': {
-    labels: ['类别1', '类别2', '类别3', '类别4', '类别5'],
-    legends: ['系列1', '系列2'],
+    labels: ['category1', 'category2', 'category3', 'category4', 'category5'],
+    legends: ['series1', 'series2'],
     series: [[12, 19, 5, 2, 18], [7, 11, 13, 21, 9]],
   },
   'line': {
-    labels: ['类别1', '类别2', '类别3', '类别4', '类别5'],
-    legends: ['系列1', '系列2'],
+    labels: ['category1', 'category2', 'category3', 'category4', 'category5'],
+    legends: ['series1', 'series2'],
     series: [[12, 19, 5, 2, 18], [7, 11, 13, 21, 9]],
   },
   'pie': {
-    labels: ['类别1', '类别2', '类别3', '类别4', '类别5'],
-    legends: ['值'],
+    labels: ['category1', 'category2', 'category3', 'category4', 'category5'],
+    legends: ['value'],
     series: [[12, 19, 5, 2, 18]],
   },
   'ring': {
-    labels: ['类别1', '类别2', '类别3', '类别4', '类别5'],
-    legends: ['值'],
+    labels: ['category1', 'category2', 'category3', 'category4', 'category5'],
+    legends: ['value'],
     series: [[12, 19, 5, 2, 18]],
   },
   'area': {
-    labels: ['类别1', '类别2', '类别3', '类别4', '类别5'],
-    legends: ['系列1', '系列2'],
+    labels: ['category1', 'category2', 'category3', 'category4', 'category5'],
+    legends: ['series1', 'series2'],
     series: [[12, 19, 5, 2, 18], [7, 11, 13, 21, 9]],
   },
   'radar': {
-    labels: ['类别1', '类别2', '类别3', '类别4', '类别5'],
-    legends: ['系列1', '系列2'],
+    labels: ['category1', 'category2', 'category3', 'category4', 'category5'],
+    legends: ['series1', 'series2'],
     series: [[12, 19, 5, 2, 18], [7, 11, 13, 21, 9]],
   },
   'scatter': {
-    labels: ['坐标1', '坐标2', '坐标3', '坐标4', '坐标5'],
+    labels: ['coordinate1', 'coordinate2', 'coordinate3', 'coordinate4', 'coordinate5'],
     legends: ['X', 'Y'],
     series: [[12, 19, 5, 2, 18], [7, 11, 13, 21, 9]],
   },

@@ -61,7 +61,7 @@
       ></div>
     </div>
 
-    <div class="recent-colors-title" v-if="recentColors.length">最近使用：</div>
+    <div class="recent-colors-title" v-if="recentColors.length">Recently Used：</div>
     <div class="picker-presets">
       <div
         v-for="c in recentColors"
@@ -168,7 +168,7 @@ const selectPresetColor = (colorString: string) => {
   emit('update:modelValue', colorString)
 }
 
-// 每次选择非预设颜色时，需要将该颜色加入到最近使用列表中
+// Every time you select a non-preset colour，Need to add the colour to the most recent list
 const updateRecentColorsCache = debounce(function() {
   const _color = tinycolor(color.value).toRgbString()
   if (!recentColors.value.includes(_color)) {
@@ -204,8 +204,8 @@ const changeColor = (value: ColorFormats.RGBA | ColorFormats.HSLA | ColorFormats
   updateRecentColorsCache()
 }
 
-// 打开取色吸管
-// 检查环境是否支持原生取色吸管，支持则使用原生吸管，否则使用自定义吸管
+// Turn on the toner straw.
+// Check if the environment supports the primary pigmentation straw.，Supports use native straws，Otherwise, use a custom straw.
 const openEyeDropper = () => {
   const isSupportedEyeDropper = 'EyeDropper' in window
 
@@ -213,9 +213,9 @@ const openEyeDropper = () => {
   else customEyeDropper()
 }
 
-// 原生取色吸管
+// Original pigment straw.
 const browserEyeDropper = () => {
-  message.success('按 ESC 键关闭取色吸管', { duration: 0 })
+  message.success('Press ESC Key closes the coloring straw', { duration: 0 })
 
   // eslint-disable-next-line
   const eyeDropper = new (window as any).EyeDropper()
@@ -231,7 +231,7 @@ const browserEyeDropper = () => {
   })
 }
 
-// 基于 Canvas 的自定义取色吸管
+// Based on Canvas custom to colored straws
 const customEyeDropper = () => {
   const targetRef: HTMLElement | null = document.querySelector('.canvas')
   if (!targetRef) return
@@ -300,7 +300,7 @@ const customEyeDropper = () => {
     canvasRef.addEventListener('mouseleave', handleMouseleave)
     window.addEventListener('mousedown', handleMousedown)
   }).catch(() => {
-    message.error('取色吸管初始化失败')
+    message.error('Failed to initialize snorting tubes')
     document.body.removeChild(maskRef)
   })
 }

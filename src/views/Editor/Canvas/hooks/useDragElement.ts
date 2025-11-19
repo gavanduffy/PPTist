@@ -46,9 +46,9 @@ export default (
 
     const isActiveGroupElement = element.id === activeGroupElementId.value
 
-    // 收集对齐对齐吸附线
-    // 包括页面内除目标元素外的其他元素在画布中的各个可吸附对齐位置：上下左右四边，水平中心、垂直中心
-    // 其中线条和被旋转过的元素需要重新计算他们在画布中的中心点位置的范围
+    // Collect Align Align Snap Lines
+    // Including each snappable alignment position of other elements on the page except the target element in the canvas：up, down, left, right, four sides，horizontal center、vertical center
+    // The lines and rotated elements need to recalculate the range of their center point position in the canvas.
     let horizontalLines: AlignLine[] = []
     let verticalLines: AlignLine[] = []
 
@@ -94,7 +94,7 @@ export default (
       verticalLines.push(leftLine, rightLine, verticalCenterLine)
     }
 
-    // 画布可视区域的四个边界、水平中心、垂直中心
+    // The four boundaries of the canvas's visible area、horizontal center、vertical center
     const edgeTopLine: AlignLine = { value: 0, range: [0, edgeWidth] }
     const edgeBottomLine: AlignLine = { value: edgeHeight, range: [0, edgeWidth] }
     const edgeHorizontalCenterLine: AlignLine = { value: edgeHeight / 2, range: [0, edgeWidth] }
@@ -105,7 +105,7 @@ export default (
     horizontalLines.push(edgeTopLine, edgeBottomLine, edgeHorizontalCenterLine)
     verticalLines.push(edgeLeftLine, edgeRightLine, edgeVerticalCenterLine)
     
-    // 对齐吸附线去重
+    // Align adsorption lines to remove duplicates
     horizontalLines = uniqAlignLines(horizontalLines)
     verticalLines = uniqAlignLines(verticalLines)
 
@@ -113,10 +113,10 @@ export default (
       const currentPageX = e instanceof MouseEvent ? e.pageX : e.changedTouches[0].pageX
       const currentPageY = e instanceof MouseEvent ? e.pageY : e.changedTouches[0].pageY
 
-      // 如果鼠标滑动距离过小，则将操作判定为误操作：
-      // 如果误操作标记为null，表示是第一次触发移动，需要计算当前是否是误操作
-      // 如果误操作标记为true，表示当前还处在误操作范围内，但仍然需要继续计算检查后续操作是否还处于误操作
-      // 如果误操作标记为false，表示已经脱离了误操作范围，不需要再次计算
+      // If the mouse sliding distance is too small，The operation will be judged as a misoperation：
+      // If misoperation is marked asnull，Indicates that the movement is triggered for the first time，Need to calculate whether the current operation is a mistake
+      // If misoperation is marked astrue，Indicates that it is still within the range of misoperation.，But it still needs to continue to calculate and check whether subsequent operations are still misoperations.
+      // If misoperation is marked asfalse，Indicates that it has left the range of misoperation，No need to calculate again
       if (isMisoperation !== false) {
         isMisoperation = Math.abs(startPageX - currentPageX) < sorptionRange && 
                          Math.abs(startPageY - currentPageY) < sorptionRange
@@ -131,12 +131,12 @@ export default (
         if (Math.abs(moveX) < Math.abs(moveY)) moveX = 0
       }
 
-      // 基础目标位置
+      // base target position
       let targetLeft = elOriginLeft + moveX
       let targetTop = elOriginTop + moveY
 
-      // 计算目标元素在画布中的位置范围，用于吸附对齐
-      // 需要区分单选和多选两种情况，其中多选状态下需要计算多选元素的整体范围；单选状态下需要继续区分线条、普通元素、旋转后的普通元素三种情况
+      // Calculate the position range of the target element in the canvas，for snap alignment
+      // It is necessary to distinguish between single selection and multiple selection.，In the multi-select state, it is necessary to calculate the overall range of the multi-select elements.；It is necessary to continue to distinguish lines in the single-select state、Common elements、Three situations of ordinary elements after rotation
       let targetMinX: number, targetMaxX: number, targetMinY: number, targetMaxY: number
 
       if (activeElementIdList.value.length === 1 || isActiveGroupElement) {
@@ -210,8 +210,8 @@ export default (
       const targetCenterX = targetMinX + (targetMaxX - targetMinX) / 2
       const targetCenterY = targetMinY + (targetMaxY - targetMinY) / 2
 
-      // 将收集到的对齐吸附线与计算的目标元素位置范围做对比，二者的差小于设定的值时执行自动对齐校正
-      // 水平和垂直两个方向需要分开计算
+      // Compare the collected aligned adsorption lines with the calculated position range of the target element，When the difference between the two is less than the set value, automatic alignment correction is performed.
+      // Horizontal and vertical directions need to be calculated separately
       const _alignmentLines: AlignmentLineProps[] = []
       let isVerticalAdsorbed = false
       let isHorizontalAdsorbed = false
@@ -259,15 +259,15 @@ export default (
       }
       alignmentLines.value = _alignmentLines
       
-      // 单选状态下，或者当前选中的多个元素中存在正在操作的元素时，仅修改正在操作的元素的位置
+      // In single selection state，Or when there is an element being operated on among the currently selected elements，Modify only the position of the element being manipulated
       if (activeElementIdList.value.length === 1 || isActiveGroupElement) {
         elementList.value = elementList.value.map(el => {
           return el.id === element.id ? { ...el, left: targetLeft, top: targetTop } : el
         })
       }
 
-      // 多选状态下，除了修改正在操作的元素的位置，其他被选中的元素也需要修改位置信息
-      // 其他被选中的元素的位置信息通过正在操作的元素的移动偏移量来进行计算
+      // In multi-select state，In addition to modifying the position of the element being operated on，Other selected elements also need to modify their position information
+      // The position information of other selected elements is calculated based on the movement offset of the element being operated on.
       else {
         const handleElement = elementList.value.find(el => el.id === element.id)
         if (!handleElement) return

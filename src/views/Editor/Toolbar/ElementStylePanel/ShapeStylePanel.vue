@@ -1,7 +1,7 @@
 <template>
   <div class="shape-style-panel">
     <div class="title">
-      <span>点击替换形状</span>
+      <span>Click to replace shape</span>
       <IconDown />
     </div>
     <div class="shape-pool">
@@ -24,9 +24,9 @@
         :value="fillType" 
         @update:value="value => updateFillType(value as 'fill' | 'gradient' | 'pattern')"
         :options="[
-          { label: '纯色填充', value: 'fill' },
-          { label: '渐变填充', value: 'gradient' },
-          { label: '图片填充', value: 'pattern' },
+          { label: 'solid color fill', value: 'fill' },
+          { label: 'gradient fill', value: 'gradient' },
+          { label: 'Picture fill', value: 'pattern' },
         ]"
       />
       <div style="width: 10px;" v-if="fillType !== 'pattern'"></div>
@@ -45,8 +45,8 @@
         @update:value="value => updateGradient({ type: value as GradientType })"
         v-else-if="fillType === 'gradient'"
         :options="[
-          { label: '线性渐变', value: 'linear' },
-          { label: '径向渐变', value: 'radial' },
+          { label: 'linear gradient', value: 'linear' },
+          { label: 'radial gradient', value: 'radial' },
         ]"
       />
     </div>
@@ -61,7 +61,7 @@
         />
       </div>
       <div class="row">
-        <div style="width: 40%;">当前色块：</div>
+        <div style="width: 40%;">Current color patch：</div>
         <Popover trigger="click" style="width: 60%;">
           <template #content>
             <ColorPicker
@@ -73,7 +73,7 @@
         </Popover>
       </div>
       <div class="row" v-if="gradient.type === 'linear'">
-        <div style="width: 40%;">渐变角度：</div>
+        <div style="width: 40%;">gradient angle：</div>
         <Slider
           style="width: 60%;"
           :min="0"
@@ -111,9 +111,9 @@
         :value="textAlign"
         @update:value="value => updateTextAlign(value as 'top' | 'middle' | 'bottom')"
       >
-        <RadioButton value="top" v-tooltip="'顶对齐'" style="flex: 1;"><IconAlignTextTopOne /></RadioButton>
-        <RadioButton value="middle" v-tooltip="'居中'" style="flex: 1;"><IconAlignTextMiddleOne /></RadioButton>
-        <RadioButton value="bottom" v-tooltip="'底对齐'" style="flex: 1;"><IconAlignTextBottomOne /></RadioButton>
+        <RadioButton value="top" v-tooltip="'top aligned'" style="flex: 1;"><IconAlignTextTopOne /></RadioButton>
+        <RadioButton value="middle" v-tooltip="'center'" style="flex: 1;"><IconAlignTextMiddleOne /></RadioButton>
+        <RadioButton value="bottom" v-tooltip="'bottom aligned'" style="flex: 1;"><IconAlignTextBottomOne /></RadioButton>
       </RadioGroup>
 
       <Divider />
@@ -128,12 +128,12 @@
 
     <div class="row">
       <CheckboxButton
-        v-tooltip="'双击连续使用'"
+        v-tooltip="'Double click to use continuously'"
         style="flex: 1;"
         :checked="!!shapeFormatPainter"
         @click="toggleShapeFormatPainter()"
         @dblclick="toggleShapeFormatPainter(true)"
-      ><IconFormatBrush /> 形状格式刷</CheckboxButton>
+      ><IconFormatBrush /> Shape Format Painter</CheckboxButton>
     </div>
   </div>
 </template>
@@ -217,7 +217,7 @@ const updateElement = (props: Partial<PPTShapeElement>) => {
   addHistorySnapshot()
 }
 
-// 设置填充类型：渐变、纯色
+// Set fill type：Gradient、solid color
 const updateFillType = (type: 'gradient' | 'fill' | 'pattern') => {
   if (type === 'fill') {
     slidesStore.removeElementProps({ id: handleElementId.value, propName: ['gradient', 'pattern'] })
@@ -234,7 +234,7 @@ const updateFillType = (type: 'gradient' | 'fill' | 'pattern') => {
   }
 }
 
-// 设置渐变填充
+// Set gradient fill
 const updateGradient = (gradientProps: Partial<Gradient>) => {
   if (!gradient.value) return
   const _gradient = { ...gradient.value, ...gradientProps }
@@ -248,7 +248,7 @@ const updateGradientColors = (color: string) => {
   updateGradient({ colors })
 }
 
-// 上传填充图片
+// Upload filler image
 const uploadPattern = (files: FileList) => {
   const imageFile = files[0]
   if (!imageFile) return
@@ -258,12 +258,12 @@ const uploadPattern = (files: FileList) => {
   })
 }
 
-// 设置填充色
+// Set fill color
 const updateFill = (value: string) => {
   updateElement({ fill: value })
 }
 
-// 修改形状
+// Modify shape
 const changeShape = (shape: ShapePoolItem) => {
   const { width, height } = handleElement.value as PPTShapeElement
   const props: Partial<PPTShapeElement> = {

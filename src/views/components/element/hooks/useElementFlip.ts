@@ -1,6 +1,6 @@
 import { computed, type Ref } from 'vue'
 
-// 计算元素的翻转样式
+// Calculate the flip style of an element
 export default (flipH: Ref<boolean | undefined>, flipV: Ref<boolean | undefined>) => {
   const flipStyle = computed(() => {
     let style = ''

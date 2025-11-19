@@ -3,14 +3,14 @@
     class="notes-panel" 
     :width="300" 
     :height="130" 
-    title="幻灯片类型标注" 
+    title="Slide type annotation" 
     :left="-270" 
     :top="90"
     @close="close()"
   >
     <div class="container">
       <div class="row">
-        <div style="width: 40%;">当前页面类型：</div>
+        <div style="width: 40%;">Current page type：</div>
         <Select
           style="width: 60%;"
           :value="slideType"
@@ -19,7 +19,7 @@
         />
       </div>
       <div class="row" v-if="handleElement && (handleElement.type === 'text' || (handleElement.type === 'shape' && handleElement.text))">
-        <div style="width: 40%;">当前文本类型：</div>
+        <div style="width: 40%;">Current text type：</div>
         <Select
           style="width: 60%;"
           :value="textType"
@@ -28,7 +28,7 @@
         />
       </div>
       <div class="row" v-else-if="handleElement && handleElement.type === 'image'">
-        <div style="width: 40%;">当前图片类型：</div>
+        <div style="width: 40%;">Current picture type：</div>
         <Select
           style="width: 60%;"
           :value="imageType"
@@ -36,7 +36,7 @@
           :options="imageTypeOptions"
         />
       </div>
-      <div class="placeholder" v-else>选中图片、文字、带文字的形状，标记类型</div>
+      <div class="placeholder" v-else>Select picture、Word、shape with text，Tag type</div>
     </div>
   </MoveablePanel>
 </template>
@@ -56,33 +56,33 @@ const { currentSlide } = storeToRefs(slidesStore)
 const { handleElement, handleElementId } = storeToRefs(mainStore)
 
 const slideTypeOptions = ref<{ label: string; value: SlideType | '' }[]>([
-  { label: '未标记类型', value: '' },
-  { label: '封面页', value: 'cover' },
-  { label: '目录页', value: 'contents' },
-  { label: '过渡页', value: 'transition' },
-  { label: '内容页', value: 'content' },
-  { label: '结束页', value: 'end' },
+  { label: 'Unmarked type', value: '' },
+  { label: 'cover page', value: 'cover' },
+  { label: 'Contents page', value: 'contents' },
+  { label: 'transition page', value: 'transition' },
+  { label: 'Content page', value: 'content' },
+  { label: 'end page', value: 'end' },
 ])
 
 const textTypeOptions = ref<{ label: string; value: TextType | '' }[]>([
-  { label: '未标记类型', value: '' },
-  { label: '标题', value: 'title' },
-  { label: '副标题', value: 'subtitle' },
-  { label: '正文', value: 'content' },
-  { label: '列表项目', value: 'item' },
-  { label: '列表项标题', value: 'itemTitle' },
-  { label: '注释', value: 'notes' },
-  { label: '页眉', value: 'header' },
-  { label: '页脚', value: 'footer' },
-  { label: '节编号', value: 'partNumber' },
-  { label: '项目编号', value: 'itemNumber' },
+  { label: 'Unmarked type', value: '' },
+  { label: 'title', value: 'title' },
+  { label: 'subtitle', value: 'subtitle' },
+  { label: 'text', value: 'content' },
+  { label: 'List items', value: 'item' },
+  { label: 'List item title', value: 'itemTitle' },
+  { label: 'Comment', value: 'notes' },
+  { label: 'header', value: 'header' },
+  { label: 'footer', value: 'footer' },
+  { label: 'section number', value: 'partNumber' },
+  { label: 'Project number', value: 'itemNumber' },
 ])
 
 const imageTypeOptions = ref<{ label: string; value: ImageType | '' }[]>([
-  { label: '未标记类型', value: '' },
-  { label: '页面插图', value: 'pageFigure' },
-  { label: '项目插图', value: 'itemFigure' },
-  { label: '背景图', value: 'background' },
+  { label: 'Unmarked type', value: '' },
+  { label: 'Page illustration', value: 'pageFigure' },
+  { label: 'Project illustration', value: 'itemFigure' },
+  { label: 'Background image', value: 'background' },
 ])
 
 const slideType = computed(() => currentSlide.value?.type || '')

@@ -1,82 +1,82 @@
-## 常见问题
+## Frequent problems
 
-#### Q. 为什么xxx快捷键没有作用？
+#### Q. Why?xxxShortcuts do not work？
 
-A. 部分快捷键需要聚焦到指定区域才会生效，例如焦点在左边缩略图列表才能使用操作页面的快捷键，焦点在画布区域才能使用操作元素的快捷键。
+A. Some shortcuts need to focus to the specified area to be effective，For example, focus on the list of thumbnails on the left to use the shortcuts to the operating page，Focus is in the canvas area to use the shortcuts of the operating elements。
 
-#### Q. 为什么粘贴没有作用？
+#### Q. Why is pasting useless?？
 
-A. 请注意允许浏览器访问系统剪贴板。
+A. Please be careful to allow browser access to the system clipboard.。
 
-#### Q. 为什么浏览器刷新或重新打开后，之前做的PPT没有了？
+#### Q. Why is the browser refreshing or reopening，I did it before.PPTIt's gone.？
 
-A. 仓库提供的链接仅供演示，且该项目是纯前端部署的，没有后台，不会保存数据。
+A. The links provided by the warehouse are for presentation only，And the project was deployed at the front end.，No backstage.，No data saved。
 
-#### Q. 如何调整幻灯片页面的顺序？
+#### Q. How to reorder slide pages？
 
-A. 按住左侧缩略图可进行拖拽调整顺序。
+A. Press the left thumbnail to drag the order。
 
-#### Q. 为什么插入图片后会出现操作卡顿的情况？
+#### Q. Why does Caden operate when you insert a picture?？
 
-A. 由于本演示项目不依赖后端，插入本地图片实际引用的是Base64，导致数据体积非常大，在真正的生产环境中应该上传图片后引用图片地址，就不会出现这样的情况了。
+A. As this demonstration project does not rely on backends，The actual quote to insert local pictures is:Base64，The data is very large.，In a real production environment, pictures should be uploaded with reference to their addresses.，It wouldn't have happened.。
 
-#### Q. 为什么应用预置主题后没有效果？
+#### Q. Why the application of pre-themes is not working？
 
-A. 设置预置主题的作用是使新添加的元素和页面应用主题样式，不会对已有的元素和页面生效，您可以使用“应用主题到全部”功能，将当前主题应用到全部页面中。
+A. Sets the pre-theme to apply the theme style to newly added elements and pages，Does not take effect on existing elements and pages，You can use“Apply Theme to All”Functions，Apply the current theme to all pages。
 
-#### Q. 设置在线字体不生效？
+#### Q. Cannot initialise Evolution's mail component.？
 
-A. 设置在线字体时会下载对应的字体文件，该文件较大，需要等待下载完成后才会应用新的字体。
+A. The corresponding font file is downloaded when setting the online font，The file is larger，New fonts will not be applied until the download is completed。
 
-#### Q. 关于导入导出PPTX文件
+#### Q. About Import ExportPPTXDocumentation
 
-A. 作为一个在线幻灯片应用，导出、导入 PPTX 文件是非常重要的功能，但是经过调研发现，该功能实现起来的复杂度远超过了预期。由于个人能力和时间有限，这部分功能只能借助第三方的轮子来完成。
+A. Apply as an online slide，Export、Import PPTX Documentation is a very important function.，But after research,，The functionality is much more complex than expected.。Due to limited personal capacity and time，This part of the function can only be done with a third-party wheel.。
 
-- 导出：目前导出功能主要基于 [PptxGenJS](https://github.com/gitbrent/PptxGenJS/) 完成，能够实现大多数基本元素的导出，但还有非常多的缺陷需要一点点完善。同时需要知晓的是：1、该功能依赖 PptxGenJS，对于该库本身无法实现的部分（如动画），本项目也无能为力；2、导出功能的目标只是【导出样式尽可能一致的元素】，而不是一比一将网页还原到PPT，一些样式差异是必然存在的。
+- Export：The current export function is based primarily on [PptxGenJS](https://github.com/gitbrent/PptxGenJS/) Completed，Capable of export of most of the basic elements，But there are a lot of flaws that need a little improvement.。And what we need to know is...：1、The function depends on PptxGenJS，For those parts of the library that cannot be achieved by themselves（It's animated.），There's nothing we can do about it.；2、The goal of the export function is just...【Export as consistent an element as possible】，It's not like we're back on the page.PPT，Some style differences are inevitable.。
 
-- 导入：导入功能目前暂时没有合适的解决方案，还在调研和观望中。如果有感兴趣或做过相关内容的朋友，欢迎来 issues 中讨论。
+- Import：There is currently no suitable solution for the import function，Still researching and watching.。If there's a friend who's interested or has done something about it,，Welcome. issues Under discussion。
 
-> PS. 我做了一个 [pptx转json](https://github.com/pipipi-pikachu/pptx2json) 的实验，如果你急需实现导入PPTX文件功能，可以此为参考自行实现。
+> PS. I made one. [pptxTurn.json](https://github.com/pipipi-pikachu/pptx2json) The experiment.，If you're in urgent need of import,PPTXFile Function，You can use this as a reference to self-realization.。
 
-同时补充一点，本项目不是 office PPT 的专属在线编辑器，本质上与 office PPT 没有任何关系。【导入/导出 ppt 文件】只是项目的一个[功能]而非[目的]。
+Let's add one more thing.，This is not a project. office PPT A proprietary online editor，In essence with office PPT It doesn't matter.。【Import/Export ppt Documentation】It's just one of the projects.[Functions]Not.[Purpose]。
 
-#### Q. 视频元素支持哪些格式？
+#### Q. Which formats are supported by video elements？
 
-A. 本项目只提供最基础的视频能力，正常状态下可以播放video标签本身支持的格式。
+A. This project provides only the most basic video capability，Playable in normal conditionvideoFormats supported by the label itself。
 
-此外，可以额外引入 [hls.js](https://github.com/video-dev/hls.js) 或 [flv.js](https://github.com/Bilibili/flv.js) 来支持对应的格式（.m3u8 .flv），你只需要在项目中引入对应的文件（如cdn）即可，无需其他配置。
+In addition，Could be extra. [hls.js](https://github.com/video-dev/hls.js) or [flv.js](https://github.com/Bilibili/flv.js) Supports the corresponding format（.m3u8 .flv），All you have to do is introduce the corresponding files into the project.（Likecdn）That's fine.，No other configuration required。
 
-#### Q. 关于导入JSON文件
+#### Q. About ImportsJSONDocumentation
 
-A. 首先，出于安全等原因，个人并不建议将这种功能在前端直接暴露给用户，或者说用户根本就不应该接触到JSON这种格式（甚至导出JSON功能的初衷也只是为了方便开发）。如果真的有相关的需求，请自行在服务端实现，核心在于做好进行数据的校验，前端实现也是一样。
+A. First.，For security reasons, etc.，A person does not recommend that this function be exposed directly to the user at the front end.，Or maybe the user shouldn't even be in touch.JSONThis format（Even export.JSONIt's just for ease of development.）。If there's any need for it,，Do it on your own.，The core is to get the data checked.，The same goes for the front end.。
 
-#### Q. 打印 / 导出 PDF 样式与实际有出入
+#### Q. Print / Export PDF Styles differ from actual
 
-A. 请注意在浏览器弹出的打印窗口调整相关的设置。建议：设置边距为【默认】、取消勾选【页眉和页脚】、勾选【背景图形】。另外，建议在正式环境中采用后端生成PDF的方案效果更佳（如puppeteer）。
+A. Please note that the relevant settings are adjusted in the print window from the browser.。Recommendations：Set Margin As【Default】、Uncheck【Headers and Footers】、Check【Background Graphics】。And...，It is recommended that backend generation be used in the formal environmentPDFImproved impact of programmes（Likepuppeteer）。
 
-#### Q. 为什么移动端不支持 xxx 功能？
+#### Q. Why is the moving end not supported xxx Functions？
 
-A. 首先需要明确的一点，就是移动端无论怎么做，体验上都是必然大不如 PC 端的。因此个人将移动端定位为：简单进行一些临时处理的应急使用。真正的设计/制作幻灯片应在电脑上使用完整的功能。如实在有移动端的特殊需求，可尝试在移动端使用电脑模式打开（当然，体验会更槽糕），或者开发者自己进行二次开发。
+A. First of all, we need to be clear.，It's just moving the end, no matter what.，It's always a bad experience. PC End。So a person locates the mobile end as：Simple emergency use of some ad hoc treatment。Real design./Slides should be made using the full functionality on the computer。If there's a special need for a mobile end，Use computer mode to try to open on a mobile end（Sure.，It'll be worse.），Or the developers do their own secondary development.。
 
-#### Q. 关于兼容性？
+#### Q. On compatibility？
 
-A. 本项目优先兼容Chrome、Firefox。在Safari下可能存在部分兼容性问题。不兼容IE。
+A. Priority compatibility of the projectChrome、Firefox。Yes.SafariThere may be some problems of compatibility.。IncompatibleIE。
 
-#### Q. 为什么不是NPM包？
+#### Q. Why not?NPMBag.？
 
-A. 大家都知道，对于一般的插件/库而言，一个封装好的npm包能够更方便的接入现有的项目中，但PPTist是特殊的，这是一个完整的程序，而不是作为程序的一部分存在。如果你需要使用PPTist，那么我认为你必然需要在此基础上做很多定制化的开发，包括但不限于：与后台的通信、各种模板和预置素材、新的元素类型、使用其他方案实现现有的某些元素、自己的主题、更换快捷键，等等……而不是仅仅安装一个和现有demo一样的东西就行了（这样虽然方便，但在实际的产品开发中没有任何意义）。正如前面所列举的，需要可配置的东西太多了，如果作为一个插件的存在，很难兼顾得了，或者说这样做的开发量是巨大的，目前个人还承担不起。
+A. Everyone knows that.，For generic plugins/The library.，It's a sealed one.npmThe package will allow easier access to existing projects，But...PPTistIt's special.，It's a complete program.，Not as part of the program.。If you need to usePPTist，So I think you're going to have to do a lot of custom development on that basis.，but not limited to：Communications with the backstage、Various templates and preset materials、New Element Type、Use other options to achieve some existing elements、My own theme.、Change Shortcuts，Wait.……Instead of just installing one and existing one.demoJust the same thing.（It's convenient.，But it doesn't make any sense in actual product development.）。Just as I've already listed.，There's a lot of stuff that can be configured.，If there were to be a plugin,，It's hard to balance.，Or it's a huge development.，I can't afford it right now.。
 
-因此，使用PPTist开发项目正确的做法是：拉取完整的代码、尝试理解它、基于它改造你自己的东西。社区中也不乏类似的项目，例如 [drawio](https://github.com/jgraph/drawio)
+And so...，UsePPTistIt's the right thing to do for development projects.：Pull the full code.、Try to understand it.、It's based on what you make of yourself.。There's no shortage of similar projects in the community.，For example... [drawio](https://github.com/jgraph/drawio)
 
-#### Q. 关于 AI PPT
+#### Q. About AI PPT
 
-A. 首先需要说明，AIPPT不是PPTist的重点，现在或以后都不是，它只是PPTist众多功能中非常小的一部分而已，并且是比较简单一部分，你可以理解为这只是一个跟风的小功能点，我不想蹭AI的热度，但无奈太多人将AI看得太重要太复杂了，于是我做了这个DEMO（它真的没那么复杂），目前此功能仅作参考，内部实现了最基础的AIPPT生成逻辑，即：模板定制 + AI生成数据与模板结合 + 配图替换。为控制成本暂时只能做到这里，但为了达到生产环节的效果，你还需要做更多，例如更多的模板、更细致的AI工作流程。
+A. Well, first of all, we need to be clear.，AIPPTIt's not.PPTistFocus，Not now or ever.，It's just...PPTistIt's just a very small part of a lot of functions.，And it's a relatively simple part.，You can understand that it's just a small function of the wind.，I don't want to.AIThe heat.，But there's too many of them.AIIt's too important, too complicated.，So I did this.DEMO（It's not that complicated.），This function is currently used only for reference purposes.，It's the most basic thing in the house.AIPPTGenerate logic，i.e.,：Template Customisation + AIGenerate data in combination with templates + Diagram Replace。That's all we can do for a while to control the costs.，But in order to achieve the effects of production,，You need to do more.，More templates, for example.、More detail.AIWorkstream。
 
-注：配图替换仅提供方法，不提供实际演示功能，你需要自己提供图片源接入（如AI文生图、图库搜索匹配等方法）
+Notes：Diagram replacement only provides method，No actual presentation function provided，You need to provide your own access to the source of the picture.（LikeAIVincent.、Database search matching, etc.）
 
-#### Q. 其他
+#### Q. Other
 
-A. 另外需要强调，PPTist只是一个开源项目而非面向普通用户的产品，主要提供的是技术解决方案，一些产品化的需求/优化还需要开发者自己去实现和完善。
+A. And there's something else to stress.，PPTistIt's just an open source project, not a product for ordinary users.，Technology solutions are mainly available.，Some product-based demand/Optimization also requires the developers to do it themselves.。
 
 ## FAQ
 #### Q. Why doesn’t the xxx shortcut work?

@@ -11,7 +11,7 @@
     <a href="https://gitee.com/pptist/PPTist" target="_black"><img src="https://gitee.com/pptist/PPTist/badge/star.svg?version=latest" alt="gitee"></a>
 </p>
 
-[简体中文](README_zh.md) | English
+[Simplified Chinese](README_zh.md) | English
 
 
 # 🎨 PPTist
@@ -28,7 +28,7 @@
 1. This project is a "Web Slideshow Application", not a "low-code platform", "H5 editor", "image editor", "whiteboard application", or similar tools.
 2. The target audience for this project is <b>developers with needs for [Web slideshow] development, basic web development experience is required</b>. The provided link is merely a demo address and does not offer any online services. You should not use this project directly as a tool, nor does it support out-of-the-box functionality. If you simply need a service or tool, you can opt for more excellent and mature products such as: [Slidev](https://sli.dev/)、[revealjs](https://revealjs.com/), etc.
 3. Here are some summarized [Frequently Asked Questions](/doc/Q&A.md). When raising Issues or submitting PRs for the first time, be sure to read this document in advance.
-4. For commercial use, please refer to [商业用途](#-商业用途)
+4. For commercial use, please refer to [Commercial use](#-Commercial use)
 
 
 # 🚀 Installation
@@ -198,42 +198,42 @@ If you wish to use this project for commercial gain, I hope you will respect ope
 
 
 
-# 🧮 商业用途
-- 本项目禁止闭源商用，如果你希望将PPTist用于商业项目盈利，请尊重开源，**严格遵循 [AGPL-3.0 协议](https://www.gnu.org/licenses/agpl-3.0.html)**，回馈开源社区（这是作者倡导的）；
-- 如果你因为任何原因，必须要闭源商用，无法执行 AGPL-3.0 协议，可以选择：
-    1. 使用早期的 Apache 2.0 协议版本 [（该版本最后更新时间为2022年5月，目前已停止维护，点击此处可下载代码）](https://github.com/pipipi-pikachu/PPTist/archive/f1a35bb8e045124e37dcafd6acbf40b4531b69aa.zip)；
-    2. 成为项目的重要贡献者，包括：
-        - 你的代码被本项目作为依赖引用，包括：npm安装、script/style等文件引用、代码片段引用（引用处会注明）；
-        - 你给本项目提交过重要的 PR 或 Issue（由作者主观判断，符合的 PR 或 Issue 会打上`important contribution`标签）；
-        - 你长期参与到本项目的维护/推进工作中，如为本项目：提供了有效的周边工具、制作了大量模板等（由作者主观判断）；
-        - 先违反协议后再成为贡献者不适用此项；
-    3. [邮件联系作者](mailto:pipipi_pikachu@163.com)付费获取独立的商业授权。独立授权价格：
-        - 一年1999元；
-        - 三年2999元；
-        - 永久5499元（不含税）；
-        - 违反协议后被作者找到的，不适用于以上价格；
-- 建议优先考虑执行AGPL-3.0协议，如需付费获取独立的商业授权，还请注意：
-    - 独立商业授权表示：作者单独出具商业授权协议文件，授权您将代码用于商业行为，且不必执行 AGPL-3.0 协议；
-    - 授权不等于出售软件或服务，不存在其他“商业版本/完整版本”、不提供任何API/SDK/在线服务/技术支持/技术咨询/定制开发、也不提供可直接交付的产品；
-    - 该软件无法开箱即用，至少也得自行接入后端数据读取/存储相关能力。因此，使用本项目需要有最基本的web开发经验（能理解什么是前端&后端、什么是接口/数据库、什么是跨域等）；
-    - 授权后，仍禁止将源代码二次售卖、授权、开源或恶意传播；
-    - 授权后，如有需要，作者可提供当前AIPPT相关后台代码以供参考（但都非常简单，无任何核心逻辑，更建议自己实现）；
-    - 请务必提前做好基础调研，判断PPTist是否符合需求，包括：功能（是否能满足业务需求）和开发（是否接受当前技术栈/实现方案）；
-    - 不接受[黑名单/耻辱柱](/doc/Blacklist.md)对象通过付费获取独立的商业授权或贡献代码；
-    - 作者倡导异步沟通（正式、信息量大、信息整合度高），**不加私人微信/QQ/手机号等**，有任何授权相关疑问请邮件联系，谢谢理解；
-    - 单纯的提需求/报bug/询问技术方案等非授权相关咨询，请在 [Issues](https://github.com/pipipi-pikachu/PPTist/issues) 中进行。作者不接受邮件提需求/报bug/询问技术方案。
+# 🧮 Commercial use
+- This item is closed for commercial purposes，♪ If you want to be ♪PPTistFor profit on commercial projects，Please respect open source.，**Strict compliance [AGPL-3.0 Agreement](https://www.gnu.org/licenses/agpl-3.0.html)**，Back to the open source community.（It's the author's idea.）；
+- If for any reason,，It has to be closed.，Unable to execute AGPL-3.0 Agreement，It's optional.：
+    1. Use early Apache 2.0 Protocol version [（Final update of the version as2022Year5Month，No maintenance is currently available，Click here for downloadable code）](https://github.com/pipipi-pikachu/PPTist/archive/f1a35bb8e045124e37dcafd6acbf40b4531b69aa.zip)；
+    2. Become an important contributor to the project，Including：
+        - Your code is cited as a reliance on this project.，Including：npmInstall、script/styleWaiting for file references、Snippet Reference（The citation points.）；
+        - You've submitted important information to this project. PR or Issue（By the author's subjective judgement.，Matches PR or Issue I'll hit him.`important contribution`Label）；
+        - You've been involved in the maintenance of this project for a long time./Moving forward，For this item：Effective perimeter tools provided、A large number of templates have been produced, etc.（By the author's subjective judgement.）；
+        - This does not apply if you violate the agreement and then become a contributor.；
+    3. [Mail Contact Author](mailto:pipipi_pikachu@163.com)Payment for independent commercial authorizations。Independently authorized prices：
+        - One year.1999Dollars；
+        - Three years.2999Dollars；
+        - Permanent5499Dollars（Without taxes）；
+        - Found by the author after violating the agreement.，Not applicable to above price；
+- Recommendation priority for implementationAGPL-3.0Agreement，Obtaining an independent commercial authorization for fees，Attention, please.：
+    - Independent business authorization：Author to produce a separate commercial authorization agreement document，You are authorized to use the code for business purposes.，And you don't have to do it. AGPL-3.0 Agreement；
+    - Authorization does not amount to sale of software or services，There is no other“Commercial version/Full Version”、Do not provide anything.API/SDK/Online services/Technical support/Technical advice/Custom development、Nor offer products that can be delivered directly；
+    - This software is not open for immediate use.，At least you have to access backend data./Storage-related capabilities。And so...，The use of this project requires the most basicwebDevelopment experience（Understand what's the front end?&Backend、What's an interface?/Database、What's cross-domain, etc.?）；
+    - Post-authorization，The second sale of the source code is still prohibited、Authorization、Open source or malicious transmission；
+    - Post-authorization，If need be.，Author can provide the currentAIPPTRelevant background code for reference（But it's very simple.，No core logic，It's better to do it on its own.）；
+    - Please do your basic research ahead of schedule.，JudgementPPTistCompatibility with needs，Including：Functions（Availability of operational requirements）and development（Accepts the current technology store/Achievement programme）；
+    - Not accepted[Blacklist/Shame pillar.](/doc/Blacklist.md)Object obtains a separate business authorization or contribution code through payment；
+    - The author advocates for antagonism.（Formal、Big amount of information、High information integration），**No personal tweets./QQ/Cell phone number, etc.**，Please contact e-mail for any authorized questions.，Thank you for understanding.；
+    - It's a simple demand./Report!bug/Ask for advice on non-mandated issues such as technical programmes，Please. [Issues](https://github.com/pipipi-pikachu/PPTist/issues) Ongoing。Author does not accept mail requests/Report!bug/Query technology programmes。
 
 ---
-# 🔔 其他说明
-## 什么是 AGPL-3.0 协议
-协议的核心要求用通俗的语言解释如下：
-- **开源义务**：如果你用了 AGPL 的代码，无论你或你的下游怎么使用/修改，都必须把你最终的代码全部完整公开出来（不只是给出修改的部分，也不是说换个框架重写一遍就能和原始代码脱离关系了），并继续以 AGPL 协议开源（强调：必须延续 AGPL 协议，保持开源的传染性，不能更换其他协议）。
-- **网络服务也要开源**：即使你只是用 AGPL 的代码做了一个网站或网络服务，别人通过网络用你的服务时，你也需要遵守上一条**开源义务**。
-- **保留版权声明**：你不能删掉代码里原来的作者信息和许可证声明，得告诉大家这代码是从哪儿来的。
-- **不能加额外限制**：你不能在衍生出来的 AGPL 代码上加一些限制，比如不让别人再分发代码，或者要求别人付费才能使用代码（包括但不限于：要求别人购买授权/服务/产品等）。
-- **免责声明**：作者不保证代码没有 bug，也不对使用后果负责。
+# 🔔 Other notes
+## What is it? AGPL-3.0 Agreement
+The core requirements of the agreement are explained in plain language as follows:：
+- **Open source obligation**：If you use it, AGPL The code.，No matter how you or your downstream use it./Modify，We have to make all your final codes public.（It's not just the part that gives changes.，It doesn't mean that rewriting the frame would separate from the original code.），AND CONTINUE TO AGPL Open Source Agreement（Emphasizing：It has to continue. AGPL Agreement，Keep the open source contagious.，Unable to replace other protocols）。
+- **We need to open up the network.**：Even if you just use it. AGPL The code did a website or a network service.，When people use your services online,，You'll have to follow the previous one.**Open source obligation**。
+- **Reservation of copyright declarations**：You can't delete the original author's information and license statement from the code.，We have to tell everyone where the code came from.。
+- **No extra restrictions.**：You can't be born. AGPL Put some restrictions on the code.，Like not getting people to distribute the code again.，Or ask someone else to pay for the code.（but not limited to：Requesting permission to buy./Services/Products, etc.）。
+- **Disclaimer**：Authors don't guarantee no code. bug，And not responsible for the consequences of the use.。
 
-> 详细协议内容见官方文档：[AGPL-3.0 协议](https://www.gnu.org/licenses/agpl-3.0.html)
+> The details of the protocol can be found in the official document.：[AGPL-3.0 Agreement](https://www.gnu.org/licenses/agpl-3.0.html)
 
-## 声明
-Github、Gitee等代码托管平台存在一些仓库基于本项目代码进行了二次开发，但未遵守AGPL-3.0协议，擅自删除了AGPL-3.0协议许可证声明或改用其他协议，作者在此声明：**这些仓库的代码在事实上仍然属于AGPL-3.0协议，切勿受其误导。**
+## Statement
+Github、GiteeRedevelopment of some warehouses based on this project code is carried out by the waiting code hosting platform，Not complied withAGPL-3.0Agreement，It was deleted without permission.AGPL-3.0Agreement licence declaration or conversion to other agreements，Here's what the author says.：**The codes of these warehouses still actually belong to them.AGPL-3.0Agreement，Don't be misled.。**

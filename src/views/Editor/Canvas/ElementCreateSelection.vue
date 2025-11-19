@@ -7,7 +7,7 @@
   >
     <div :class="['selection', creatingElement?.type]" v-if="start && end" :style="position">
 
-      <!-- 绘制线条专用 -->
+      <!-- Special for drawing lines -->
       <svg
         v-if="creatingElement?.type === 'line' && lineData"
         overflow="visible" 
@@ -53,8 +53,8 @@ onMounted(() => {
   offset.value = { x, y }
 })
 
-// 鼠标拖动创建元素生成位置大小
-// 获取范围的起始位置和终点位置
+// Drag the mouse to create an element to generate the position and size
+// Get the start and end positions of a range
 const createSelection = (e: MouseEvent) => {
   let isMouseDown = true
 
@@ -68,19 +68,19 @@ const createSelection = (e: MouseEvent) => {
     let currentPageX = e.pageX
     let currentPageY = e.pageY
 
-    // 按住Ctrl键或者Shift键时：
-    // 对于非线条元素需要锁定宽高比例，对于线条元素需要锁定水平或垂直方向
+    // Press and holdCtrlkey orShiftKey time：
+    // For non-line elements, you need to lock the width and height ratio，Line elements need to be locked horizontally or vertically
     if (ctrlOrShiftKeyActive.value) {
       const moveX = currentPageX - startPageX
       const moveY = currentPageY - startPageY
 
-      // 水平和垂直方向的拖动距离，后面以拖动距离较大的方向为基础计算另一方向的数据
+      // Horizontal and vertical drag distance，Later, the data in the other direction is calculated based on the direction with the larger drag distance.
       const absX = Math.abs(moveX)
       const absY = Math.abs(moveY)
 
       if (creatingElement.value.type === 'shape') {
 
-        // 判断是否为反向拖动：从左上到右下为正向操作，此外所有情况都是反向操作
+        // Determine whether it is reverse drag：From upper left to lower right is forward operation，In addition, all cases are reverse operations
         const isOpposite = (moveY > 0 && moveX < 0) || (moveY < 0 && moveX > 0)
 
         if (absX > absY) {
@@ -150,7 +150,7 @@ const createSelection = (e: MouseEvent) => {
   }
 }
 
-// 绘制线条的路径相关数据（仅当绘制元素类型为线条时使用）
+// Data related to the path of drawing lines（Only used when the drawing element type is line）
 const lineData = computed(() => {
   if (!start.value || !end.value) return null
   if (!creatingElement.value || creatingElement.value.type !== 'line') return null
@@ -183,7 +183,7 @@ const lineData = computed(() => {
   }
 })
 
-// 根据生成范围的起始位置和终点位置，计算元素创建时的位置和大小
+// Based on the starting position and end position of the generated range，Calculate the position and size of an element when it is created
 const position = computed(() => {
   if (!start.value || !end.value) return {}
 

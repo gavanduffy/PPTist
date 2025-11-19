@@ -1,17 +1,17 @@
 <template>
   <div class="presenter-view">
     <div class="toolbar">
-      <div class="tool-btn" @click="changeViewMode('base')"><IconListView class="tool-icon" /><span>普通视图</span></div>
-      <div class="tool-btn" :class="{ 'active': writingBoardToolVisible }" @click="writingBoardToolVisible = !writingBoardToolVisible"><IconWrite class="tool-icon" /><span>画笔</span></div>
-      <div class="tool-btn" :class="{ 'active': laserPen }" @click="laserPen = !laserPen"><IconMagic class="tool-icon" /><span>激光笔</span></div>
-      <div class="tool-btn" :class="{ 'active': timerlVisible }" @click="timerlVisible = !timerlVisible"><IconStopwatchStart class="tool-icon" /><span>计时器</span></div>
+      <div class="tool-btn" @click="changeViewMode('base')"><IconListView class="tool-icon" /><span>normal view</span></div>
+      <div class="tool-btn" :class="{ 'active': writingBoardToolVisible }" @click="writingBoardToolVisible = !writingBoardToolVisible"><IconWrite class="tool-icon" /><span>brush</span></div>
+      <div class="tool-btn" :class="{ 'active': laserPen }" @click="laserPen = !laserPen"><IconMagic class="tool-icon" /><span>laser pointer</span></div>
+      <div class="tool-btn" :class="{ 'active': timerlVisible }" @click="timerlVisible = !timerlVisible"><IconStopwatchStart class="tool-icon" /><span>timer</span></div>
       <div class="tool-btn" @click="() => fullscreenState ? manualExitFullscreen() : enterFullscreen()">
         <IconOffScreenOne class="tool-icon" v-if="fullscreenState" />
         <IconFullScreenOne class="tool-icon" v-else />
-        <span>{{ fullscreenState ? '退出全屏' : '全屏' }}</span>
+        <span>{{ fullscreenState ? 'Exit full screen' : 'full screen' }}</span>
       </div>
       <Divider class="divider" />
-      <div class="tool-btn" @click="exitScreening()"><IconPower class="tool-icon" /><span>结束放映</span></div>
+      <div class="tool-btn" @click="exitScreening()"><IconPower class="tool-icon" /><span>end show</span></div>
     </div>
 
     <div class="content">
@@ -64,10 +64,10 @@
 
     <div class="remark">
       <div class="header">
-        <span>演讲者备注</span>
+        <span>Speaker Notes</span>
         <span>P {{slideIndex + 1}} / {{slides.length}}</span>
       </div>
-      <div class="remark-content ProseMirror-static" :class="{ 'empty': !currentSlideRemark }" :style="{ fontSize: remarkFontSize + 'px' }" v-html="currentSlideRemark || '无备注'"></div>
+      <div class="remark-content ProseMirror-static" :class="{ 'empty': !currentSlideRemark }" :style="{ fontSize: remarkFontSize + 'px' }" v-html="currentSlideRemark || 'No remarks'"></div>
       <div class="remark-scale">
         <div :class="['scale-btn', { 'disable': remarkFontSize === 12 }]" @click="setRemarkFontSize(remarkFontSize - 2)"><IconMinus /></div>
         <div :class="['scale-btn', { 'disable': remarkFontSize === 40 }]" @click="setRemarkFontSize(remarkFontSize + 2)"><IconPlus /></div>
@@ -155,39 +155,39 @@ watch(slideIndex, () => {
 const contextmenus = (): ContextmenuItem[] => {
   return [
     {
-      text: '上一页',
+      text: 'Previous page',
       subText: '↑ ←',
       disable: slideIndex.value <= 0,
       handler: () => turnPrevSlide(),
     },
     {
-      text: '下一页',
+      text: 'Next page',
       subText: '↓ →',
       disable: slideIndex.value >= slides.value.length - 1,
       handler: () => turnNextSlide(),
     },
     {
-      text: '第一页',
+      text: 'First page',
       disable: slideIndex.value === 0,
       handler: () => turnSlideToIndex(0),
     },
     {
-      text: '最后一页',
+      text: 'last page',
       disable: slideIndex.value === slides.value.length - 1,
       handler: () => turnSlideToIndex(slides.value.length - 1),
     },
     { divider: true },
     {
-      text: '画笔工具',
+      text: 'Brush tool',
       handler: () => writingBoardToolVisible.value = true,
     },
     {
-      text: '普通视图',
+      text: 'normal view',
       handler: () => props.changeViewMode('base'),
     },
     { divider: true },
     {
-      text: '结束放映',
+      text: 'end show',
       subText: 'ESC',
       handler: exitScreening,
     },

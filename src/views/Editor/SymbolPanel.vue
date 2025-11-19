@@ -53,7 +53,7 @@ const { handleElement } = storeToRefs(mainStore)
 const { createTextElement } = useCreateElement()
 
 const selectedSymbolKey = ref(SYMBOL_LIST[0].key)
-const emojiTypeList = ref(['表情', '动作', '动植物', '食物', '旅行', '活动', '物品', '符号'])
+const emojiTypeList = ref(['expression', 'action', 'flora and fauna', 'food', 'travel', 'Activity', 'thing', 'symbol'])
 const selectedEmojiTypeIndex = ref(0)
 const symbolPool = computed(() => {
   const selectedSymbol = SYMBOL_LIST.find(item => item.key === selectedSymbolKey.value)

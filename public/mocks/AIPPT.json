@@ -2,50 +2,50 @@
   {
     "type": "cover",
     "data": {
-      "title": "犯罪心理学研究",
-      "text": "探索犯罪心理的成因、特征及干预策略，助力犯罪预防与矫治。"
+      "title": "Criminal psychology research",
+      "text": "Explore the causes of crime.、Characteristics and intervention strategies，Assisting crime prevention and rehabilitation。"
     }
   },
   {
     "type": "contents",
     "data": {
       "items": [
-        "犯罪心理学概述",
-        "犯罪心理的形成",
-        "犯罪类型与心理特征",
-        "犯罪心理评估与干预",
-        "犯罪心理学的应用",
-        "未来发展趋势"
+        "Overview of criminal psychology",
+        "The formation of a criminal mind",
+        "Types of crime and psychological characteristics",
+        "Criminal psychological assessment and intervention",
+        "Application of criminal psychology",
+        "Future trends"
       ]
     }
   },
   {
     "type": "transition",
     "data": {
-      "title": "犯罪心理学概述",
-      "text": "本章将介绍犯罪心理学的定义、历史、基本理论及其研究领域。"
+      "title": "Overview of criminal psychology",
+      "text": "This chapter will introduce the definition of criminal psychology、History、Fundamental theories and their fields of study。"
     }
   },
   {
     "type": "content",
     "data": {
-      "title": "定义与历史",
+      "title": "Definitions and History",
       "items": [
         {
-          "title": "犯罪心理学的定义",
-          "text": "犯罪心理学是研究犯罪行为及其心理机制的学科，旨在理解犯罪者的心理特征和行为动机。"
+          "title": "Definition of criminal psychology",
+          "text": "Criminal psychology is the subject of research into criminal behaviour and its psychological mechanisms.，The aim is to understand the psychological characteristics and motives of the perpetrator.。"
         },
         {
-          "title": "犯罪心理学的发展历史",
-          "text": "犯罪心理学起源于19世纪末，随着心理学和法学的发展逐渐形成独立学科。"
+          "title": "History of the development of criminal psychology",
+          "text": "Criminal psychology is rooted in19The end of the century.，As psychology and jurisprudence develop, they become independent disciplines.。"
         },
         {
-          "title": "主要研究领域",
-          "text": "包括犯罪心理成因、犯罪类型分析、犯罪心理评估与干预等。"
+          "title": "Main areas of research",
+          "text": "Including the psychological causes of crime.、Analysis of crime patterns、Criminal Psychological Assessment and Intervention, etc.。"
         },
         {
-          "title": "与其他学科的关系",
-          "text": "犯罪心理学与法学、社会学、生物学等学科密切相关，共同探讨犯罪现象。"
+          "title": "Relations with other disciplines",
+          "text": "Criminal psychology and law、Sociology、The subjects of biology are closely related.，Joint exploration of crime。"
         }
       ]
     }
@@ -53,102 +53,23 @@
   {
     "type": "content",
     "data": {
-      "title": "基本理论",
+      "title": "Basic theory",
       "items": [
         {
-          "title": "生物学理论",
-          "text": "探讨遗传、神经生理等因素对犯罪行为的影响。"
+          "title": "Biology",
+          "text": "To explore genetics.、The effects of neurophysiology and other factors on criminal behaviour。"
         },
         {
-          "title": "心理学理论",
-          "text": "分析人格、认知、情感等心理因素与犯罪行为的关联。"
+          "title": "Psychological theory",
+          "text": "Analysis of personality、Awareness、The link between emotional and other mental factors and criminal behaviour。"
         },
         {
-          "title": "社会学理论",
-          "text": "研究社会环境、文化背景等对犯罪心理的塑造作用。"
+          "title": "Sociological theory",
+          "text": "Study of the social environment、Cultural background, etc., in shaping crime psychology。"
         },
         {
-          "title": "综合理论",
-          "text": "结合生物学、心理学和社会学视角，全面解释犯罪心理。"
-        }
-      ]
-    }
-  },
-  {
-    "type": "transition",
-    "data": {
-      "title": "犯罪心理的形成",
-      "text": "本章将探讨个体因素、环境因素及心理过程对犯罪心理的影响。"
-    }
-  },
-  {
-    "type": "content",
-    "data": {
-      "title": "个体因素",
-      "items": [
-        {
-          "title": "遗传因素",
-          "text": "研究基因与犯罪行为之间的潜在联系。"
-        },
-        {
-          "title": "心理特质",
-          "text": "探讨人格特质如攻击性、冲动性与犯罪的关系。"
-        },
-        {
-          "title": "人格障碍",
-          "text": "分析反社会人格障碍等心理疾病对犯罪行为的推动作用。"
-        },
-        {
-          "title": "早期经历",
-          "text": "研究童年创伤、家庭暴力等对犯罪心理的长期影响。"
-        }
-      ]
-    }
-  },
-  {
-    "type": "content",
-    "data": {
-      "title": "环境因素",
-      "items": [
-        {
-          "title": "家庭环境",
-          "text": "探讨家庭结构、教育方式对犯罪心理的塑造作用。"
-        },
-        {
-          "title": "社会环境影响",
-          "text": "分析同伴压力、社区环境对犯罪行为的诱导作用。"
-        },
-        {
-          "title": "经济因素",
-          "text": "研究贫困、失业等经济问题与犯罪率的关系。"
-        },
-        {
-          "title": "文化背景",
-          "text": "探讨文化价值观对犯罪心理的影响。"
-        }
-      ]
-    }
-  },
-  {
-    "type": "content",
-    "data": {
-      "title": "心理过程",
-      "items": [
-        {
-          "title": "认知过程",
-          "text": "分析犯罪者的思维方式、决策模式及其对行为的影响。"
-        },
-        {
-          "title": "情感过程",
-          "text": "探讨情绪调节、情感缺失与犯罪行为的关系。"
-        },
-        {
-          "title": "行为动机",
-          "text": "研究犯罪者的内在动机，如利益驱动、报复心理等。"
-        },
-        {
-          "title": "决策机制",
-          "text": "分析犯罪者在实施犯罪前的决策过程及其心理机制。"
+          "title": "Comprehensive theory",
+          "text": "Combining biology.、Psychological and sociological perspectives，A full explanation of criminal psychology.。"
         }
       ]
     }
@@ -156,30 +77,30 @@
   {
     "type": "transition",
     "data": {
-      "title": "犯罪类型与心理特征",
-      "text": "本章将分析暴力犯罪、财产犯罪及网络犯罪的心理特征。"
+      "title": "The formation of a criminal mind",
+      "text": "This chapter will look at individual factors.、Impact of environmental factors and psychological processes on the psychological aspects of crime。"
     }
   },
   {
     "type": "content",
     "data": {
-      "title": "暴力犯罪",
+      "title": "Individual factors",
       "items": [
         {
-          "title": "谋杀心理特征",
-          "text": "探讨谋杀者的心理动机，如情感冲突、利益争夺等。"
+          "title": "Genetic factors",
+          "text": "Research on the potential link between genes and criminal behaviour。"
         },
         {
-          "title": "抢劫心理特征",
-          "text": "分析抢劫者的冒险心理及对暴力的依赖。"
+          "title": "Psychopathic",
+          "text": "To explore personality characteristics like offensiveness.、The relationship between motivation and crime。"
         },
         {
-          "title": "性犯罪心理特征",
-          "text": "研究性犯罪者的心理扭曲及行为模式。"
+          "title": "Personal impairment",
+          "text": "Analysis of the contribution of mental disorders, such as antisocial personality disorders, to criminal behaviour。"
         },
         {
-          "title": "家庭暴力心理特征",
-          "text": "探讨家庭暴力施暴者的控制欲及情感缺陷。"
+          "title": "Early experience",
+          "text": "Study of childhood trauma、Long-term impact of domestic violence, etc. on the psychological aspects of crime。"
         }
       ]
     }
@@ -187,23 +108,23 @@
   {
     "type": "content",
     "data": {
-      "title": "财产犯罪",
+      "title": "Environmental factors",
       "items": [
         {
-          "title": "盗窃心理特征",
-          "text": "分析盗窃者的侥幸心理及对物质的渴望。"
+          "title": "Family environment",
+          "text": "Exploring family structures、The role of education in shaping crime psychology。"
         },
         {
-          "title": "诈骗心理特征",
-          "text": "探讨诈骗者的欺骗技巧及心理操纵能力。"
+          "title": "Social and environmental impacts",
+          "text": "Analysis of peer pressure、Inducing crime in a community environment。"
         },
         {
-          "title": "贪污心理特征",
-          "text": "研究贪污者的权力欲望及道德沦丧。"
+          "title": "Economic factors",
+          "text": "Research on poverty、Economic problems such as unemployment in relation to crime rates。"
         },
         {
-          "title": "洗钱心理特征",
-          "text": "分析洗钱者的风险规避心理及法律规避策略。"
+          "title": "Cultural background",
+          "text": "Exploring the impact of cultural values on crime psychology。"
         }
       ]
     }
@@ -211,102 +132,23 @@
   {
     "type": "content",
     "data": {
-      "title": "网络犯罪",
+      "title": "Psychological process",
       "items": [
         {
-          "title": "黑客心理特征",
-          "text": "探讨黑客的技术崇拜及对权威的挑战心理。"
+          "title": "Cognitive process",
+          "text": "Analysis of the offender's mind、Patterns of decision-making and their impact on behaviour。"
         },
         {
-          "title": "网络诈骗心理特征",
-          "text": "分析网络诈骗者的伪装能力及心理操纵技巧。"
+          "title": "Emotional processes",
+          "text": "I'm talking about emotional adjustment.、The relationship between emotional loss and criminal behaviour。"
         },
         {
-          "title": "网络暴力心理特征",
-          "text": "研究网络暴力施暴者的匿名心理及攻击性。"
+          "title": "Motivation of conduct",
+          "text": "Studying the inner motives of the perpetrator，If interest-driven、Retaliation, etc.。"
         },
         {
-          "title": "网络成瘾与犯罪",
-          "text": "探讨网络成瘾者对虚拟世界的依赖及其与犯罪行为的关联。"
-        }
-      ]
-    }
-  },
-  {
-    "type": "transition",
-    "data": {
-      "title": "犯罪心理评估与干预",
-      "text": "本章将介绍犯罪心理评估方法及干预策略，探讨预防措施。"
-    }
-  },
-  {
-    "type": "content",
-    "data": {
-      "title": "评估方法",
-      "items": [
-        {
-          "title": "心理测试",
-          "text": "通过标准化测试评估犯罪者的心理状态及人格特征。"
-        },
-        {
-          "title": "行为观察",
-          "text": "观察犯罪者的日常行为，分析其行为模式及心理动机。"
-        },
-        {
-          "title": "访谈技巧",
-          "text": "通过深度访谈了解犯罪者的心理历程及犯罪动机。"
-        },
-        {
-          "title": "案例分析",
-          "text": "通过典型案例分析犯罪者的心理特征及行为规律。"
-        }
-      ]
-    }
-  },
-  {
-    "type": "content",
-    "data": {
-      "title": "干预策略",
-      "items": [
-        {
-          "title": "心理治疗",
-          "text": "通过心理咨询和治疗帮助犯罪者纠正心理问题。"
-        },
-        {
-          "title": "行为矫正",
-          "text": "通过行为训练帮助犯罪者改变不良行为模式。"
-        },
-        {
-          "title": "社会支持",
-          "text": "提供社会资源支持，帮助犯罪者重新融入社会。"
-        },
-        {
-          "title": "法律干预",
-          "text": "通过法律手段对犯罪行为进行约束和惩罚。"
-        }
-      ]
-    }
-  },
-  {
-    "type": "content",
-    "data": {
-      "title": "预防措施",
-      "items": [
-        {
-          "title": "早期干预",
-          "text": "通过早期心理干预预防潜在犯罪者的行为问题。"
-        },
-        {
-          "title": "教育预防",
-          "text": "通过教育提升公众的法律意识及心理健康水平。"
-        },
-        {
-          "title": "社区预防",
-          "text": "通过社区活动增强社会凝聚力，减少犯罪诱因。"
-        },
-        {
-          "title": "政策预防",
-          "text": "通过政策制定减少社会不平等，降低犯罪率。"
+          "title": "Decision-making mechanisms",
+          "text": "Analysis of the decision-making process prior to the commission of a crime and its psychological mechanisms。"
         }
       ]
     }
@@ -314,30 +156,30 @@
   {
     "type": "transition",
     "data": {
-      "title": "犯罪心理学的应用",
-      "text": "本章将探讨犯罪心理学在刑事司法、犯罪预防及研究教育中的应用。"
+      "title": "Types of crime and psychological characteristics",
+      "text": "This chapter will analyse violent crime.、Psychological features of property crime and cybercrime。"
     }
   },
   {
     "type": "content",
     "data": {
-      "title": "刑事司法系统",
+      "title": "Violent crimes",
       "items": [
         {
-          "title": "犯罪心理画像",
-          "text": "通过心理分析描绘犯罪者的特征，协助案件侦破。"
+          "title": "The psychological characteristics of murder.",
+          "text": "To explore the psychological motives of the murderer.，It's like an emotional conflict.、We're fighting for benefits and so on.。"
         },
         {
-          "title": "审讯技巧",
-          "text": "运用心理学方法提高审讯效率，获取真实供述。"
+          "title": "Psychological characteristics of robbery",
+          "text": "Analysis of the risk-taking mentality of robbers and reliance on violence。"
         },
         {
-          "title": "证人心理学",
-          "text": "研究证人的心理状态及其对证词可信度的影响。"
+          "title": "Psychological characteristics of sexual offences",
+          "text": "Study of psychological distortions and behavioural patterns of sex offenders。"
         },
         {
-          "title": "陪审团决策",
-          "text": "分析陪审员的心理过程及其对判决结果的影响。"
+          "title": "Psychological characteristics of domestic violence",
+          "text": "Exploring control and emotional deficiencies of perpetrators of domestic violence。"
         }
       ]
     }
@@ -345,23 +187,23 @@
   {
     "type": "content",
     "data": {
-      "title": "犯罪预防与矫治",
+      "title": "Property offences",
       "items": [
         {
-          "title": "犯罪预防策略",
-          "text": "通过心理干预和社会支持预防犯罪行为的发生。"
+          "title": "Psychological characteristics of theft",
+          "text": "Analysis of the larceny and the desire for material.。"
         },
         {
-          "title": "监狱心理矫治",
-          "text": "通过心理治疗帮助服刑人员纠正心理问题，降低再犯率。"
+          "title": "Psychological features of fraud",
+          "text": "Exploring fraud techniques and psychological manipulation of fraudsters。"
         },
         {
-          "title": "社区矫正",
-          "text": "通过社区支持帮助犯罪者重新融入社会，减少再犯风险。"
+          "title": "Psychological features of corruption",
+          "text": "To study the corrupters' desire for power and moral degradation.。"
         },
         {
-          "title": "再犯预防",
-          "text": "通过心理评估和干预降低犯罪者的再犯可能性。"
+          "title": "Psychological features of money-laundering",
+          "text": "Diagnosing the risk of a money launderer's psychological and legal circumvention strategy。"
         }
       ]
     }
@@ -369,23 +211,23 @@
   {
     "type": "content",
     "data": {
-      "title": "研究与教育",
+      "title": "Cybercrime",
       "items": [
         {
-          "title": "犯罪心理学研究",
-          "text": "通过科学研究深化对犯罪心理的理解，推动学科发展。"
+          "title": "He's a hacker.",
+          "text": "Exploring hackers ' technical worship and power challenges。"
         },
         {
-          "title": "犯罪心理学教育",
-          "text": "通过教育培养专业人才，提升犯罪心理学的应用水平。"
+          "title": "Psychological features of cyber-fraud",
+          "text": "Analysis of cyber fraudsters ' ability to disguise and psychological manipulation techniques。"
         },
         {
-          "title": "专业培训",
-          "text": "通过培训提升司法人员的心理学知识和技能。"
+          "title": "Psychological features of cyber-violence",
+          "text": "Research on anonymous psychology and aggressiveness of cyber-violence abusers。"
         },
         {
-          "title": "学术交流",
-          "text": "通过学术交流促进犯罪心理学领域的国际合作与发展。"
+          "title": "Internet addiction and crime",
+          "text": "Exploring the dependence of Internet addicts on the virtual world and its links to crime。"
         }
       ]
     }
@@ -393,30 +235,30 @@
   {
     "type": "transition",
     "data": {
-      "title": "未来发展趋势",
-      "text": "本章将探讨犯罪心理学在技术应用、跨学科合作及伦理挑战方面的未来发展方向。"
+      "title": "Criminal psychological assessment and intervention",
+      "text": "This chapter will present the methodology for the psychological assessment of crime and intervention strategies.，Exploring preventive measures。"
     }
   },
   {
     "type": "content",
     "data": {
-      "title": "技术应用",
+      "title": "Evaluation methodology",
       "items": [
         {
-          "title": "人工智能与犯罪心理学",
-          "text": "利用人工智能技术分析犯罪数据，提升犯罪预测能力。"
+          "title": "Psychological tests",
+          "text": "Assessment of the psychological state and personality characteristics of offenders through standardized testing。"
         },
         {
-          "title": "大数据分析",
-          "text": "通过大数据技术挖掘犯罪行为的规律及心理特征。"
+          "title": "Conduct Watch",
+          "text": "Observing the routine behaviour of offenders，Analysis of patterns of behaviour and psychological motives。"
         },
         {
-          "title": "虚拟现实技术",
-          "text": "利用虚拟现实技术模拟犯罪场景，研究犯罪者的心理反应。"
+          "title": "Interview techniques",
+          "text": "Understanding the psychological history of the perpetrator and the motives for the crime through in-depth interviews。"
         },
         {
-          "title": "神经科学研究",
-          "text": "通过神经科学研究探索犯罪行为的生物学基础。"
+          "title": "Case analysis",
+          "text": "Analysis of the psychological characteristics and patterns of behaviour of offenders through typical cases。"
         }
       ]
     }
@@ -424,23 +266,23 @@
   {
     "type": "content",
     "data": {
-      "title": "跨学科合作",
+      "title": "Intervention strategies",
       "items": [
         {
-          "title": "心理学与法律",
-          "text": "加强心理学与法学的合作，提升司法系统的科学性。"
+          "title": "Psychotherapy",
+          "text": "Helping offenders to redress psychological problems through psychological counselling and treatment。"
         },
         {
-          "title": "心理学与医学",
-          "text": "通过心理学与医学的结合，深化对犯罪心理的理解。"
+          "title": "Behavioural corrections",
+          "text": "Helping offenders to change bad behaviour patterns through behavioural training。"
         },
         {
-          "title": "心理学与社会学",
-          "text": "通过心理学与社会学的交叉研究，全面分析犯罪现象。"
+          "title": "Social support",
+          "text": "Social resource support，Helping offenders reintegrate into society。"
         },
         {
-          "title": "心理学与信息技术",
-          "text": "结合心理学与信息技术，开发犯罪预防与干预的新工具。"
+          "title": "Legal intervention",
+          "text": "Legal regulation and punishment of criminal acts。"
         }
       ]
     }
@@ -448,23 +290,181 @@
   {
     "type": "content",
     "data": {
-      "title": "伦理与挑战",
+      "title": "Preventive measures",
       "items": [
         {
-          "title": "伦理问题",
-          "text": "探讨犯罪心理学研究中的伦理困境及解决方案。"
+          "title": "Early intervention",
+          "text": "Prevention of behaviour of potential offenders through early psychological intervention。"
         },
         {
-          "title": "隐私保护",
-          "text": "研究犯罪心理学应用中如何保护个人隐私。"
+          "title": "Education prevention",
+          "text": "Raising legal awareness and mental health through education。"
         },
         {
-          "title": "数据安全",
-          "text": "分析犯罪心理学数据的安全风险及防护措施。"
+          "title": "Community prevention",
+          "text": "Enhancing social cohesion through community activities，Reducing the causes of crime。"
         },
         {
-          "title": "未来挑战",
-          "text": "探讨犯罪心理学在未来发展中可能面临的技术与社会挑战。"
+          "title": "Policy prevention",
+          "text": "Reducing social inequality through policy development，Reducing crime rates。"
+        }
+      ]
+    }
+  },
+  {
+    "type": "transition",
+    "data": {
+      "title": "Application of criminal psychology",
+      "text": "This chapter will address the issue of criminal psychology in criminal justice、Application in crime prevention and research education。"
+    }
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "Criminal justice system",
+      "items": [
+        {
+          "title": "Criminal psychography.",
+          "text": "Characterization of offenders through psychological analysis，Assisting in case detection。"
+        },
+        {
+          "title": "Interrogation techniques",
+          "text": "Use of psychological methods to improve the efficiency of interrogations，Get a real confession.。"
+        },
+        {
+          "title": "Witness psychology",
+          "text": "Study of the psychological state of witnesses and its impact on the credibility of testimony。"
+        },
+        {
+          "title": "Jury decision-making",
+          "text": "Analysis of the jury ' s psychological process and its impact on the outcome of the judgement。"
+        }
+      ]
+    }
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "Crime prevention and rehabilitation",
+      "items": [
+        {
+          "title": "Crime prevention strategies",
+          "text": "Prevention of crime through psychological intervention and social support。"
+        },
+        {
+          "title": "Prison psychological rehabilitation",
+          "text": "Helping persons in prison with psychological problems through psychotherapy，Reduce the rate of recidivism。"
+        },
+        {
+          "title": "Community corrections",
+          "text": "Reintegration of offenders through community support，Reducing the risk of recidivism。"
+        },
+        {
+          "title": "Re-offending prevention",
+          "text": "Reducing the likelihood of reoffending offenders through psychological assessment and intervention。"
+        }
+      ]
+    }
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "Research and education",
+      "items": [
+        {
+          "title": "Criminal psychology research",
+          "text": "Deepen understanding of crime psychology through scientific research，Promotion of academic development。"
+        },
+        {
+          "title": "Criminal psychology education",
+          "text": "Development of professionals through education，Enhancing the application of criminal psychology。"
+        },
+        {
+          "title": "Professional training",
+          "text": "Enhancement of the psychological knowledge and skills of judicial personnel through training。"
+        },
+        {
+          "title": "Academic exchange",
+          "text": "Promoting international cooperation and development in crime psychology through academic exchange。"
+        }
+      ]
+    }
+  },
+  {
+    "type": "transition",
+    "data": {
+      "title": "Future trends",
+      "text": "This chapter will explore the technical application of criminal psychology.、Future directions for interdisciplinary cooperation and ethical challenges。"
+    }
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "Technology applications",
+      "items": [
+        {
+          "title": "Artificial intelligence and criminal psychology",
+          "text": "Analysis of crime data using artificial intelligence techniques，Enhancing crime forecasting capacity。"
+        },
+        {
+          "title": "Big data analysis",
+          "text": "Exploiting patterns and psychological features of crime through big data technology。"
+        },
+        {
+          "title": "Virtual reality technology",
+          "text": "Simulation of crime scenes using virtual reality technology，Study the psychological response of offenders。"
+        },
+        {
+          "title": "Neuroscience research",
+          "text": "Explore the biological basis of criminal behaviour through neuroscientific research。"
+        }
+      ]
+    }
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "Interdisciplinary cooperation",
+      "items": [
+        {
+          "title": "Psychology and law",
+          "text": "Strengthening cooperation between psychology and law，Enhancing the scientific nature of the judicial system。"
+        },
+        {
+          "title": "Psychology and medicine",
+          "text": "Through the combination of psychology and medicine，Deepening the understanding of crime psychology。"
+        },
+        {
+          "title": "Psychology and sociology",
+          "text": "Through a cross-cutting study of psychology and sociology，Comprehensive analysis of the crime phenomenon。"
+        },
+        {
+          "title": "Psychology and information technology",
+          "text": "Integration of psychology and information technology，Development of new tools for crime prevention and intervention。"
+        }
+      ]
+    }
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "Ethics and challenges",
+      "items": [
+        {
+          "title": "Ethical issues",
+          "text": "Exploring ethical dilemmas and solutions in criminal psychology research。"
+        },
+        {
+          "title": "Privacy protection",
+          "text": "Studying how to protect personal privacy in criminal psychology applications。"
+        },
+        {
+          "title": "Data security",
+          "text": "Analysis of security risks and protective measures for criminal psychology data。"
+        },
+        {
+          "title": "Challenges for the future",
+          "text": "Exploring the technical and social challenges that crime psychology may face in future development。"
         }
       ]
     }

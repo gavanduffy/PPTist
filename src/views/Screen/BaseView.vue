@@ -41,14 +41,14 @@
       @mouseenter="rightToolsVisible = true"
     >
       <div class="content">
-        <div class="tool-btn page-number" @click="slideThumbnailModelVisible = true">幻灯片 {{slideIndex + 1}} / {{slides.length}}</div>
-        <IconWrite class="tool-btn" v-tooltip="'画笔工具'" @click="writingBoardToolVisible = true" />
-        <IconMagic class="tool-btn" v-tooltip="'激光笔'" :class="{ 'active': laserPen }" @click="laserPen = !laserPen" />
-        <IconStopwatchStart class="tool-btn" v-tooltip="'计时器'" :class="{ 'active': timerlVisible }" @click="timerlVisible = !timerlVisible" />
-        <IconListView class="tool-btn" v-tooltip="'演讲者视图'" @click="changeViewMode('presenter')" />
-        <IconOffScreenOne class="tool-btn" v-tooltip="'退出全屏'" v-if="fullscreenState" @click="manualExitFullscreen()" />
-        <IconFullScreenOne class="tool-btn" v-tooltip="'进入全屏'" v-else @click="enterFullscreen()" />
-        <IconPower class="tool-btn" v-tooltip="'结束放映'" @click="exitScreening()" />
+        <div class="tool-btn page-number" @click="slideThumbnailModelVisible = true">slideshow {{slideIndex + 1}} / {{slides.length}}</div>
+        <IconWrite class="tool-btn" v-tooltip="'Brush tool'" @click="writingBoardToolVisible = true" />
+        <IconMagic class="tool-btn" v-tooltip="'laser pointer'" :class="{ 'active': laserPen }" @click="laserPen = !laserPen" />
+        <IconStopwatchStart class="tool-btn" v-tooltip="'timer'" :class="{ 'active': timerlVisible }" @click="timerlVisible = !timerlVisible" />
+        <IconListView class="tool-btn" v-tooltip="'Speaker view'" @click="changeViewMode('presenter')" />
+        <IconOffScreenOne class="tool-btn" v-tooltip="'Exit full screen'" v-if="fullscreenState" @click="manualExitFullscreen()" />
+        <IconFullScreenOne class="tool-btn" v-tooltip="'Go to full screen'" v-else @click="enterFullscreen()" />
+        <IconPower class="tool-btn" v-tooltip="'end show'" @click="exitScreening()" />
       </div>
     </div>
 
@@ -113,84 +113,84 @@ const laserPen = ref(false)
 const contextmenus = (): ContextmenuItem[] => {
   return [
     {
-      text: '上一页',
+      text: 'Previous page',
       subText: '↑ ←',
       disable: slideIndex.value <= 0,
       handler: () => turnPrevSlide(),
     },
     {
-      text: '下一页',
+      text: 'Next page',
       subText: '↓ →',
       disable: slideIndex.value >= slides.value.length - 1,
       handler: () => turnNextSlide(),
     },
     {
-      text: '第一页',
+      text: 'First page',
       disable: slideIndex.value === 0,
       handler: () => turnSlideToIndex(0),
     },
     {
-      text: '最后一页',
+      text: 'last page',
       disable: slideIndex.value === slides.value.length - 1,
       handler: () => turnSlideToIndex(slides.value.length - 1),
     },
     { divider: true },
     {
-      text: autoPlayTimer.value ? '取消自动放映' : '自动放映',
+      text: autoPlayTimer.value ? 'Cancel automatic show' : 'automatic show',
       handler: autoPlayTimer.value ? closeAutoPlay : autoPlay,
       children: [
         {
-          text: '2.5秒',
+          text: '2.5Second',
           subText: autoPlayInterval.value === 2500 ? '√' : '',
           handler: () => setAutoPlayInterval(2500),
         },
         {
-          text: '5秒',
+          text: '5Second',
           subText: autoPlayInterval.value === 5000 ? '√' : '',
           handler: () => setAutoPlayInterval(5000),
         },
         {
-          text: '7.5秒',
+          text: '7.5Second',
           subText: autoPlayInterval.value === 7500 ? '√' : '',
           handler: () => setAutoPlayInterval(7500),
         },
         {
-          text: '10秒',
+          text: '10Second',
           subText: autoPlayInterval.value === 10000 ? '√' : '',
           handler: () => setAutoPlayInterval(10000),
         },
       ],
     },
     {
-      text: '循环放映',
+      text: 'Loop show',
       subText: loopPlay.value ? '√' : '',
       handler: () => setLoopPlay(!loopPlay.value),
     },
     { divider: true },
     {
-      text: '显示工具栏',
+      text: 'Show toolbar',
       handler: () => rightToolsVisible.value = true,
     },
     {
-      text: '查看所有幻灯片',
+      text: 'View all slides',
       handler: () => slideThumbnailModelVisible.value = true,
     },
     {
-      text: '触底显示缩略图',
+      text: 'Bottoming out thumbnails',
       subText: bottomThumbnailsVisible.value ? '√' : '',
       handler: () => bottomThumbnailsVisible.value = !bottomThumbnailsVisible.value,
     },
     {
-      text: '画笔工具',
+      text: 'Brush tool',
       handler: () => writingBoardToolVisible.value = true,
     },
     {
-      text: '演讲者视图',
+      text: 'Speaker view',
       handler: () => props.changeViewMode('presenter'),
     },
     { divider: true },
     {
-      text: '结束放映',
+      text: 'end show',
       subText: 'ESC',
       handler: exitScreening,
     },

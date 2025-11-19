@@ -8,7 +8,7 @@ export default (viewportRef: ShallowRef<HTMLElement | null>) => {
   const mainStore = useMainStore()
   const { canvasScale, creatingElement } = storeToRefs(mainStore)
 
-  // 通过鼠标框选时的起点和终点，计算选区的位置大小
+  // The starting point and end point when selecting by mouse box，Calculate the location size of the selection
   const formatCreateSelection = (selectionData: CreateElementSelectionData) => {
     const { start, end } = selectionData
 
@@ -30,7 +30,7 @@ export default (viewportRef: ShallowRef<HTMLElement | null>) => {
     return { left, top, width, height }
   }
 
-  // 通过鼠标框选时的起点和终点，计算线条在画布中的位置和起点终点
+  // The starting point and end point when selecting by mouse box，Calculate the position, starting point and end point of the line in the canvas
   const formatCreateSelectionForLine = (selectionData: CreateElementSelectionData) => {
     const { start, end } = selectionData
 
@@ -68,7 +68,7 @@ export default (viewportRef: ShallowRef<HTMLElement | null>) => {
 
   const { createTextElement, createShapeElement, createLineElement } = useCreateElement()
 
-  // 根据鼠标选区的位置大小插入元素
+  // Insert elements based on the position and size of the mouse selection
   const insertElementFromCreateSelection = (selectionData: CreateElementSelectionData) => {
     if (!creatingElement.value) return
 

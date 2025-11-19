@@ -12,8 +12,8 @@ export interface ScreenState {
 
 export const useSnapshotStore = defineStore('snapshot', {
   state: (): ScreenState => ({
-    snapshotCursor: -1, // 历史快照指针
-    snapshotLength: 0, // 历史快照长度
+    snapshotCursor: -1, // historical snapshot pointer
+    snapshotLength: 0, // Historical snapshot length
   }),
 
   getters: {
@@ -48,36 +48,36 @@ export const useSnapshotStore = defineStore('snapshot', {
     async addSnapshot() {
       const slidesStore = useSlidesStore()
 
-      // 获取当前indexeddb中全部快照的ID
+      // Get currentindexeddbof all snapshots inID
       const allKeys = await db.snapshots.orderBy('id').keys()
   
       let needDeleteKeys: IndexableTypeArray = []
   
-      // 记录需要删除的快照ID
-      // 若当前快照指针不处在最后一位，那么再添加快照时，应该将当前指针位置后面的快照全部删除，对应的实际情况是：
-      // 用户撤回多次后，再进行操作（添加快照），此时原先被撤销的快照都应该被删除
+      // Record snapshots that need to be deletedID
+      // If the current snapshot pointer is not at the last bit，Then when adding a snapshot，All snapshots behind the current pointer position should be deleted，The corresponding actual situation is：
+      // After the user withdraws multiple times，Operate again（Add snapshot），At this time, all previously revoked snapshots should be deleted.
       if (this.snapshotCursor >= 0 && this.snapshotCursor < allKeys.length - 1) {
         needDeleteKeys = allKeys.slice(this.snapshotCursor + 1)
       }
   
-      // 添加新快照
+      // Add new snapshot
       const snapshot = {
         index: slidesStore.slideIndex,
         slides: JSON.parse(JSON.stringify(slidesStore.slides)),
       }
       await db.snapshots.add(snapshot)
   
-      // 计算当前快照长度，用于设置快照指针的位置（此时指针应该处在最后一位，即：快照长度 - 1）
+      // Calculate current snapshot length，Used to set the position of the snapshot pointer（At this point the pointer should be at the last position，Right now：snapshot length - 1）
       let snapshotLength = allKeys.length - needDeleteKeys.length + 1
   
-      // 快照数量超过长度限制时，应该将头部多余的快照删除
+      // When the number of snapshots exceeds the length limit，Superfluous snapshots in the header should be deleted
       const snapshotLengthLimit = 20
       if (snapshotLength > snapshotLengthLimit) {
         needDeleteKeys.push(allKeys[0])
         snapshotLength--
       }
   
-      // 快照数大于1时，需要保证撤回操作后维持页面焦点不变：也就是将倒数第二个快照对应的索引设置为当前页的索引
+      // The number of snapshots is greater than1hour，It is necessary to ensure that the focus of the page remains unchanged after the withdrawal operation：That is, the index corresponding to the penultimate snapshot is set to the index of the current page.
       // https://github.com/pipipi-pikachu/PPTist/issues/27
       if (snapshotLength >= 2) {
         db.snapshots.update(allKeys[snapshotLength - 2] as number, { index: slidesStore.slideIndex })

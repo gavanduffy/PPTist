@@ -19,14 +19,14 @@ class ChineseTextFinder:
     def __init__(self):
         self.chinese_pattern = re.compile(r'[\u4e00-\u9fff]+')
         self.translator = Translator() if TRANSLATOR_AVAILABLE else None
-    
-def find_chinese_in_text(self, text: str) -> List[Dict]:
+
+    def find_chinese_in_text(self, text: str) -> List[Dict]:
         """Find all Chinese text occurrences with their positions"""
         matches = []
         for match in self.chinese_pattern.finditer(text):
             line_num = text[:match.start()].count('\n') + 1
             col_num = match.start() - text[:match.start()].rfind('\n')
-            
+
             matches.append({
                 'text': match.group(),
                 'start': match.start(),
@@ -35,35 +35,35 @@ def find_chinese_in_text(self, text: str) -> List[Dict]:
                 'column': col_num
             })
         return matches
-    
-def translate_text(self, text: str) -> str:
+
+    def translate_text(self, text: str) -> str:
         """Translate Chinese text to English"""
         if not self.translator:
             return f"[TRANSLATION NEEDED: {text}]"
-        
+
         try:
             result = self.translator.translate(text, src='zh-cn', dest='en')
             return result.text
         except Exception as e:
             print(f"Translation error for '{text}': {e}", file=sys.stderr)
             return f"[TRANSLATION FAILED: {text}]"
-    
-def process_file(self, file_path: str, translate: bool = False, dry_run: bool = True) -> Dict:
+
+    def process_file(self, file_path: str, translate: bool = False, dry_run: bool = True) -> Dict:
         """Process a single file and return information about Chinese text found"""
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
-            
+
             chinese_matches = self.find_chinese_in_text(content)
-            
+
             if not chinese_matches:
                 return None
-            
+
             result = {
                 'file': file_path,
                 'matches': []
             }
-            
+
             for match in chinese_matches:
                 match_info = {
                     'original': match['text'],
@@ -71,67 +71,67 @@ def process_file(self, file_path: str, translate: bool = False, dry_run: bool = 
                     'column': match['column'],
                     'context': self._get_context(content, match['start'], match['end'])
                 }
-                
+
                 if translate:
                     match_info['translation'] = self.translate_text(match['text'])
-                
+
                 result['matches'].append(match_info)
-            
+
             # If not dry run and translate is enabled, replace the content
             if not dry_run and translate:
                 new_content = self._replace_chinese(content, chinese_matches)
                 with open(file_path, 'w', encoding='utf-8') as f:
                     f.write(new_content)
                 result['replaced'] = True
-            
+
             return result
-            
+
         except Exception as e:
             print(f"Error processing {file_path}: {e}", file=sys.stderr)
             return None
-    
-def _get_context(self, text: str, start: int, end: int, context_chars: int = 40) -> str:
+
+    def _get_context(self, text: str, start: int, end: int, context_chars: int = 40) -> str:
         """Get surrounding context for a match"""
         context_start = max(0, start - context_chars)
         context_end = min(len(text), end + context_chars)
-        
+
         before = text[context_start:start]
         match = text[start:end]
         after = text[end:context_end]
-        
+
         return f"...{before}[{match}]{after}..."
-    
-def _replace_chinese(self, content: str, matches: List[Dict]) -> str:
+
+    def _replace_chinese(self, content: str, matches: List[Dict]) -> str:
         """Replace Chinese text with translations"""
         # Sort matches by position in reverse order to maintain correct positions
         sorted_matches = sorted(matches, key=lambda x: x['start'], reverse=True)
-        
+
         new_content = content
         for match in sorted_matches:
             translation = self.translate_text(match['text'])
             new_content = new_content[:match['start']] + translation + new_content[match['end']:]
-        
+
         return new_content
-    
-def scan_directory(self, directory: str, translate: bool = False, dry_run: bool = True) -> List[Dict]:
+
+    def scan_directory(self, directory: str, translate: bool = False, dry_run: bool = True) -> List[Dict]:
         """Scan directory for files with Chinese text"""
         results = []
-        
+
         for root, dirs, files in os.walk(directory):
             # Skip node_modules and other common ignore directories
             dirs[:] = [d for d in dirs if d not in ['node_modules', '.git', 'dist', 'build']]
-            
+
             for file in files:
                 # Only process text-based files
                 if not file.endswith(('.vue', '.ts', '.js', '.tsx', '.jsx', '.json', '.md', '.txt')):
                     continue
-                
+
                 file_path = os.path.join(root, file)
                 result = self.process_file(file_path, translate, dry_run)
-                
+
                 if result:
                     results.append(result)
-        
+
         return results
 
 def print_results(results: List[Dict], show_translations: bool = False):

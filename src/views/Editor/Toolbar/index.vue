@@ -31,18 +31,18 @@ const mainStore = useMainStore()
 const { activeElementIdList, activeElementList, activeGroupElementId, toolbarState } = storeToRefs(mainStore)
 
 const elementTabs = [
-  { label: '样式', key: ToolbarStates.EL_STYLE },
-  { label: '位置', key: ToolbarStates.EL_POSITION },
-  { label: '动画', key: ToolbarStates.EL_ANIMATION },
+  { label: 'style', key: ToolbarStates.EL_STYLE },
+  { label: 'Location', key: ToolbarStates.EL_POSITION },
+  { label: 'animation', key: ToolbarStates.EL_ANIMATION },
 ]
 const slideTabs = [
-  { label: '设计', key: ToolbarStates.SLIDE_DESIGN },
-  { label: '切换', key: ToolbarStates.SLIDE_ANIMATION },
-  { label: '动画', key: ToolbarStates.EL_ANIMATION },
+  { label: 'design', key: ToolbarStates.SLIDE_DESIGN },
+  { label: 'switch', key: ToolbarStates.SLIDE_ANIMATION },
+  { label: 'animation', key: ToolbarStates.EL_ANIMATION },
 ]
 const multiSelectTabs = [
-  { label: '样式（多选）', key: ToolbarStates.MULTI_STYLE },
-  { label: '位置（多选）', key: ToolbarStates.MULTI_POSITION },
+  { label: 'style（Multiple choice）', key: ToolbarStates.MULTI_STYLE },
+  { label: 'Location（Multiple choice）', key: ToolbarStates.MULTI_POSITION },
 ]
 
 const setToolbarState = (value: ToolbarStates) => {
