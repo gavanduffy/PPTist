@@ -87,7 +87,7 @@ export default () => {
     saveAs(blob, `${title.value}.json`)
   }
 
-  // Format color values ​​as transparency + HexString，forpptxgenjsuse
+  // Format color values as transparency + HexString, for pptxgenjs use
   const formatColor = (_color: string) => {
     if (!_color) {
       return {
@@ -107,8 +107,8 @@ export default () => {
 
   type FormatColor = ReturnType<typeof formatColor>
 
-  // WillHTMLThe string is formatted aspptxgenjsrequired format
-  // Core idea：WillHTMLStrings are sliced ​​and tiled by style，Each fragment needs to inherit the style information of the ancestor element，Line breaks are required when encountering block-level elements
+  // Format the HTML string as required by pptxgenjs
+  // Core idea: slice and tile HTML strings by style; each fragment needs to inherit the style information of the ancestor element, and line breaks are required when encountering block-level elements
   const formatHTML = (html: string) => {
     const ast = toAST(html)
     let bulletFlag = false

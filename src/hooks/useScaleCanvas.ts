@@ -25,7 +25,7 @@ export default () => {
 
   /**
    * Set canvas scaling
-   * But instead of setting the value directly，Instead, it is calculated dynamically by setting the percentage of the visible area of ​​the canvas.
+    * But instead of setting the value directly, it is calculated dynamically by setting the percentage of the visible area of the canvas.
    * @param value Target canvas scaling
    */
   const setCanvasScalePercentage = (value: number) => {

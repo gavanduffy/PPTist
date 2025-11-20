@@ -96,7 +96,7 @@ import Divider from '@/components/Divider.vue'
 import Select from '@/components/Select.vue'
 import Popover from '@/components/Popover.vue'
 
-// Notice，There is an unknown reasonBUG，If the text box height increases after the text is bolded，There will be an error in the positioning of the visible area of ​​the canvas
+// Notice: there is an unknown reason BUG. If the text box height increases after the text is bolded, there will be an error in the positioning of the visible area of the canvas
 // Therefore, when executing the preset style command，Place the bold command as far forward as possible，Avoid increasing the font size and then bolding it
 const presetStyles = [
   {

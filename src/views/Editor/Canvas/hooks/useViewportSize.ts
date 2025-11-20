@@ -10,7 +10,7 @@ export default (canvasRef: ShallowRef<HTMLElement | null>) => {
   const { canvasPercentage, canvasDragged } = storeToRefs(mainStore)
   const { viewportRatio, viewportSize } = storeToRefs(useSlidesStore())
 
-  // Initialize the position of the visible area of ​​the canvas
+  // Initialize the position of the visible area of the canvas
   const initViewportPosition = () => {
     if (!canvasRef.value) return
     const canvasWidth = canvasRef.value.clientWidth
@@ -30,7 +30,7 @@ export default (canvasRef: ShallowRef<HTMLElement | null>) => {
     }
   }
 
-  // Update the position of the visible area of ​​the canvas
+  // Update the position of the visible area of the canvas
   const setViewportPosition = (newValue: number, oldValue: number) => {
     if (!canvasRef.value) return
     const canvasWidth = canvasRef.value.clientWidth
@@ -60,12 +60,12 @@ export default (canvasRef: ShallowRef<HTMLElement | null>) => {
     }
   }
 
-  // When the visual area is scaled or scaled，reset/Update the position of the visible area
+  // When the visual area is scaled or zoomed, reset or update the position of the visible area
   watch(canvasPercentage, setViewportPosition)
   watch(viewportRatio, initViewportPosition)
   watch(viewportSize, initViewportPosition)
 
-  // Canvas drag state changes（recovery）hour，Reset the position of the visible area
+  // When the canvas drag state changes (recovered), reset the position of the visible area
   watch(canvasDragged, () => {
     if (!canvasDragged.value) initViewportPosition()
   })
@@ -78,7 +78,7 @@ export default (canvasRef: ShallowRef<HTMLElement | null>) => {
     top: viewportTop.value,
   }))
 
-  // Monitor when the canvas size changes，Reset the position of the visible area
+  // Monitor when the canvas size changes and reset the position of the visible area
   const resizeObserver = new ResizeObserver(initViewportPosition)
 
   onMounted(() => {
