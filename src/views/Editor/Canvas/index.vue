@@ -201,7 +201,7 @@ onMounted(() => {
   }
 })
 
-// Click on an empty area of ​​the canvas：Clear focus element、Set canvas focus、Clear text selection、Clear format brush status
+// Click on an empty area of the canvas: clear focus element, set canvas focus, clear text selection, clear format brush status
 const handleClickBlankArea = (e: MouseEvent) => {
   if (activeElementIdList.value.length) mainStore.setActiveElementIdList([])
 

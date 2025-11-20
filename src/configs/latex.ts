@@ -44,7 +44,7 @@ export const FORMULA_LIST = [
     latex: `y = (\\int Q(x) e^{\\int {P(x)dx}}dx + C)e^{-\\int {P(x)dx}}`,
   },
   {
-    label: 'Corsy's Medium Value Theorem',
+    label: "Corsy's Medium Value Theorem",
     latex: `\\frac{{f(b) - f(a)}}{{F(b) - F(a)}} = \\frac{{f'(\\xi )}}{{F'(\\xi )}}`,
   },
   {

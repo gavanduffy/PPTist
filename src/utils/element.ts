@@ -147,7 +147,7 @@ export interface AlignLine {
 }
 
 /**
- * Deduplicate a set of aligned adsorption lines：Multiple alignment adsorption lines at the same position leave only one，Take the maximum and minimum values ​​of all aligned adsorption lines at this position as the new range
+ * Deduplicate a set of aligned adsorption lines: multiple alignment adsorption lines at the same position leave only one, taking the maximum and minimum values of all aligned adsorption lines at this position as the new range
  * @param lines A set of aligned snap line information
  */
 export const uniqAlignLines = (lines: AlignLine[]) => {
