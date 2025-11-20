@@ -31,9 +31,7 @@
             style="width: 80px;"
             v-model:value="language"
             :options="[
-              { label: 'Chinese', value: 'Chinese' },
               { label: 'English', value: 'English' },
-              { label: 'Japanese', value: 'Japanese' },
             ]"
           />
         </div>
@@ -59,8 +57,11 @@
             style="width: 190px;"
             v-model:value="model"
             :options="[
-              { label: 'GLM-4.5-Flash', value: 'GLM-4.5-Flash' },
-              { label: 'Doubao-Seed-1.6-flash', value: 'ark-doubao-seed-1.6-flash' },
+              { label: 'Grok-4.1', value: 'x-ai/grok-4.1-fast' },
+              { label: 'Auto', value: 'openrouter/auto' },
+							{ label: 'GLM-4.5-Air', value: 'z-ai/glm-4.5-air:free' },
+              { label: 'Gemini-2-Flash', value: 'google/gemini-2.0-flash-exp:free' },
+							{ label: 'Mistral-Small', value: 'mistralai/mistral-small-3.2-24b-instruct:free' },
             ]"
           />
         </div>
@@ -141,7 +142,7 @@ const { templates } = storeToRefs(slidesStore)
 const { resetSlides, isEmptySlide } = useSlideHandler()
 const { AIPPT, presetImgPool, getMdContent } = useAIPPT()
 
-const language = ref('Chinese')
+const language = ref('English')
 const style = ref('Universal')
 const img = ref('')
 const keyword = ref('')
@@ -151,7 +152,7 @@ const loading = ref(false)
 const outlineCreating = ref(false)
 const overwrite = ref(true)
 const step = ref<'setup' | 'outline' | 'template'>('setup')
-const model = ref('GLM-4.5-Flash')
+const model = ref('Grok-4.1')
 const outlineRef = useTemplateRef<HTMLElement>('outlineRef')
 const inputRef = useTemplateRef<InstanceType<typeof Input>>('inputRef')
 
