@@ -63,7 +63,7 @@
               { label: 'Gemini-2-Flash', value: 'google/gemini-2.0-flash-exp:free' },
 			  { label: 'Mistral-Small', value: 'mistralai/mistral-small-3.2-24b-instruct:free' },
 			  { label: 'GPT-OSS', value: 'openai/gpt-oss-20b:free' },
-			  { label: Kimi-K2', value: 'moonshotai/kimi-k2:free' },
+			  { label: 'Kimi-K2', value: 'moonshotai/kimi-k2:free' },
 			  { label: 'Deepseek-3.2', value: 'deepseek/deepseek-v3.2-exp' },
             ]"
           />
